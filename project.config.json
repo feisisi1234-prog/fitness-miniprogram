@@ -28,48 +28,48 @@
   "packOptions": {
     "ignore": [
       {
-        "type": "file",
-        "value": "*.mp4"
+        "value": "*.mp4",
+        "type": "file"
       },
       {
-        "type": "file",
-        "value": "*backup*"
+        "value": "*backup*",
+        "type": "file"
       },
       {
-        "type": "folder",
-        "value": "docs"
+        "value": "docs",
+        "type": "folder"
       },
       {
-        "type": "folder",
-        "value": "scripts"
+        "value": "scripts",
+        "type": "folder"
       },
       {
-        "type": "folder",
-        "value": "components/model-viewer"
+        "value": "components/model-viewer",
+        "type": "folder"
       },
       {
-        "type": "folder",
-        "value": "components/muscle-video-player"
+        "value": "components/muscle-video-player",
+        "type": "folder"
       },
       {
-        "type": "folder",
-        "value": "components/training-card"
+        "value": "components/training-card",
+        "type": "folder"
       },
       {
-        "type": "file",
-        "value": "libs/three.weapp.js"
+        "value": "libs/three.weapp.js",
+        "type": "file"
       },
       {
-        "type": "file",
-        "value": "images/README.md"
+        "value": "images/README.md",
+        "type": "file"
       },
       {
-        "type": "file",
-        "value": ".eslintrc.js"
+        "value": ".eslintrc.js",
+        "type": "file"
       },
       {
-        "type": "file",
-        "value": "README.md"
+        "value": "README.md",
+        "type": "file"
       }
     ],
     "include": []

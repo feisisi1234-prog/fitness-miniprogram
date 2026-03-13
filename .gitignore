@@ -20,3 +20,7 @@ node_modules/
 # 私有配置（如果有敏感信息）
 config/*-private.js
 project.private.config.json
+
+# Kiro/Trae AI 配置文件
+.trae/
+.kiro/

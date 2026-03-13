@@ -3,6 +3,7 @@ const app = getApp()
 
 Page({
   data: {
+    greeting: '早上好',
     userInfo: {
       name: '健身达人',
       avatar: '/images/placeholder.png'
@@ -25,6 +26,7 @@ Page({
 
   onLoad() {
     console.log('=== Index页面加载 ===');
+    this.setGreeting();
     this.loadUserInfo();
     this.loadRecommendedPlans();
     this.calculateTodayProgress();
@@ -35,9 +37,27 @@ Page({
   onShow() {
     console.log('=== Index页面 onShow 触发 ===');
     console.log('重新计算今日进度和本周统计');
+    this.setGreeting();
     this.calculateTodayProgress();
     this.calculateWeekStats();
     console.log('=== Index页面 onShow 完成 ===');
+  },
+
+  setGreeting() {
+    const hour = new Date().getHours();
+    let greeting = '早上好';
+    if (hour >= 6 && hour < 12) {
+      greeting = '早上好';
+    } else if (hour >= 12 && hour < 14) {
+      greeting = '中午好';
+    } else if (hour >= 14 && hour < 18) {
+      greeting = '下午好';
+    } else if (hour >= 18 && hour < 22) {
+      greeting = '晚上好';
+    } else {
+      greeting = '夜深了';
+    }
+    this.setData({ greeting });
   },
 
   // 下拉刷新
@@ -82,6 +102,7 @@ Page({
         duration: '30分钟',
         calories: 200,
         difficulty: '初级',
+        difficultyLevel: 'beginner',
         rating: 4.5,
         participants: 1280,
         formattedParticipants: '1.3k'
@@ -95,6 +116,7 @@ Page({
         duration: '20分钟',
         calories: 250,
         difficulty: '中级',
+        difficultyLevel: 'intermediate',
         rating: 4.7,
         participants: 2560,
         formattedParticipants: '2.6k'
@@ -108,9 +130,24 @@ Page({
         duration: '40分钟',
         calories: 120,
         difficulty: '初级',
+        difficultyLevel: 'beginner',
         rating: 4.3,
         participants: 890,
         formattedParticipants: '890'
+      },
+      {
+        id: 4,
+        title: '核心强化',
+        description: '打造完美腹肌',
+        category: '核心训练',
+        coverImage: '/images/training-core.svg',
+        duration: '25分钟',
+        calories: 180,
+        difficulty: '中级',
+        difficultyLevel: 'intermediate',
+        rating: 4.6,
+        participants: 1890,
+        formattedParticipants: '1.9k'
       }
     ];
     

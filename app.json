@@ -20,26 +20,34 @@
     "backgroundColor": "#f8f8f8"
   },
   "tabBar": {
-    "color": "#999999",
-    "selectedColor": "#07c160",
+    "color": "#94a3b8",
+    "selectedColor": "#10b981",
     "backgroundColor": "#ffffff",
-    "borderStyle": "black",
+    "borderStyle": "white",
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页"
+        "text": "首页",
+        "iconPath": "images/icons/tabbar/home.svg",
+        "selectedIconPath": "images/icons/tabbar/home-active.svg"
       },
       {
         "pagePath": "pages/training/training",
-        "text": "训练"
+        "text": "训练",
+        "iconPath": "images/icons/tabbar/training.svg",
+        "selectedIconPath": "images/icons/tabbar/training-active.svg"
       },
       {
         "pagePath": "pages/custom-plans/custom-plans",
-        "text": "计划"
+        "text": "计划",
+        "iconPath": "images/icons/tabbar/plan.svg",
+        "selectedIconPath": "images/icons/tabbar/plan-active.svg"
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "我的"
+        "text": "我的",
+        "iconPath": "images/icons/tabbar/profile.svg",
+        "selectedIconPath": "images/icons/tabbar/profile-active.svg"
       }
     ]
   },

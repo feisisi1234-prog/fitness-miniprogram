@@ -1,101 +1,139 @@
 <!--index.wxml-->
-<view class="page-container">
-  <!-- 顶部欢迎区域 -->
+<view class="page">
+  <!-- 顶部装饰 -->
+  <view class="bg-decoration">
+    <view class="gradient-orb orb-1"></view>
+    <view class="gradient-orb orb-2"></view>
+    <view class="gradient-orb orb-3"></view>
+  </view>
+
+  <!-- 欢迎区域 -->
   <view class="welcome-section">
-    <view class="welcome-header">
-      <view class="user-greeting">
-        <text class="greeting-text">你好，{{userInfo.name || '健身达人'}}</text>
-        <text class="greeting-subtitle">今天也要坚持锻炼哦！</text>
+    <view class="user-info">
+      <view class="user-text">
+        <text class="greeting">{{greeting}}</text>
+        <text class="username">{{userInfo.name || '健身达人'}}</text>
       </view>
-      <view class="user-avatar">
-        <image src="{{userInfo.avatar || '/images/placeholder.png'}}" class="avatar-image"></image>
-      </view>
+      <image src="{{userInfo.avatar || '/images/placeholder.png'}}" class="avatar" mode="aspectFill"></image>
     </view>
-    
-    <!-- 今日目标卡片 -->
-    <view class="goal-card card">
+  </view>
+
+  <!-- 今日目标卡片 -->
+  <view class="goal-section">
+    <view class="goal-card">
       <view class="goal-header">
-        <text class="goal-title">今日目标</text>
-        <text class="goal-progress">{{todayProgress}}%</text>
-      </view>
-      <view class="goal-content">
-        <view class="goal-item">
-          <text class="goal-label">运动时长</text>
-          <text class="goal-value">{{todayMinutes}}/{{dailyGoal.minutes}}分钟</text>
+        <view class="goal-title-box">
+          <image src="/images/icons/target.svg" class="goal-icon" mode="aspectFit"></image>
+          <text class="goal-title">今日目标</text>
         </view>
-        <view class="goal-item">
-          <text class="goal-label">消耗卡路里</text>
-          <text class="goal-value">{{todayCalories}}/{{dailyGoal.calories}}千卡</text>
+        <view class="goal-percentage">
+          <text class="percentage-num">{{todayProgress}}</text>
+          <text class="percentage-symbol">%</text>
         </view>
       </view>
-      <view class="progress-bar">
-        <view class="progress-fill" style="width: {{todayProgress}}%"></view>
+
+      <view class="goal-stats-row">
+        <view class="stat-item">
+          <view class="stat-icon-box">
+            <image src="/images/icons/clock.svg" class="stat-icon" mode="aspectFit"></image>
+          </view>
+          <view class="stat-content">
+            <text class="stat-value">{{todayMinutes}}/{{dailyGoal.minutes}}</text>
+            <text class="stat-label">分钟</text>
+          </view>
+        </view>
+        <view class="stat-divider"></view>
+        <view class="stat-item">
+          <view class="stat-icon-box">
+            <image src="/images/icons/fire.svg" class="stat-icon" mode="aspectFit"></image>
+          </view>
+          <view class="stat-content">
+            <text class="stat-value">{{todayCalories}}/{{dailyGoal.calories}}</text>
+            <text class="stat-label">千卡</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="progress-wrapper">
+        <view class="progress-track">
+          <view class="progress-bar" style="width: {{todayProgress}}%">
+            <view class="progress-glow"></view>
+          </view>
+        </view>
       </view>
     </view>
   </view>
 
-  <!-- 快速开始区域 -->
-  <view class="quick-start-section">
+  <!-- 快速开始 -->
+  <view class="section">
     <view class="section-header">
       <text class="section-title">快速开始</text>
     </view>
-    
-    <view class="quick-actions">
-      <view class="action-card" bindtap="goToTraining">
-        <view class="action-icon">🏋️</view>
-        <text class="action-title">开始训练</text>
-        <text class="action-desc">选择训练计划</text>
+
+    <view class="action-grid">
+      <view class="action-btn primary" bindtap="goToTraining" hover-class="action-hover">
+        <view class="action-icon-box primary-bg">
+          <image src="/images/icons/dumbbell.svg" class="action-icon" mode="aspectFit"></image>
+        </view>
+        <text class="action-text">开始训练</text>
       </view>
-      
-      <view class="action-card" bindtap="goToFoodRecognition">
-        <view class="action-icon">🍎</view>
-        <text class="action-title">食物识别</text>
-        <text class="action-desc">AI智能识别</text>
+
+      <view class="action-btn secondary" bindtap="goToFoodRecognition" hover-class="action-hover">
+        <view class="action-icon-box secondary-bg">
+          <image src="/images/icons/apple.svg" class="action-icon" mode="aspectFit"></image>
+        </view>
+        <text class="action-text">食物识别</text>
       </view>
-      
-      <view class="action-card" bindtap="goToCustomPlans">
-        <view class="action-icon">📋</view>
-        <text class="action-title">我的计划</text>
-        <text class="action-desc">自定义训练</text>
+
+      <view class="action-btn" bindtap="goToCustomPlans" hover-class="action-hover">
+        <view class="action-icon-box">
+          <image src="/images/icons/clipboard.svg" class="action-icon" mode="aspectFit"></image>
+        </view>
+        <text class="action-text">我的计划</text>
       </view>
-      
-      <view class="action-card" bindtap="goToMuscleAnalysis">
-        <view class="action-icon">🔬</view>
-        <text class="action-title">肌肉分析</text>
-        <text class="action-desc">科学训练</text>
-      </view>
-      
-      <view class="action-card" bindtap="goToRecords">
-        <view class="action-icon">📊</view>
-        <text class="action-title">训练记录</text>
-        <text class="action-desc">查看历史</text>
+
+      <view class="action-btn" bindtap="goToMuscleAnalysis" hover-class="action-hover">
+        <view class="action-icon-box">
+          <image src="/images/icons/microscope.svg" class="action-icon" mode="aspectFit"></image>
+        </view>
+        <text class="action-text">肌肉分析</text>
       </view>
     </view>
   </view>
 
-  <!-- 推荐训练区域 -->
-  <view class="recommended-section">
+  <!-- 推荐训练 -->
+  <view class="section">
     <view class="section-header">
       <text class="section-title">推荐训练</text>
-      <text class="section-more" bindtap="goToTraining">查看更多</text>
+      <view class="more-btn" bindtap="goToTraining">
+        <text class="more-text">查看全部</text>
+        <text class="more-arrow">›</text>
+      </view>
     </view>
-    
-    <scroll-view class="recommended-scroll" scroll-x="true" show-scrollbar="false">
-      <view class="recommended-list">
-        <view class="recommended-card" wx:for="{{recommendedPlans}}" wx:key="id" bindtap="goToPlanDetail" data-id="{{item.id}}">
-          <view class="plan-image">
-            <image src="{{item.coverImage}}" class="plan-cover" mode="aspectFill"></image>
-            <view class="plan-difficulty">{{item.difficulty}}</view>
+
+    <scroll-view class="plans-scroll" scroll-x="true" show-scrollbar="false">
+      <view class="plans-list">
+        <view class="plan-card" wx:for="{{recommendedPlans}}" wx:key="id" bindtap="goToPlanDetail" data-id="{{item.id}}" hover-class="plan-hover">
+          <view class="plan-image-box">
+            <image src="{{item.coverImage}}" class="plan-image" mode="aspectFill"></image>
+            <view class="plan-badge {{item.difficultyLevel}}">{{item.difficulty}}</view>
+            <view class="plan-duration">
+              <image src="/images/icons/timer.svg" class="duration-icon" mode="aspectFit"></image>
+              <text class="duration-text">{{item.duration}}</text>
+            </view>
           </view>
           <view class="plan-info">
             <text class="plan-title">{{item.title}}</text>
-            <view class="plan-meta">
-              <text class="plan-duration">{{item.duration}}</text>
-              <text class="plan-calories">{{item.calories}}千卡</text>
-            </view>
-            <view class="plan-rating">
-              <text class="rating-text">⭐ {{item.rating}}</text>
-              <text class="rating-count">({{item.formattedParticipants}})</text>
+            <text class="plan-category">{{item.category}}</text>
+            <view class="plan-footer">
+              <view class="plan-calories">
+                <image src="/images/icons/flame.svg" class="cal-icon" mode="aspectFit"></image>
+                <text class="cal-text">{{item.calories}} 千卡</text>
+              </view>
+              <view class="plan-rating">
+                <image src="/images/icons/star.svg" class="star-icon" mode="aspectFit"></image>
+                <text class="rating-num">{{item.rating}}</text>
+              </view>
             </view>
           </view>
         </view>
@@ -103,29 +141,35 @@
     </scroll-view>
   </view>
 
-  <!-- 统计数据区域 -->
-  <view class="stats-section">
+  <!-- 本周数据 -->
+  <view class="section">
     <view class="section-header">
       <text class="section-title">本周数据</text>
     </view>
-    
+
     <view class="stats-grid">
-      <view class="stat-card">
+      <view class="stat-card" hover-class="stat-hover">
+        <image src="/images/icons/calendar.svg" class="stat-icon-img" mode="aspectFit"></image>
         <text class="stat-number">{{weekStats.totalDays}}</text>
-        <text class="stat-label">训练天数</text>
+        <text class="stat-name">训练天数</text>
       </view>
-      <view class="stat-card">
+      <view class="stat-card" hover-class="stat-hover">
+        <image src="/images/icons/timer.svg" class="stat-icon-img" mode="aspectFit"></image>
         <text class="stat-number">{{weekStats.totalMinutes}}</text>
-        <text class="stat-label">总时长(分)</text>
+        <text class="stat-name">总时长(分)</text>
       </view>
-      <view class="stat-card">
+      <view class="stat-card" hover-class="stat-hover">
+        <image src="/images/icons/flame.svg" class="stat-icon-img" mode="aspectFit"></image>
         <text class="stat-number">{{weekStats.totalCalories}}</text>
-        <text class="stat-label">消耗卡路里</text>
+        <text class="stat-name">消耗卡路里</text>
       </view>
-      <view class="stat-card">
+      <view class="stat-card streak" hover-class="stat-hover">
+        <image src="/images/icons/lightning.svg" class="stat-icon-img" mode="aspectFit"></image>
         <text class="stat-number">{{weekStats.continuousDays}}</text>
-        <text class="stat-label">连续天数</text>
+        <text class="stat-name">连续天数</text>
       </view>
     </view>
   </view>
+
+  <view class="bottom-safe"></view>
 </view>

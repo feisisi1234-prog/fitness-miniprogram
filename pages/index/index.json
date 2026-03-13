@@ -1,6 +1,9 @@
 {
   "usingComponents": {},
   "enablePullDownRefresh": true,
-  "backgroundColor": "#f5f5f5",
-  "backgroundTextStyle": "dark"
+  "backgroundColor": "#1a1a2e",
+  "backgroundTextStyle": "light",
+  "navigationBarBackgroundColor": "#1a1a2e",
+  "navigationBarTextStyle": "white",
+  "navigationBarTitleText": "健身助手"
 }
