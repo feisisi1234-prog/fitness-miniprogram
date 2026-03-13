@@ -1,17 +1,10 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
-  <rect width="100" height="100" fill="#f0f2f5"/>
-  <!-- 早晨瑜伽 - 太阳和人物 -->
-  <g transform="translate(50, 30)">
-    <circle cx="0" cy="0" r="8" fill="#feca57" opacity="0.8"/>
-    <circle cx="0" cy="0" r="5" fill="#ff9ff3"/>
-    <line x1="-12" y1="0" x2="-15" y2="0" stroke="#feca57" stroke-width="2"/>
-    <line x1="12" y1="0" x2="15" y2="0" stroke="#feca57" stroke-width="2"/>
-    <line x1="0" y1="-12" x2="0" y2="-15" stroke="#feca57" stroke-width="2"/>
-  </g>
-  <g transform="translate(50, 65)">
-    <circle cx="0" cy="-10" r="4" fill="#4facfe"/>
-    <path d="M0,-6 L0,2" stroke="#4facfe" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M0,-2 L-8,3 M0,-2 L8,3" stroke="#4facfe" stroke-width="2.5" stroke-linecap="round"/>
-    <path d="M0,2 L-6,10 M0,2 L6,10" stroke="#4facfe" stroke-width="2.5" stroke-linecap="round"/>
-  </g>
+<svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="24" cy="12" r="4" fill="#fbbf24"/>
+  <path d="M24 16L24 28" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+  <path d="M14 22L34 22" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+  <path d="M20 28L20 38" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+  <path d="M28 28L28 38" stroke="#fbbf24" stroke-width="3" stroke-linecap="round"/>
+  <circle cx="8" cy="8" r="3" fill="#fcd34d" opacity="0.6"/>
+  <circle cx="40" cy="8" r="2" fill="#fcd34d" opacity="0.4"/>
+  <circle cx="6" cy="18" r="2" fill="#fcd34d" opacity="0.3"/>
 </svg>
