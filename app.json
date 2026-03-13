@@ -27,27 +27,19 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/icons/tabbar/home.svg",
-        "selectedIconPath": "images/icons/tabbar/home-active.svg"
+        "text": "首页"
       },
       {
         "pagePath": "pages/training/training",
-        "text": "训练",
-        "iconPath": "images/icons/tabbar/training.svg",
-        "selectedIconPath": "images/icons/tabbar/training-active.svg"
+        "text": "训练"
       },
       {
         "pagePath": "pages/custom-plans/custom-plans",
-        "text": "计划",
-        "iconPath": "images/icons/tabbar/plan.svg",
-        "selectedIconPath": "images/icons/tabbar/plan-active.svg"
+        "text": "计划"
       },
       {
         "pagePath": "pages/profile/profile",
-        "text": "我的",
-        "iconPath": "images/icons/tabbar/profile.svg",
-        "selectedIconPath": "images/icons/tabbar/profile-active.svg"
+        "text": "我的"
       }
     ]
   },
