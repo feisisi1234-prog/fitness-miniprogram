@@ -1,222 +1,133 @@
-<!--training.wxml-->
-<navigation-bar title="训练计划" back="{{false}}" color="black" background="#FFF"></navigation-bar>
-<scroll-view class="scrollarea" scroll-y type="list">
-  <view class="container">
-    <!-- 搜索栏 -->
-    <view class="search-bar">
-      <view class="search-input-wrapper">
-        <input class="search-input" placeholder="搜索训练计划" placeholder-class="search-placeholder" bindinput="onSearchInput" value="{{searchKeyword}}" />
-        <text class="search-icon">🔍</text>
-      </view>
-      <view class="sort-wrapper">
-        <picker bindchange="onSortChange" value="{{sortType}}" range="{{['default', 'rating', 'participants', 'calories']}}" range-key="{{['默认', '评分', '参与人数', '卡路里']}}">
-          <view class="sort-picker">
-            <text class="sort-text">{{sortType === 'default' ? '默认' : sortType === 'rating' ? '评分' : sortType === 'participants' ? '参与人数' : '卡路里'}}</text>
-            <text class="sort-arrow">▼</text>
-          </view>
-        </picker>
-      </view>
-    </view>
-
-    <!-- 分类标签 -->
-    <view class="category-tabs">
-      <view 
-        wx:for="{{categories}}" 
-        wx:key="id"
-        class="tab-item {{currentCategory === item.id ? 'active' : ''}}" 
-        bindtap="switchCategory" 
-        data-category="{{item.id}}"
-      >
-        <text class="tab-icon">{{item.icon}}</text>
-        <text class="tab-name">{{item.name}}</text>
-      </view>
-    </view>
-
-    <!-- 自定义计划入口 -->
-    <view class="custom-plans-entry" bindtap="goToCustomPlans">
-      <view class="entry-icon">
-        <text class="icon-text">📝</text>
-      </view>
-      <view class="entry-content">
-        <text class="entry-title">我的训练计划</text>
-        <text class="entry-desc">创建和管理你的自定义训练计划</text>
-      </view>
-      <view class="entry-arrow">
-        <text class="arrow">></text>
-      </view>
-    </view>
-
-    <!-- 往期计划入口 -->
-    <view class="history-plans-entry" bindtap="showHistoryPlans">
-      <view class="entry-icon">
-        <text class="icon-text">📅</text>
-      </view>
-      <view class="entry-content">
-        <text class="entry-title">往期训练记录</text>
-        <text class="entry-desc">查看历史训练计划和数据统计</text>
-      </view>
-      <view class="entry-arrow">
-        <text class="arrow">></text>
-      </view>
-    </view>
-
-    <!-- 肌肉分析入口 -->
-    <view class="muscle-analysis-entry" bindtap="goToMuscleAnalysis">
-      <view class="entry-icon">
-        <text class="icon-text">💪</text>
-      </view>
-      <view class="entry-content">
-        <text class="entry-title">肌肉分析</text>
-        <text class="entry-desc">查看肌纤维走向与肌肉张力计算</text>
-      </view>
-      <view class="entry-arrow">
-        <text class="arrow">></text>
-      </view>
-    </view>
-
-    <!-- 训练计划列表 -->
-    <view class="plan-list">
-      <view 
-        wx:for="{{filteredPlans}}" 
-        wx:key="id"
-        class="plan-card"
-        bindtap="goToPlanDetail"
-        data-id="{{item.id}}"
-      >
-        <view class="card-content">
-          <view class="plan-header">
-            <text class="plan-title">{{item.title}}</text>
-            <view class="plan-category">{{item.category}}</view>
-          </view>
-          
-          <view class="plan-desc">{{item.description}}</view>
-          
-          <!-- 标签 -->
-          <view class="plan-tags">
-            <view class="tag" wx:for="{{item.tags}}" wx:for-item="tag" wx:key="*this">{{tag}}</view>
-          </view>
-          
-          <view class="plan-meta">
-            <view class="meta-item">
-              <text class="meta-icon">⏱️</text>
-              <text class="meta-text">{{item.duration}}</text>
-            </view>
-            <view class="meta-item">
-              <text class="meta-icon">🔥</text>
-              <text class="meta-text">{{item.calories}}卡路里</text>
-            </view>
-            <view class="meta-item">
-              <text class="meta-icon">📊</text>
-              <text class="meta-text">{{item.difficulty}}</text>
-            </view>
-          </view>
-          
-          <!-- 评分和参与人数 -->
-          <view class="plan-stats">
-            <view class="rating">
-              <text class="rating-stars">⭐</text>
-              <text class="rating-value">{{item.rating}}</text>
-            </view>
-            <view class="participants">
-              <text class="participants-icon">👥</text>
-              <text class="participants-value">{{item.formattedParticipants}}人参与</text>
-            </view>
-          </view>
-        </view>
-        
-        <view class="card-actions">
-          <button class="detail-btn" catchtap="goToPlanDetail" data-id="{{item.id}}">详情</button>
-          <button class="start-btn" catchtap="startTrainingSession" data-id="{{item.id}}" data-title="{{item.title}}">开始</button>
-        </view>
-      </view>
-    </view>
-
-    <!-- 空状态 -->
-    <view class="empty-state" wx:if="{{filteredPlans.length === 0}}">
-      <view class="empty-icon">📋</view>
-      <view class="empty-text">暂无相关训练计划</view>
+<!--pages/training/training.wxml-->
+<view class="page">
+  <!-- 顶部搜索栏 -->
+  <view class="search-section">
+    <view class="search-box">
+      <image src="/images/icons/search.svg" class="search-icon" mode="aspectFit"></image>
+      <input 
+        class="search-input" 
+        placeholder="搜索训练计划" 
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+      />
     </view>
   </view>
-</scroll-view>
 
-<!-- 计时器弹窗 -->
-<view class="timer-modal" wx:if="{{showTimer}}">
-  <view class="timer-mask" bindtap="hideTimerView"></view>
-  <view class="timer-content">
-    <view class="timer-header">
-      <text class="timer-title">{{currentPlanTitle}}</text>
-      <view class="close-btn" bindtap="hideTimerView">×</view>
-    </view>
-    
-    <!-- 计时器显示 -->
-    <view class="timer-display">
-      <view class="timer-circle">
-        <view class="timer-text">{{formatTime}}</view>
-        <view class="timer-status">{{isRunning ? '运动中' : '准备就绪'}}</view>
-      </view>
-      <view class="calories-display">
-        <view class="calories-text">{{totalCalories}}</view>
-        <view class="calories-label">千卡</view>
-      </view>
-    </view>
-
-    <!-- 计时器控制 -->
-    <view class="timer-controls">
-      <view class="control-btn {{isRunning ? 'pause' : 'start'}}" bindtap="toggleTimer">
-        <text>{{isRunning ? '暂停' : '开始'}}</text>
-      </view>
-      <view class="control-btn reset" bindtap="resetTimer" wx:if="{{!isRunning && seconds > 0}}">
-        <text>重置</text>
-      </view>
-      <view class="control-btn finish" bindtap="finishTraining" wx:if="{{!isRunning && seconds > 0}}">
-        <text>完成</text>
-      </view>
-    </view>
-  </view>
-</view>
-
-<!-- 往期计划弹窗 -->
-<view class="history-modal" wx:if="{{showHistoryModal}}">
-  <view class="modal-mask" bindtap="hideHistoryPlans"></view>
-  <view class="history-content">
-    <view class="history-header">
-      <text class="history-title">往期训练记录</text>
-      <view class="close-btn" bindtap="hideHistoryPlans">×</view>
-    </view>
-    
-    <scroll-view class="history-scroll" scroll-y>
-      <view class="history-list" wx:if="{{historyRecords.length > 0}}">
-        <view class="history-item" wx:for="{{historyRecords}}" wx:key="date">
-          <view class="history-date-info">
-            <text class="history-date">{{item.date}}</text>
-            <text class="history-weekday">{{item.weekday}}</text>
-          </view>
-          <view class="history-stats">
-            <view class="history-stat">
-              <text class="stat-label">训练次数</text>
-              <text class="stat-value">{{item.records.length}}次</text>
-            </view>
-            <view class="history-stat">
-              <text class="stat-label">总时长</text>
-              <text class="stat-value">{{item.formatTime}}</text>
-            </view>
-            <view class="history-stat">
-              <text class="stat-label">消耗</text>
-              <text class="stat-value">{{item.totalCalories}}千卡</text>
-            </view>
-          </view>
-          <view class="history-records">
-            <view class="record-tag" wx:for="{{item.records}}" wx:for-item="record" wx:key="id">
-              {{record.typeName || '训练'}}
-            </view>
-          </view>
+  <!-- 分类标签 -->
+  <view class="category-section">
+    <scroll-view class="category-scroll" scroll-x="true" show-scrollbar="false">
+      <view class="category-list">
+        <view 
+          class="category-item {{currentCategory === item.id ? 'active' : ''}}" 
+          wx:for="{{categories}}" 
+          wx:key="id"
+          bindtap="switchCategory"
+          data-category="{{item.id}}"
+          hover-class="category-hover"
+        >
+          <text class="category-name">{{item.name}}</text>
         </view>
-      </view>
-      
-      <view class="history-empty" wx:else>
-        <text class="empty-icon">📋</text>
-        <text class="empty-text">暂无训练记录</text>
       </view>
     </scroll-view>
   </view>
+
+  <!-- 快捷入口 -->
+  <view class="quick-actions">
+    <view class="action-item" bindtap="goToCustomPlans" hover-class="action-hover">
+      <view class="action-icon-box">
+        <image src="/images/icons/clipboard.svg" class="action-icon" mode="aspectFit"></image>
+      </view>
+      <text class="action-label">我的计划</text>
+    </view>
+    <view class="action-item" bindtap="goToMuscleAnalysis" hover-class="action-hover">
+      <view class="action-icon-box">
+        <image src="/images/icons/microscope.svg" class="action-icon" mode="aspectFit"></image>
+      </view>
+      <text class="action-label">肌肉分析</text>
+    </view>
+    <view class="action-item" bindtap="showHistoryPlans" hover-class="action-hover">
+      <view class="action-icon-box">
+        <image src="/images/icons/calendar.svg" class="action-icon" mode="aspectFit"></image>
+      </view>
+      <text class="action-label">训练记录</text>
+    </view>
+  </view>
+
+  <!-- 训练计划列表 -->
+  <view class="plans-section">
+    <view class="section-header">
+      <text class="section-title">训练计划</text>
+      <picker class="sort-picker" mode="selector" range="{{['默认排序', '评分最高', '最受欢迎', '消耗最多']}}" value="{{sortType}}" bindchange="onSortChange">
+        <view class="sort-btn">
+          <text class="sort-text">排序</text>
+          <image src="/images/icons/filter.svg" class="sort-icon" mode="aspectFit"></image>
+        </view>
+      </picker>
+    </view>
+
+    <view class="plans-list">
+      <view 
+        class="plan-card" 
+        wx:for="{{filteredPlans}}" 
+        wx:key="id"
+        bindtap="goToPlanDetail"
+        data-id="{{item.id}}"
+        hover-class="plan-hover"
+      >
+        <view class="plan-header">
+          <view class="plan-icon-box">
+            <image src="{{item.icon}}" class="plan-icon" mode="aspectFit"></image>
+          </view>
+          <view class="plan-badge {{item.difficulty === '初级' ? 'beginner' : item.difficulty === '中级' ? 'intermediate' : 'advanced'}}">
+            {{item.difficulty}}
+          </view>
+        </view>
+
+        <view class="plan-content">
+          <text class="plan-title">{{item.title}}</text>
+          <text class="plan-desc">{{item.description}}</text>
+
+          <view class="plan-tags">
+            <view class="tag" wx:for="{{item.tags}}" wx:key="*this" wx:for-item="tag">
+              {{tag}}
+            </view>
+          </view>
+
+          <view class="plan-meta">
+            <view class="meta-item">
+              <image src="/images/icons/timer.svg" class="meta-icon" mode="aspectFit"></image>
+              <text class="meta-text">{{item.duration}}</text>
+            </view>
+            <view class="meta-item">
+              <image src="/images/icons/flame.svg" class="meta-icon" mode="aspectFit"></image>
+              <text class="meta-text">{{item.calories}} 千卡</text>
+            </view>
+            <view class="meta-item">
+              <image src="/images/icons/star.svg" class="meta-icon" mode="aspectFit"></image>
+              <text class="meta-text">{{item.rating}}</text>
+            </view>
+          </view>
+        </view>
+
+        <view class="plan-footer">
+          <view class="participants">
+            <text class="participants-text">{{item.formattedParticipants}} 人参与</text>
+          </view>
+          <view class="start-btn" catchtap="startTrainingSession" data-id="{{item.id}}" data-title="{{item.title}}">
+            <text class="start-text">开始训练</text>
+            <image src="/images/icons/arrow-right.svg" class="start-arrow" mode="aspectFit"></image>
+          </view>
+        </view>
+      </view>
+
+      <!-- 空状态 -->
+      <view class="empty-state" wx:if="{{filteredPlans.length === 0}}">
+        <image src="/images/icons/empty.svg" class="empty-icon" mode="aspectFit"></image>
+        <text class="empty-text">暂无训练计划</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部安全区 -->
+  <view class="bottom-safe"></view>
 </view>
