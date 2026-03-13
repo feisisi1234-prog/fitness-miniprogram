@@ -1,0 +1,115 @@
+<!--pages/training-session/training-session.wxml-->
+<view class="training-session-container">
+  <!-- 顶部信息栏 -->
+  <view class="header-bar">
+    <view class="header-left">
+      <text class="plan-title">{{planTitle}}</text>
+      <text class="progress-text">{{currentExerciseIndex + 1}}/{{exercises.length}}</text>
+    </view>
+    <view class="header-right">
+      <view class="stat-item">
+        <text class="stat-label">时长</text>
+        <text class="stat-value">{{totalTimeFormatted}}</text>
+      </view>
+      <view class="stat-item">
+        <text class="stat-label">卡路里</text>
+        <text class="stat-value">{{totalCalories}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 当前动作信息 -->
+  <view class="current-exercise" wx:if="{{currentExercise}}">
+    <view class="exercise-header">
+      <text class="exercise-name">{{currentExercise.name}}</text>
+      <view class="set-info">
+        <text class="set-text">第 {{currentSet}}/{{currentExercise.totalSets}} 组</text>
+      </view>
+    </view>
+
+    <view class="exercise-details">
+      <view class="detail-item">
+        <text class="detail-icon">🔢</text>
+        <text class="detail-text">{{currentExercise.reps}} 次</text>
+      </view>
+      <view class="detail-item">
+        <text class="detail-icon">⏱️</text>
+        <text class="detail-text">休息 {{currentExercise.rest}} 秒</text>
+      </view>
+    </view>
+
+    <view class="exercise-description">
+      <text class="description-title">动作要领</text>
+      <text class="description-text">{{currentExercise.description}}</text>
+    </view>
+
+    <!-- 休息倒计时 -->
+    <view class="rest-timer" wx:if="{{isResting}}">
+      <view class="rest-circle">
+        <text class="rest-time">{{restTimeLeft}}</text>
+        <text class="rest-label">秒</text>
+      </view>
+      <text class="rest-text">休息中...</text>
+    </view>
+
+    <!-- 动作计时器 -->
+    <view class="exercise-timer" wx:if="{{!isResting}}">
+      <text class="timer-text">{{exerciseTimeFormatted}}</text>
+    </view>
+  </view>
+
+  <!-- 控制按钮 -->
+  <view class="control-buttons">
+    <button class="control-btn secondary-btn" bindtap="togglePause">
+      {{isPaused ? '继续' : '暂停'}}
+    </button>
+    <button class="control-btn primary-btn" bindtap="completeSet" disabled="{{isResting}}">
+      完成本组
+    </button>
+    <button class="control-btn skip-btn" bindtap="skipExercise">
+      跳过
+    </button>
+  </view>
+
+  <!-- 底部操作栏 -->
+  <view class="bottom-bar">
+    <button class="bottom-btn" bindtap="toggleExerciseList" hover-class="button-hover">
+      <text class="btn-icon">📋</text>
+      <text class="btn-text">动作列表</text>
+    </button>
+    <button class="bottom-btn exit-btn" bindtap="exitTraining" hover-class="button-hover">
+      <text class="btn-icon">🚪</text>
+      <text class="btn-text">退出训练</text>
+    </button>
+  </view>
+
+  <!-- 动作列表弹窗 -->
+  <view class="exercise-list-modal" wx:if="{{showExerciseList}}" bindtap="toggleExerciseList">
+    <view class="modal-content" catchtap="stopPropagation">
+      <view class="modal-header">
+        <text class="modal-title">训练动作列表</text>
+        <text class="modal-close" bindtap="toggleExerciseList">✕</text>
+      </view>
+      <scroll-view class="exercise-list" scroll-y>
+        <view class="exercise-item {{item.completed ? 'completed' : ''}} {{currentExerciseIndex === item.index ? 'current' : ''}}" 
+              wx:for="{{exercises}}" 
+              wx:key="id"
+              bindtap="goToExercise"
+              data-index="{{item.index}}">
+          <view class="item-left">
+            <view class="item-number">{{item.index + 1}}</view>
+            <view class="item-info">
+              <text class="item-name">{{item.name}}</text>
+              <text class="item-detail">{{item.sets}}组 × {{item.reps}}次</text>
+            </view>
+          </view>
+          <view class="item-right">
+            <text class="item-status" wx:if="{{item.completed}}">✓</text>
+            <text class="item-status current-tag" wx:elif="{{currentExerciseIndex === item.index}}">进行中</text>
+            <text class="item-progress" wx:else>{{item.completedSets}}/{{item.totalSets}}</text>
+          </view>
+        </view>
+      </scroll-view>
+    </view>
+  </view>
+</view>

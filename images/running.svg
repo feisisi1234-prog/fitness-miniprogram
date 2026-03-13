@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" fill="#f0f2f5"/>
+  <!-- 跑步人物 -->
+  <g transform="translate(50, 45)">
+    <circle cx="0" cy="-15" r="5" fill="#48dbfb"/>
+    <path d="M0,-10 L5,5" stroke="#48dbfb" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0,-5 L-10,-2 M5,0 L15,2" stroke="#48dbfb" stroke-width="3" stroke-linecap="round"/>
+    <path d="M5,5 L0,18 M5,5 L12,15" stroke="#48dbfb" stroke-width="3" stroke-linecap="round"/>
+    <line x1="-5" y1="10" x2="0" y2="15" stroke="#dfe6e9" stroke-width="2" opacity="0.5"/>
+  </g>
+</svg>

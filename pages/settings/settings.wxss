@@ -1,0 +1,134 @@
+/* pages/settings/settings.wxss */
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  padding: 20rpx;
+  padding-bottom: 100rpx;
+}
+
+.page-header {
+  padding: 40rpx 20rpx 20rpx;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+/* 设置区块 */
+.settings-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  padding: 20rpx 30rpx 10rpx;
+  font-size: 28rpx;
+  color: #666666;
+  font-weight: 500;
+}
+
+.settings-list {
+  background: #ffffff;
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+}
+
+/* 设置项 */
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  transition: background-color 0.2s;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item:active {
+  background-color: #f8f8f8;
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.item-icon {
+  font-size: 44rpx;
+  margin-right: 20rpx;
+}
+
+.item-label {
+  font-size: 32rpx;
+  color: #333333;
+}
+
+.item-right {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.item-value {
+  font-size: 28rpx;
+  color: #999999;
+  margin-right: 10rpx;
+}
+
+.item-arrow {
+  font-size: 40rpx;
+  color: #cccccc;
+  font-weight: 300;
+}
+
+/* 头像预览 */
+.avatar-preview {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+/* 开关样式 */
+switch {
+  transform: scale(0.9);
+}
+
+/* 退出登录按钮 */
+.logout-section {
+  margin-top: 40rpx;
+  padding: 0 30rpx;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a6f 100%);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 20rpx;
+  border: none;
+  box-shadow: 0 8rpx 16rpx rgba(238, 90, 111, 0.3);
+  transition: all 0.3s;
+}
+
+.logout-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 8rpx rgba(238, 90, 111, 0.3);
+}
+
+/* 测试数据按钮样式 */
+.item-desc {
+  font-size: 24rpx;
+  color: #999999;
+  margin-right: 10rpx;
+}

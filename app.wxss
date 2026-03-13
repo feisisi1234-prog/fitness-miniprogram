@@ -1,0 +1,407 @@
+/**app.wxss**/
+/* 全局样式 */
+page {
+  background-color: #f5f7fa;
+  font-family: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Helvetica, 'Segoe UI', Arial, Roboto, 'PingFang SC', 'miui', 'Hiragino Sans GB', 'Microsoft Yahei', sans-serif;
+  font-size: 28rpx;
+  color: #333;
+  line-height: 1.6;
+  /* 主题色彩变量 - 小程序使用page而不是:root */
+  --primary-color: #07c160;
+  --primary-light: rgba(7, 193, 96, 0.1);
+  --secondary-color: #ff9500;
+  --secondary-light: rgba(255, 149, 0, 0.1);
+  --accent-color: #007aff;
+  --accent-light: rgba(0, 122, 255, 0.1);
+  --danger-color: #ff3b30;
+  --danger-light: rgba(255, 59, 48, 0.1);
+  --warning-color: #ff9500;
+  --warning-light: rgba(255, 149, 0, 0.1);
+  --success-color: #07c160;
+  --success-light: rgba(7, 193, 96, 0.1);
+  --info-color: #17a2b8;
+  --info-light: rgba(23, 162, 184, 0.1);
+  --text-primary: #333333;
+  --text-secondary: #555555;
+  --text-tertiary: #777777;
+  --text-muted: #888888;
+  --bg-primary: #ffffff;
+  --bg-secondary: #f5f7fa;
+  --bg-tertiary: #f0f2f5;
+  --border-color: #eaeaea;
+  --shadow-sm: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  --shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  --shadow-md: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 8rpx 24rpx rgba(0, 0, 0, 0.12);
+  --gradient-primary: linear-gradient(135deg, #07c160, #06a552);
+  --gradient-secondary: linear-gradient(135deg, #ff9500, #e6850e);
+  --gradient-accent: linear-gradient(135deg, #007aff, #0066cc);
+  --gradient-info: linear-gradient(135deg, #17a2b8, #138496);
+  --gradient-card: linear-gradient(135deg, #ffffff, #f8f9fa);
+}
+
+/* 通用容器 */
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  padding: 20rpx;
+}
+
+.page-container {
+  min-height: 100vh;
+  background-color: var(--bg-secondary);
+  padding: 20rpx;
+}
+
+/* 通用按钮样式 */
+.btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80rpx;
+  border-radius: 40rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #ffffff;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow);
+}
+
+.btn:active {
+  transform: scale(0.98);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #07c160, #06a552);
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #ff9500, #e6850e);
+}
+
+.btn-tertiary {
+  background: linear-gradient(135deg, #007aff, #0066cc);
+}
+
+.btn-disabled {
+  background-color: #cccccc;
+  box-shadow: none;
+}
+
+/* 通用卡片样式 */
+.card {
+  background-color: var(--bg-primary);
+  border-radius: 20rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+}
+
+.card:active {
+  transform: translateY(-2rpx);
+  box-shadow: var(--shadow-lg);
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+}
+
+.card-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.card-subtitle {
+  font-size: 26rpx;
+  color: var(--text-muted);
+}
+
+.card-content {
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.card-footer {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid var(--border-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* 通用列表项样式 */
+.list-item {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid #f0f0f0;
+  background-color: #ffffff;
+}
+
+.list-item:last-child {
+  border-bottom: none;
+}
+
+.list-item-icon {
+  width: 48rpx;
+  height: 48rpx;
+  margin-right: 20rpx;
+}
+
+.list-item-content {
+  flex: 1;
+}
+
+.list-item-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-bottom: 6rpx;
+}
+
+.list-item-desc {
+  font-size: 26rpx;
+  color: #888;
+}
+
+.list-item-arrow {
+  font-size: 32rpx;
+  color: #ccc;
+}
+
+/* 通用标题样式 */
+.title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 20rpx;
+}
+
+.subtitle {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.section-title {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+/* 通用文本样式 */
+.text-primary {
+  color: var(--primary-color);
+}
+
+.text-secondary {
+  color: var(--secondary-color);
+}
+
+.text-tertiary {
+  color: var(--accent-color);
+}
+
+.text-danger {
+  color: var(--danger-color);
+}
+
+.text-warning {
+  color: var(--warning-color);
+}
+
+.text-success {
+  color: var(--success-color);
+}
+
+.text-info {
+  color: var(--info-color);
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-bold {
+  font-weight: bold;
+}
+
+.text-normal {
+  font-weight: normal;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.text-left {
+  text-align: left;
+}
+
+.text-right {
+  text-align: right;
+}
+
+/* 通用间距 */
+.mt-10 { margin-top: 10rpx; }
+.mt-20 { margin-top: 20rpx; }
+.mt-30 { margin-top: 30rpx; }
+.mb-10 { margin-bottom: 10rpx; }
+.mb-20 { margin-bottom: 20rpx; }
+.mb-30 { margin-bottom: 30rpx; }
+.ml-10 { margin-left: 10rpx; }
+.ml-20 { margin-left: 20rpx; }
+.mr-10 { margin-right: 10rpx; }
+.mr-20 { margin-right: 20rpx; }
+
+.pt-10 { padding-top: 10rpx; }
+.pt-20 { padding-top: 20rpx; }
+.pt-30 { padding-top: 30rpx; }
+.pb-10 { padding-bottom: 10rpx; }
+.pb-20 { padding-bottom: 20rpx; }
+.pb-30 { padding-bottom: 30rpx; }
+.pl-10 { padding-left: 10rpx; }
+.pl-20 { padding-left: 20rpx; }
+.pr-10 { padding-right: 10rpx; }
+.pr-20 { padding-right: 20rpx; }
+
+/* 通用布局 */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.justify-around {
+  justify-content: space-around;
+}
+
+.align-center {
+  align-items: center;
+}
+
+.align-start {
+  align-items: flex-start;
+}
+
+.align-end {
+  align-items: flex-end;
+}
+
+.flex-1 {
+  flex: 1;
+}
+
+/* 通用圆角 */
+.border-radius-10 {
+  border-radius: 10rpx;
+}
+
+.border-radius-16 {
+  border-radius: 16rpx;
+}
+
+.border-radius-20 {
+  border-radius: 20rpx;
+}
+
+.border-radius-30 {
+  border-radius: 30rpx;
+}
+
+.border-radius-circle {
+  border-radius: 50%;
+}
+
+/* 通用阴影 */
+.shadow-sm {
+  box-shadow: var(--shadow-sm);
+}
+
+.shadow {
+  box-shadow: var(--shadow);
+}
+
+.shadow-lg {
+  box-shadow: var(--shadow-lg);
+}
+
+/* 通用动画 */
+.fade-in {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+.slide-up {
+  animation: slideUp 0.3s ease-out;
+}
+
+.scale-in {
+  animation: scaleIn 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideUp {
+  from { transform: translateY(20rpx); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+@keyframes scaleIn {
+  from { transform: scale(0.9); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+/* 通用渐变背景 */
+.gradient-primary {
+  background: linear-gradient(135deg, var(--primary-color), #06a552);
+}
+
+.gradient-secondary {
+  background: linear-gradient(135deg, var(--secondary-color), #e6850e);
+}
+
+.gradient-accent {
+  background: linear-gradient(135deg, var(--accent-color), #0066cc);
+}
+
+.gradient-info {
+  background: linear-gradient(135deg, var(--info-color), #0066cc);
+}
+
+.gradient-success {
+  background: linear-gradient(135deg, var(--success-color), #06a552);
+}
+
+.gradient-warning {
+  background: linear-gradient(135deg, var(--warning-color), #e6850e);
+}
+
+.gradient-danger {
+  background: linear-gradient(135deg, var(--danger-color), #d12b20);
+}

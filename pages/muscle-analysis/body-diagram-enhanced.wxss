@@ -1,0 +1,638 @@
+/* ========================================
+   增强版人体图样式 - 更真实的比例和美化效果
+   ======================================== */
+
+/* 人体图容器 */
+.body-svg-container {
+  position: relative;
+  width: 100%;
+  height: 750rpx;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* 身体部位基础样式 */
+.body-part {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+/* ========== 头部 ========== */
+.head {
+  width: 90rpx;
+  height: 110rpx;
+  top: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffd4a3 0%, #ffb366 50%, #ff9933 100%);
+  border-radius: 45rpx 45rpx 40rpx 40rpx;
+  box-shadow: 
+    inset 0 -15rpx 25rpx rgba(0, 0, 0, 0.1),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  z-index: 5;
+}
+
+.head::before {
+  content: '';
+  position: absolute;
+  top: 30rpx;
+  left: 20rpx;
+  width: 15rpx;
+  height: 15rpx;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  box-shadow: 35rpx 0 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ========== 颈部 ========== */
+.neck {
+  width: 50rpx;
+  height: 40rpx;
+  top: 125rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(180deg, #ffb366 0%, #ffa64d 100%);
+  border-radius: 10rpx;
+  box-shadow: 
+    inset 0 -5rpx 10rpx rgba(0, 0, 0, 0.1),
+    0 2rpx 6rpx rgba(0, 0, 0, 0.1);
+  z-index: 4;
+}
+
+/* ========== 肩部 ========== */
+.shoulder-left,
+.shoulder-right {
+  width: 70rpx;
+  height: 50rpx;
+  top: 155rpx;
+  background: linear-gradient(135deg, #ff9966 0%, #ff7733 100%);
+  border-radius: 35rpx 35rpx 20rpx 20rpx;
+  box-shadow: 
+    inset 0 -8rpx 15rpx rgba(0, 0, 0, 0.15),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.2);
+  z-index: 3;
+}
+
+.shoulder-left {
+  left: 50rpx;
+  transform: rotate(-15deg);
+}
+
+.shoulder-right {
+  right: 50rpx;
+  transform: rotate(15deg);
+}
+
+/* ========== 胸部 ========== */
+.chest {
+  width: 180rpx;
+  height: 140rpx;
+  top: 165rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 50%, #ff8040 100%);
+  border-radius: 90rpx 90rpx 40rpx 40rpx;
+  box-shadow: 
+    inset 0 -20rpx 30rpx rgba(0, 0, 0, 0.12),
+    inset 0 20rpx 20rpx rgba(255, 255, 255, 0.1),
+    0 6rpx 15rpx rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* 胸肌分隔线 */
+.chest::before {
+  content: '';
+  position: absolute;
+  top: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 100rpx;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* ========== 腹部 ========== */
+.abdomen {
+  width: 160rpx;
+  height: 160rpx;
+  top: 295rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 50%, #ff8040 100%);
+  border-radius: 30rpx;
+  box-shadow: 
+    inset 0 -15rpx 25rpx rgba(0, 0, 0, 0.12),
+    inset 0 15rpx 20rpx rgba(255, 255, 255, 0.08),
+    0 6rpx 15rpx rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* 腹肌线条 */
+.abdomen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+/* 横向腹肌线 */
+.abdomen::after {
+  content: '';
+  position: absolute;
+  top: 40rpx;
+  left: 20rpx;
+  right: 20rpx;
+  height: 2rpx;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    0 40rpx 0 rgba(0, 0, 0, 0.08),
+    0 80rpx 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ========== 骨盆 ========== */
+.pelvis {
+  width: 150rpx;
+  height: 80rpx;
+  top: 445rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff9966 0%, #ff8040 100%);
+  border-radius: 20rpx 20rpx 75rpx 75rpx;
+  box-shadow: 
+    inset 0 -10rpx 20rpx rgba(0, 0, 0, 0.15),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* ========== 手臂 ========== */
+.arm-left,
+.arm-right {
+  position: absolute;
+  top: 190rpx;
+  z-index: 1;
+}
+
+.arm-left {
+  left: 35rpx;
+}
+
+.arm-right {
+  right: 35rpx;
+}
+
+/* 上臂 */
+.arm-upper-left,
+.arm-upper-right {
+  width: 48rpx;
+  height: 130rpx;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 100%);
+  border-radius: 24rpx;
+  box-shadow: 
+    inset -3rpx 0 8rpx rgba(0, 0, 0, 0.1),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+.arm-upper-left {
+  transform: rotate(-5deg);
+}
+
+.arm-upper-right {
+  transform: rotate(5deg);
+}
+
+/* 肱二头肌凸起 */
+.arm-upper-left::before,
+.arm-upper-right::before {
+  content: '';
+  position: absolute;
+  top: 30rpx;
+  width: 40rpx;
+  height: 50rpx;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.arm-upper-left::before {
+  left: 2rpx;
+}
+
+.arm-upper-right::before {
+  right: 2rpx;
+}
+
+/* 前臂 */
+.arm-lower-left,
+.arm-lower-right {
+  width: 42rpx;
+  height: 120rpx;
+  background: linear-gradient(135deg, #ffa64d 0%, #ff8c1a 100%);
+  border-radius: 21rpx;
+  box-shadow: 
+    inset -3rpx 0 8rpx rgba(0, 0, 0, 0.12),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.15);
+  margin-top: -3rpx;
+  position: relative;
+}
+
+.arm-lower-left {
+  margin-left: 3rpx;
+  transform: rotate(3deg);
+}
+
+.arm-lower-right {
+  margin-left: 3rpx;
+  transform: rotate(-3deg);
+}
+
+/* 手部 */
+.hand-left,
+.hand-right {
+  width: 38rpx;
+  height: 45rpx;
+  background: linear-gradient(135deg, #ffcc99 0%, #ffb380 100%);
+  border-radius: 19rpx 19rpx 25rpx 25rpx;
+  box-shadow: 
+    inset 0 -5rpx 10rpx rgba(0, 0, 0, 0.1),
+    0 3rpx 8rpx rgba(0, 0, 0, 0.15);
+  margin-top: -3rpx;
+  margin-left: 2rpx;
+}
+
+/* ========== 腿部 ========== */
+.leg-left,
+.leg-right {
+  position: absolute;
+  top: 515rpx;
+  z-index: 1;
+}
+
+.leg-left {
+  left: 105rpx;
+}
+
+.leg-right {
+  right: 105rpx;
+}
+
+/* 大腿 */
+.leg-upper-left,
+.leg-upper-right {
+  width: 60rpx;
+  height: 160rpx;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 100%);
+  border-radius: 30rpx 30rpx 25rpx 25rpx;
+  box-shadow: 
+    inset -4rpx 0 10rpx rgba(0, 0, 0, 0.1),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  position: relative;
+}
+
+/* 股四头肌凸起 */
+.leg-upper-left::before,
+.leg-upper-right::before {
+  content: '';
+  position: absolute;
+  top: 40rpx;
+  width: 50rpx;
+  height: 80rpx;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.leg-upper-left::before {
+  left: 3rpx;
+}
+
+.leg-upper-right::before {
+  right: 3rpx;
+}
+
+/* 小腿 */
+.leg-lower-left,
+.leg-lower-right {
+  width: 50rpx;
+  height: 150rpx;
+  background: linear-gradient(135deg, #ffa64d 0%, #ff8c1a 100%);
+  border-radius: 25rpx;
+  box-shadow: 
+    inset -3rpx 0 8rpx rgba(0, 0, 0, 0.12),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.15);
+  margin-top: -3rpx;
+  margin-left: 5rpx;
+  position: relative;
+}
+
+/* 小腿肌肉凸起 */
+.leg-lower-left::before,
+.leg-lower-right::before {
+  content: '';
+  position: absolute;
+  top: 30rpx;
+  width: 40rpx;
+  height: 60rpx;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.leg-lower-left::before {
+  left: 3rpx;
+}
+
+.leg-lower-right::before {
+  right: 3rpx;
+}
+
+/* 脚部 */
+.foot-left,
+.foot-right {
+  width: 65rpx;
+  height: 35rpx;
+  background: linear-gradient(135deg, #ffcc99 0%, #ffb380 100%);
+  border-radius: 18rpx 18rpx 12rpx 12rpx;
+  box-shadow: 
+    inset 0 -4rpx 8rpx rgba(0, 0, 0, 0.1),
+    0 3rpx 8rpx rgba(0, 0, 0, 0.15);
+  margin-top: -3rpx;
+  margin-left: -8rpx;
+}
+
+/* ========== 肌肉标注样式 ========== */
+.muscle-label {
+  position: absolute;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  border: 2rpx solid rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(8rpx);
+  box-shadow: 
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15),
+    inset 0 1rpx 2rpx rgba(255, 255, 255, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.4;
+  z-index: 10;
+  transform: scale(0.95);
+}
+
+.muscle-label:hover {
+  opacity: 0.7;
+  transform: scale(1);
+}
+
+.muscle-label.active {
+  opacity: 1;
+  transform: scale(1.08);
+  box-shadow: 
+    0 8rpx 24rpx rgba(0, 0, 0, 0.25),
+    0 0 0 4rpx rgba(255, 255, 255, 0.3),
+    inset 0 1rpx 2rpx rgba(255, 255, 255, 0.4);
+  animation: musclePulse 2s ease-in-out infinite;
+}
+
+@keyframes musclePulse {
+  0%, 100% { 
+    transform: scale(1.08);
+    box-shadow: 
+      0 8rpx 24rpx rgba(0, 0, 0, 0.25),
+      0 0 0 4rpx rgba(255, 255, 255, 0.3);
+  }
+  50% { 
+    transform: scale(1.12);
+    box-shadow: 
+      0 12rpx 32rpx rgba(0, 0, 0, 0.3),
+      0 0 0 6rpx rgba(255, 255, 255, 0.4);
+  }
+}
+
+.muscle-name {
+  font-size: 24rpx;
+  color: #ffffff;
+  font-weight: bold;
+  text-shadow: 
+    0 2rpx 4rpx rgba(0, 0, 0, 0.5),
+    0 1rpx 2rpx rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.5rpx;
+}
+
+/* ========== 各肌肉群位置和颜色 ========== */
+
+/* 胸大肌 */
+.pectoralis-muscle {
+  top: 200rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 59, 48, 0.85) 0%,
+    rgba(255, 45, 85, 0.85) 100%
+  );
+}
+
+/* 三角肌 */
+.deltoid-muscle {
+  top: 170rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 149, 0, 0.85) 0%,
+    rgba(255, 179, 64, 0.85) 100%
+  );
+}
+
+/* 肱二头肌 */
+.biceps-muscle {
+  top: 240rpx;
+  left: 50rpx;
+  background: linear-gradient(135deg, 
+    rgba(52, 199, 89, 0.85) 0%,
+    rgba(48, 209, 88, 0.85) 100%
+  );
+}
+
+/* 前臂肌群 */
+.forearm-muscle {
+  top: 360rpx;
+  left: 45rpx;
+  background: linear-gradient(135deg, 
+    rgba(90, 200, 250, 0.85) 0%,
+    rgba(64, 156, 255, 0.85) 100%
+  );
+}
+
+/* 腹直肌 */
+.rectus-muscle {
+  top: 330rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 204, 0, 0.85) 0%,
+    rgba(255, 214, 10, 0.85) 100%
+  );
+}
+
+/* 腹斜肌 */
+.oblique-muscle {
+  top: 350rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(175, 82, 222, 0.85) 0%,
+    rgba(191, 90, 242, 0.85) 100%
+  );
+}
+
+/* 股四头肌 */
+.quadriceps-muscle {
+  top: 560rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 55, 95, 0.85) 0%,
+    rgba(255, 45, 85, 0.85) 100%
+  );
+}
+
+/* 胫骨前肌 */
+.tibialis-muscle {
+  top: 710rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(88, 86, 214, 0.85) 0%,
+    rgba(94, 92, 230, 0.85) 100%
+  );
+}
+
+/* 背阔肌 */
+.latissimus-muscle {
+  top: 240rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 59, 48, 0.85) 0%,
+    rgba(255, 45, 85, 0.85) 100%
+  );
+}
+
+/* 斜方肌 */
+.trapezius-muscle {
+  top: 180rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 149, 0, 0.85) 0%,
+    rgba(255, 179, 64, 0.85) 100%
+  );
+}
+
+/* 菱形肌 */
+.rhomboid-muscle {
+  top: 220rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(52, 199, 89, 0.85) 0%,
+    rgba(48, 209, 88, 0.85) 100%
+  );
+}
+
+/* 竖脊肌 */
+.erector-muscle {
+  top: 300rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(90, 200, 250, 0.85) 0%,
+    rgba(64, 156, 255, 0.85) 100%
+  );
+}
+
+/* 肱三头肌 */
+.triceps-muscle {
+  top: 240rpx;
+  right: 50rpx;
+  background: linear-gradient(135deg, 
+    rgba(255, 204, 0, 0.85) 0%,
+    rgba(255, 214, 10, 0.85) 100%
+  );
+}
+
+/* 臀大肌 */
+.gluteus-muscle {
+  top: 470rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(175, 82, 222, 0.85) 0%,
+    rgba(191, 90, 242, 0.85) 100%
+  );
+}
+
+/* 臀中肌 */
+.gluteus-medius-muscle {
+  top: 450rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 55, 95, 0.85) 0%,
+    rgba(255, 45, 85, 0.85) 100%
+  );
+}
+
+/* 腘绳肌 */
+.hamstrings-muscle {
+  top: 580rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(255, 149, 0, 0.85) 0%,
+    rgba(255, 179, 64, 0.85) 100%
+  );
+}
+
+/* 腓肠肌 */
+.gastrocnemius-muscle {
+  top: 710rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(52, 199, 89, 0.85) 0%,
+    rgba(48, 209, 88, 0.85) 100%
+  );
+}
+
+/* 比目鱼肌 */
+.soleus-muscle {
+  top: 750rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, 
+    rgba(90, 200, 250, 0.85) 0%,
+    rgba(64, 156, 255, 0.85) 100%
+  );
+}

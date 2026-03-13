@@ -1,0 +1,192 @@
+<!--custom-plans.wxml-->
+<navigation-bar title="我的训练计划" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+  <!-- 添加计划按钮组 -->
+  <view class="add-plan-buttons">
+    <view class="add-plan-btn" bindtap="showAddPlanForm">
+      <text class="btn-icon">+</text>
+      <text class="btn-text">手动创建</text>
+    </view>
+    
+    <view class="add-plan-btn scan-btn" bindtap="scanImagePlan">
+      <text class="btn-icon">📷</text>
+      <text class="btn-text">扫描图片</text>
+    </view>
+  </view>
+
+  <!-- 计划列表 -->
+  <view class="plans-list">
+    <block wx:if="{{customPlans.length > 0}}">
+      <view class="plan-card" wx:for="{{customPlans}}" wx:key="id">
+        <view class="plan-header">
+          <view class="plan-title">{{item.title}}</view>
+          <view class="plan-category">{{item.category}}</view>
+        </view>
+        
+        <view class="plan-exercises">
+          <view class="exercise-item" wx:for="{{item.exercises}}" wx:for-item="exercise" wx:key="id">
+            <view class="exercise-checkbox" bindtap="toggleExerciseComplete" data-plan-id="{{item.id}}" data-exercise-id="{{exercise.id}}">
+              <checkbox checked="{{exercise.completed}}"></checkbox>
+            </view>
+            <view class="exercise-content">
+              <text class="exercise-name">{{exercise.name}}</text>
+              <text class="exercise-details">{{exercise.sets}}组 x 间歇{{exercise.restTime}}秒</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="plan-meta">
+          <view class="meta-item">
+            <text class="meta-icon">⏱</text>
+            <text class="meta-text">{{item.duration}}</text>
+          </view>
+          <view class="meta-item">
+            <text class="meta-icon">🔥</text>
+            <text class="meta-text">{{item.calories}}卡路里</text>
+          </view>
+        </view>
+        
+        <view class="plan-actions">
+          <button class="action-btn start-btn" bindtap="startTraining" data-id="{{item.id}}" data-title="{{item.title}}">开始训练</button>
+          <button class="action-btn edit-btn" bindtap="editCustomPlan" data-id="{{item.id}}">修改</button>
+          <button class="action-btn delete-btn" bindtap="deleteCustomPlan" data-id="{{item.id}}">删除</button>
+        </view>
+      </view>
+    </block>
+    
+    <view wx:else class="empty-state">
+      <image class="empty-icon" src="/images/placeholder.png" mode="aspectFit"></image>
+      <text class="empty-text">暂无自定义训练计划</text>
+      <text class="empty-tip">点击上方按钮创建你的第一个计划</text>
+    </view>
+  </view>
+</view>
+
+<!-- 文字选择弹窗 -->
+<view class="text-selection-modal" wx:if="{{showTextSelectionModal}}">
+  <view class="modal-mask" bindtap="cancelTextSelection"></view>
+  <view class="modal-content">
+    <view class="modal-header">
+      <text class="modal-title">选择文字创建计划</text>
+      <view class="close-btn" bindtap="cancelTextSelection">×</view>
+    </view>
+    
+    <view class="modal-tip">
+      <text class="tip-icon">💡</text>
+      <text class="tip-text">点击选择需要的文字行，然后确认创建计划</text>
+    </view>
+    
+    <view class="selection-actions">
+      <button class="selection-action-btn" bindtap="selectAllTextLines">全选</button>
+      <button class="selection-action-btn" bindtap="clearAllTextLines">清除</button>
+    </view>
+    
+    <scroll-view class="text-lines-scroll" scroll-y="{{true}}">
+      <view class="text-line-item {{item.selected ? 'selected' : ''}}" 
+            wx:for="{{ocrTextLines}}" 
+            wx:key="id"
+            bindtap="toggleTextLineSelection"
+            data-index="{{index}}">
+        <view class="line-checkbox">
+          <checkbox checked="{{item.selected}}"></checkbox>
+        </view>
+        <text class="line-text">{{item.text}}</text>
+      </view>
+    </scroll-view>
+    
+    <view class="modal-footer">
+      <button class="cancel-btn" bindtap="cancelTextSelection">取消</button>
+      <button class="save-btn" bindtap="confirmTextSelection">确认创建</button>
+    </view>
+  </view>
+</view>
+
+<!-- 添加/编辑计划表单弹窗 -->
+<view class="plan-form-modal" wx:if="{{showAddForm}}">
+  <view class="modal-mask" bindtap="hideAddPlanForm"></view>
+  <view class="modal-content">
+    <view class="modal-header">
+      <text class="modal-title">{{editingPlan ? '编辑计划' : '创建新计划'}}</text>
+      <view class="close-btn" bindtap="hideAddPlanForm">×</view>
+    </view>
+    
+    <scroll-view class="form-scroll" scroll-y="{{true}}">
+      <!-- 计划标题 -->
+      <view class="form-group">
+        <text class="form-label">计划标题</text>
+        <input class="form-input" placeholder="如：臀腿训练" value="{{newPlan.title}}" bindinput="onTitleInput" />
+      </view>
+      
+      <!-- 计划类别 -->
+      <view class="form-group">
+        <text class="form-label">计划类别</text>
+        <view class="category-options">
+          <view 
+            wx:for="{{categories}}" 
+            wx:key="id"
+            class="category-option {{newPlan.category === item.id ? 'active' : ''}}" 
+            bindtap="selectCategory" 
+            data-category="{{item.id}}"
+          >
+            <text class="category-icon" wx:if="{{item.icon === 'strength'}}">💪</text>
+            <text class="category-icon" wx:if="{{item.icon === 'cardio'}}">🏃</text>
+            <text class="category-icon" wx:if="{{item.icon === 'flexibility'}}">🧘</text>
+            <text class="category-name">{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      
+      <!-- 训练动作 -->
+      <view class="form-group">
+        <view class="section-header">
+          <text class="form-label">训练动作</text>
+          <button class="add-exercise-btn" bindtap="addExercise">添加动作</button>
+        </view>
+        
+        <!-- 动作模板 -->
+        <view class="exercise-templates">
+          <text class="template-title">快速添加常用动作</text>
+          <view class="template-list">
+            <view 
+              wx:for="{{exerciseTemplates}}" 
+              wx:key="name"
+              class="template-item"
+              bindtap="addExerciseFromTemplate"
+              data-index="{{index}}"
+            >
+              <text class="template-name">{{item.name}}</text>
+              <text class="template-category">{{item.category}}</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="exercise-form-list">
+          <view class="exercise-form-item" wx:for="{{newPlan.exercises}}" wx:key="id" wx:for-item="exercise">
+            <view class="exercise-form-header">
+              <text class="exercise-index">动作 {{index + 1}}</text>
+              <view class="delete-exercise-btn" bindtap="deleteExercise" data-index="{{index}}">删除</view>
+            </view>
+            
+            <view class="form-row">
+              <text class="form-label-small">动作名称</text>
+              <input class="form-input-small" placeholder="如：深蹲" value="{{exercise.name}}" bindinput="updateExercise" data-index="{{index}}" data-field="name" />
+            </view>
+            
+            <view class="form-row">
+              <text class="form-label-small">组数</text>
+              <input class="form-input-small" type="number" placeholder="3" value="{{exercise.sets}}" bindinput="updateExercise" data-index="{{index}}" data-field="sets" />
+              
+              <text class="form-label-small">间歇时间(秒)</text>
+              <input class="form-input-small" type="number" placeholder="60" value="{{exercise.restTime}}" bindinput="updateExercise" data-index="{{index}}" data-field="restTime" />
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+    
+    <view class="modal-footer">
+      <button class="cancel-btn" bindtap="hideAddPlanForm">取消</button>
+      <button class="save-btn" bindtap="saveCustomPlan">保存计划</button>
+    </view>
+  </view>
+</view>

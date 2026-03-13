@@ -1,0 +1,464 @@
+/* 训练计划详情页面样式 */
+page {
+  background-color: var(--bg-secondary);
+}
+
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+}
+
+/* 计划头部 */
+.plan-header {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.plan-title {
+  font-size: 42rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 30rpx;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.plan-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+}
+
+.meta-icon {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+
+.meta-text {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+/* 评分和参与人数 */
+.plan-stats {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating-stars {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.rating-value {
+  font-size: 28rpx;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.participants {
+  display: flex;
+  align-items: center;
+}
+
+.participants-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.participants-value {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+}
+
+/* 标签 */
+.plan-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 20rpx;
+  gap: 16rpx;
+}
+
+.tag {
+  background: rgba(76, 175, 80, 0.1);
+  color: var(--primary-color);
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+
+/* 计划描述 */
+.plan-description {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.plan-description::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--info-color), var(--primary-color));
+}
+
+.description-text {
+  font-size: 30rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+/* 训练效果 */
+.plan-benefits {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.plan-benefits::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--success-color), var(--primary-color));
+}
+
+.benefits-container {
+  margin-top: 30rpx;
+}
+
+.benefit-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+}
+
+.benefit-icon {
+  color: var(--success-color);
+  font-size: 32rpx;
+  margin-right: 16rpx;
+  font-weight: bold;
+}
+
+.benefit-text {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 目标肌群 */
+.plan-target-muscles {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.plan-target-muscles::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--primary-color), var(--info-color));
+}
+
+.muscles-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+  gap: 16rpx;
+}
+
+.muscle-item {
+  background: rgba(33, 150, 243, 0.1);
+  padding: 12rpx 20rpx;
+  border-radius: 20rpx;
+  border: 1px solid rgba(33, 150, 243, 0.2);
+}
+
+.muscle-text {
+  font-size: 26rpx;
+  color: var(--info-color);
+  font-weight: 500;
+}
+
+/* 所需器械 */
+.plan-equipment {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.plan-equipment::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--warning-color), var(--secondary-color));
+}
+
+.equipment-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 30rpx;
+  gap: 16rpx;
+}
+
+.equipment-item {
+  background: rgba(255, 152, 0, 0.1);
+  padding: 12rpx 20rpx;
+  border-radius: 20rpx;
+  border: 1px solid rgba(255, 152, 0, 0.2);
+}
+
+.equipment-text {
+  font-size: 26rpx;
+  color: var(--warning-color);
+  font-weight: 500;
+}
+
+/* 训练步骤 */
+.plan-steps {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.plan-steps::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--secondary-color), var(--warning-color));
+}
+
+.steps-container {
+  margin-top: 30rpx;
+}
+
+.step-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 30rpx;
+  padding: 20rpx;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 16rpx;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.step-item:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow);
+}
+
+.step-number {
+  width: 60rpx;
+  height: 60rpx;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: bold;
+  margin-right: 20rpx;
+  flex-shrink: 0;
+  margin-top: 5rpx;
+}
+
+.step-content {
+  flex: 1;
+}
+
+.step-name {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 8rpx;
+}
+
+.step-detail {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  margin-bottom: 6rpx;
+}
+
+.step-rest {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  margin-bottom: 8rpx;
+}
+
+.step-description {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-top: 8rpx;
+  padding: 16rpx;
+  background: rgba(0, 0, 0, 0.02);
+  border-radius: 12rpx;
+  border-left: 3px solid var(--primary-color);
+}
+
+.step-image {
+  width: 120rpx;
+  height: 120rpx;
+  border-radius: 12rpx;
+  overflow: hidden;
+  margin-left: 20rpx;
+  flex-shrink: 0;
+}
+
+.step-image image {
+  width: 100%;
+  height: 100%;
+}
+
+/* 训练提示 */
+.plan-tips {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+}
+
+.plan-tips::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--warning-color), var(--secondary-color));
+}
+
+.tips-container {
+  margin-top: 30rpx;
+}
+
+.tip-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 20rpx;
+}
+
+.tip-icon {
+  font-size: 32rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
+}
+
+.tip-text {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  flex: 1;
+}
+
+/* 通用标题样式 */
+.section-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 20rpx;
+  position: relative;
+  padding-left: 20rpx;
+}
+
+.section-title::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 8rpx;
+  bottom: 8rpx;
+  width: 6rpx;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  border-radius: 3rpx;
+}
+
+/* 操作按钮 */
+.action-container {
+  margin-top: 40rpx;
+  margin-bottom: 40rpx;
+}
+
+.start-btn {
+  width: 100%;
+  height: 100rpx;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: #fff;
+  font-size: 36rpx;
+  font-weight: bold;
+  border-radius: 50rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-lg);
+  transition: all 0.3s ease;
+}
+
+.start-btn:active {
+  transform: scale(0.98);
+  box-shadow: var(--shadow);
+}

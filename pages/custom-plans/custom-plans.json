@@ -1,0 +1,6 @@
+{
+  "navigationBarTitleText": "我的训练计划",
+  "usingComponents": {
+    "navigation-bar": "../../components/navigation-bar/navigation-bar"
+  }
+}

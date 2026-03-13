@@ -1,0 +1,105 @@
+<!-- 训练计划详情页面 -->
+<view class="container">
+  <view class="plan-header">
+    <view class="plan-title">{{plan.title}}</view>
+    <view class="plan-meta">
+      <view class="meta-item">
+        <text class="meta-icon">⏱️</text>
+        <text class="meta-text">{{plan.duration}}</text>
+      </view>
+      <view class="meta-item">
+        <text class="meta-icon">🔥</text>
+        <text class="meta-text">{{plan.calories}}千卡</text>
+      </view>
+      <view class="meta-item">
+        <text class="meta-icon">💪</text>
+        <text class="meta-text">{{plan.difficulty}}</text>
+      </view>
+    </view>
+    
+    <!-- 评分和参与人数 -->
+    <view class="plan-stats">
+      <view class="rating">
+        <text class="rating-stars">⭐</text>
+        <text class="rating-value">{{plan.rating}}</text>
+      </view>
+      <view class="participants">
+        <text class="participants-icon">👥</text>
+        <text class="participants-value">{{plan.formattedParticipants}}人参与</text>
+      </view>
+    </view>
+    
+    <!-- 标签 -->
+    <view class="plan-tags">
+      <view class="tag" wx:for="{{plan.tags}}" wx:key="*this">{{item}}</view>
+    </view>
+  </view>
+
+  <view class="plan-description">
+    <view class="section-title">训练介绍</view>
+    <view class="description-text">{{plan.description}}</view>
+  </view>
+  
+  <!-- 训练效果 -->
+  <view class="plan-benefits">
+    <view class="section-title">训练效果</view>
+    <view class="benefits-container">
+      <view class="benefit-item" wx:for="{{plan.benefits}}" wx:key="*this">
+        <text class="benefit-icon">✓</text>
+        <text class="benefit-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 目标肌群 -->
+  <view class="plan-target-muscles">
+    <view class="section-title">目标肌群</view>
+    <view class="muscles-container">
+      <view class="muscle-item" wx:for="{{plan.targetMuscles}}" wx:key="*this">
+        <text class="muscle-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <!-- 所需器械 -->
+  <view class="plan-equipment">
+    <view class="section-title">所需器械</view>
+    <view class="equipment-container">
+      <view class="equipment-item" wx:for="{{plan.equipment}}" wx:key="*this">
+        <text class="equipment-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="plan-steps">
+    <view class="section-title">训练步骤</view>
+    <view class="steps-container">
+      <view class="step-item" wx:for="{{plan.steps}}" wx:key="id">
+        <view class="step-number">{{item.id}}</view>
+        <view class="step-content">
+          <view class="step-name">{{item.name}}</view>
+          <view class="step-detail">{{item.sets}}组 × {{item.reps}}次</view>
+          <view class="step-rest">休息时间：{{item.rest}}秒</view>
+          <view class="step-description">{{item.description}}</view>
+        </view>
+        <view class="step-image" wx:if="{{item.image}}">
+          <image src="{{item.image}}" mode="aspectFit"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <view class="plan-tips">
+    <view class="section-title">训练提示</view>
+    <view class="tips-container">
+      <view class="tip-item" wx:for="{{plan.tips}}" wx:key="index">
+        <text class="tip-icon">💡</text>
+        <text class="tip-text">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <view class="action-container">
+    <button class="start-btn" bindtap="startTraining">开始训练</button>
+  </view>
+</view>

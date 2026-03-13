@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" fill="#f0f2f5"/>
+  <!-- 舞蹈人物 -->
+  <g transform="translate(50, 50)">
+    <circle cx="0" cy="-15" r="6" fill="#ff9ff3"/>
+    <path d="M0,-9 L0,5" stroke="#ff9ff3" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0,-3 L-12,-8 M0,-3 L12,2" stroke="#ff9ff3" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0,5 L-8,18 M0,5 L8,18" stroke="#ff9ff3" stroke-width="3" stroke-linecap="round"/>
+    <circle cx="-12" cy="-8" r="2" fill="#feca57"/>
+    <circle cx="12" cy="2" r="2" fill="#feca57"/>
+  </g>
+</svg>

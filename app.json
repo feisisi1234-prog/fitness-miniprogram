@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/training/training",
+    "pages/custom-plans/custom-plans",
+    "pages/profile/profile",
+    "pages/food-recognition/food-recognition",
+    "pages/profile/edit/edit",
+    "pages/muscle-analysis/muscle-analysis",
+    "pages/plan-detail/plan-detail",
+    "pages/training-records/training-records",
+    "pages/settings/settings",
+    "pages/training-session/training-session",
+    "pages/timer/timer"
+  ],
+  "window": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "健身助手",
+    "navigationBarBackgroundColor": "#ffffff",
+    "backgroundColor": "#f8f8f8"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/training/training",
+        "text": "训练"
+      },
+      {
+        "pagePath": "pages/custom-plans/custom-plans",
+        "text": "计划"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

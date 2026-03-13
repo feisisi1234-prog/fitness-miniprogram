@@ -1,0 +1,22 @@
+# 微信小程序忽略文件
+node_modules/
+.DS_Store
+*.log
+
+# 大文件
+*.mp4
+
+# 备份文件
+*backup*
+
+# 开发工具配置
+.vscode/
+.idea/
+
+# 临时文件
+*.tmp
+*.temp
+
+# 私有配置（如果有敏感信息）
+config/*-private.js
+project.private.config.json

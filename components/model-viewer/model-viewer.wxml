@@ -1,0 +1,41 @@
+<!-- 3D模型查看器组件 -->
+<view class="model-viewer-container">
+  <!-- WebGL Canvas -->
+  <canvas 
+    type="webgl" 
+    id="webgl-canvas"
+    class="webgl-canvas"
+    bindtouchstart="onTouchStart"
+    bindtouchmove="onTouchMove"
+    bindtouchend="onTouchEnd"
+    disable-scroll="true"
+  ></canvas>
+  
+  <!-- 加载提示 -->
+  <view class="loading-overlay" wx:if="{{loading}}">
+    <view class="loading-spinner"></view>
+    <text class="loading-text">加载3D模型中...</text>
+    <text class="loading-progress">{{loadingProgress}}%</text>
+  </view>
+  
+  <!-- 控制按钮 -->
+  <view class="controls">
+    <view class="control-btn" bindtap="resetView">
+      <text class="control-icon">🔄</text>
+      <text class="control-label">重置</text>
+    </view>
+    <view class="control-btn" bindtap="toggleRotation">
+      <text class="control-icon">{{autoRotate ? '⏸' : '▶️'}}</text>
+      <text class="control-label">{{autoRotate ? '暂停' : '旋转'}}</text>
+    </view>
+    <view class="control-btn" bindtap="switchView">
+      <text class="control-icon">👁</text>
+      <text class="control-label">切换</text>
+    </view>
+  </view>
+  
+  <!-- 操作提示 -->
+  <view class="hint" wx:if="{{showHint}}">
+    <text class="hint-text">👆 单指旋转 · 👆👆 双指缩放</text>
+  </view>
+</view>

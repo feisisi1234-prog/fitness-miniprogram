@@ -1,0 +1,2061 @@
+.container {
+  padding: 20rpx;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 标签页样式 */
+.tabs {
+  display: flex;
+  background: #ffffff;
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.tabs::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(135deg, #07c160, #06a552);
+  border-radius: 16rpx 16rpx 0 0;
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 32rpx 0;
+  font-size: 32rpx;
+  color: #666666;
+  position: relative;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+.tab-item.active {
+  color: #07c160;
+  font-weight: bold;
+  background: rgba(7, 193, 96, 0.1);
+}
+
+.tab-item.active::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 20%;
+  width: 60%;
+  height: 6rpx;
+  background: linear-gradient(135deg, #07c160, #06a552);
+  border-radius: 3rpx 3rpx 0 0;
+}
+
+/* 标签页内容 */
+.tab-content {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.tab-content::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(135deg, #ff9500, #e6850e);
+  border-radius: 16rpx 16rpx 0 0;
+}
+
+/* 3D模型区域样式 */
+.model-container {
+  width: 100%;
+  min-height: 600rpx;
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 20rpx;
+  margin-bottom: 30rpx;
+  position: relative;
+  overflow: visible;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  border: 2rpx solid #e0e0e0;
+  padding: 20rpx 0;
+}
+
+.diagram-title {
+  text-align: center;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.diagram-title text:first-child {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 12rpx;
+}
+
+.diagram-tip {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  line-height: 1.5;
+}
+
+.model-viewer {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.human-body-diagram {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx 20rpx;
+}
+
+.body-svg-container {
+  width: 360rpx;
+  height: 700rpx;
+  position: relative;
+  margin: 0 auto;
+}
+
+/* 人体轮廓部分 - 改进版 */
+.body-part {
+  position: absolute;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+}
+
+.head {
+  width: 90rpx;
+  height: 110rpx;
+  border-radius: 45rpx 45rpx 50rpx 50rpx;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffeedd, #f5d5b8);
+}
+
+.neck {
+  width: 50rpx;
+  height: 35rpx;
+  top: 105rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+}
+
+/* 肩部 */
+.shoulder-left, .shoulder-right {
+  width: 70rpx;
+  height: 50rpx;
+  top: 135rpx;
+  border-radius: 35rpx 35rpx 10rpx 10rpx;
+  background: linear-gradient(135deg, #f5d5b8, #e8c4a8);
+}
+
+.shoulder-left {
+  left: 50rpx;
+}
+
+.shoulder-right {
+  right: 50rpx;
+}
+
+/* 胸部 */
+.chest {
+  width: 140rpx;
+  height: 100rpx;
+  top: 140rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 20rpx 20rpx 10rpx 10rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+}
+
+/* 腹部 */
+.abdomen {
+  width: 130rpx;
+  height: 110rpx;
+  top: 235rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 10rpx 10rpx 15rpx 15rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+}
+
+/* 骨盆 */
+.pelvis {
+  width: 140rpx;
+  height: 70rpx;
+  top: 340rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  border-radius: 15rpx 15rpx 70rpx 70rpx;
+  background: linear-gradient(135deg, #f5d5b8, #e8c4a8);
+}
+
+/* 左臂 */
+.arm-left {
+  position: absolute;
+  top: 165rpx;
+  left: 25rpx;
+}
+
+.arm-upper-left {
+  width: 38rpx;
+  height: 110rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 19rpx;
+  transform: rotate(-8deg);
+  transform-origin: top center;
+}
+
+.arm-lower-left {
+  width: 35rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 17rpx;
+  transform: rotate(12deg);
+  transform-origin: top center;
+  margin-top: -2rpx;
+  margin-left: 2rpx;
+}
+
+.hand-left {
+  width: 30rpx;
+  height: 35rpx;
+  background: linear-gradient(135deg, #ffeedd, #f5d5b8);
+  border: 2rpx solid #d4b896;
+  border-radius: 15rpx 15rpx 20rpx 20rpx;
+  margin-top: -2rpx;
+  margin-left: 3rpx;
+}
+
+/* 右臂 */
+.arm-right {
+  position: absolute;
+  top: 165rpx;
+  right: 25rpx;
+}
+
+.arm-upper-right {
+  width: 38rpx;
+  height: 110rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 19rpx;
+  transform: rotate(8deg);
+  transform-origin: top center;
+}
+
+.arm-lower-right {
+  width: 35rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 17rpx;
+  transform: rotate(-12deg);
+  transform-origin: top center;
+  margin-top: -2rpx;
+  margin-left: 1rpx;
+}
+
+.hand-right {
+  width: 30rpx;
+  height: 35rpx;
+  background: linear-gradient(135deg, #ffeedd, #f5d5b8);
+  border: 2rpx solid #d4b896;
+  border-radius: 15rpx 15rpx 20rpx 20rpx;
+  margin-top: -2rpx;
+}
+
+/* 左腿 */
+.leg-left {
+  position: absolute;
+  top: 405rpx;
+  left: 95rpx;
+}
+
+.leg-upper-left {
+  width: 50rpx;
+  height: 140rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 25rpx 25rpx 20rpx 20rpx;
+}
+
+.leg-lower-left {
+  width: 45rpx;
+  height: 130rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 22rpx;
+  margin-top: -2rpx;
+  margin-left: 2rpx;
+}
+
+.foot-left {
+  width: 55rpx;
+  height: 30rpx;
+  background: linear-gradient(135deg, #ffeedd, #f5d5b8);
+  border: 2rpx solid #d4b896;
+  border-radius: 15rpx 15rpx 10rpx 10rpx;
+  margin-top: -2rpx;
+  margin-left: -5rpx;
+}
+
+/* 右腿 */
+.leg-right {
+  position: absolute;
+  top: 405rpx;
+  right: 95rpx;
+}
+
+.leg-upper-right {
+  width: 50rpx;
+  height: 140rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 25rpx 25rpx 20rpx 20rpx;
+}
+
+.leg-lower-right {
+  width: 45rpx;
+  height: 130rpx;
+  background: linear-gradient(135deg, #f5e6d3, #e8d4bd);
+  border: 2rpx solid #d4b896;
+  border-radius: 22rpx;
+  margin-top: -2rpx;
+  margin-left: 3rpx;
+}
+
+.foot-right {
+  width: 55rpx;
+  height: 30rpx;
+  background: linear-gradient(135deg, #ffeedd, #f5d5b8);
+  border: 2rpx solid #d4b896;
+  border-radius: 15rpx 15rpx 10rpx 10rpx;
+  margin-top: -2rpx;
+}
+
+/* 肌肉标注 */
+.muscle-label {
+  position: absolute;
+  border-radius: 12rpx;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  border: 3rpx solid rgba(255, 255, 255, 0.9);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.3;
+  z-index: 10;
+}
+
+.muscle-label.active {
+  opacity: 1;
+  transform: scale(1.05);
+  box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.3);
+  animation: musclePulse 1.5s ease-in-out infinite;
+}
+
+@keyframes musclePulse {
+  0%, 100% { 
+    transform: scale(1.05);
+    box-shadow: 0 6rpx 24rpx rgba(0, 0, 0, 0.3);
+  }
+  50% { 
+    transform: scale(1.1);
+    box-shadow: 0 8rpx 32rpx rgba(0, 0, 0, 0.4);
+  }
+}
+
+.muscle-name {
+  font-size: 22rpx;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.5);
+  padding: 4rpx 8rpx;
+  text-align: center;
+}
+
+/* 三角肌 - 覆盖肩部，鲜艳红色 */
+.deltoid-muscle {
+  width: 130rpx;
+  height: 80rpx;
+  top: 145rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff4757, #ff3838);
+  border-radius: 40rpx 40rpx 10rpx 10rpx;
+}
+
+/* 胸大肌 - 鲜艳橙色 */
+.pectoralis-muscle {
+  width: 120rpx;
+  height: 85rpx;
+  top: 155rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ff6348, #ff4757);
+  border-radius: 15rpx 15rpx 8rpx 8rpx;
+}
+
+/* 腹直肌 - 鲜艳黄色 */
+.rectus-muscle {
+  width: 110rpx;
+  height: 95rpx;
+  top: 245rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #ffa502, #ff9500);
+  border-radius: 10rpx;
+}
+
+/* 臀大肌 - 鲜艳蓝色 */
+.gluteus-muscle {
+  width: 130rpx;
+  height: 65rpx;
+  top: 345rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #3742fa, #2f3542);
+  border-radius: 65rpx 65rpx 10rpx 10rpx;
+}
+
+/* 肱二头肌 - 鲜艳绿色 */
+.biceps-muscle {
+  width: 50rpx;
+  height: 95rpx;
+  top: 195rpx;
+  left: 35rpx;
+  background: linear-gradient(135deg, #2ed573, #1e90ff);
+  border-radius: 25rpx;
+  transform: rotate(-8deg);
+}
+
+/* 股四头肌 - 鲜艳紫色 */
+.quadriceps-muscle {
+  width: 80rpx;
+  height: 130rpx;
+  top: 420rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: linear-gradient(135deg, #a29bfe, #6c5ce7);
+  border-radius: 40rpx 40rpx 20rpx 20rpx;
+}
+
+
+/* 肌肉详情弹窗 */
+.muscle-detail-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  width: 80%;
+  background: white;
+  border-radius: 20rpx;
+  overflow: hidden;
+  position: relative;
+  animation: modalShow 0.3s ease-out;
+}
+
+@keyframes modalShow {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #07c160, #06a552);
+  color: white;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 40rpx;
+  line-height: 1;
+  padding: 0;
+  width: 60rpx;
+  height: 60rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-body {
+  padding: 30rpx;
+}
+
+.detail-row {
+  display: flex;
+  margin-bottom: 20rpx;
+  align-items: flex-start;
+}
+
+.detail-label {
+  width: 160rpx;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333;
+  flex-shrink: 0;
+}
+
+.detail-value {
+  flex: 1;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.5;
+}
+
+/* 肌纤维走向页面样式 */
+.action-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+  margin-bottom: 36rpx;
+}
+
+.action-item {
+  width: calc(33.333% - 14rpx);
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.action-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(135deg, #ff9500, #e6850e);
+  border-radius: 16rpx 16rpx 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.action-item.active {
+  background: rgba(7, 193, 96, 0.1);
+  border: 2rpx solid #07c160;
+  transform: translateY(-4rpx);
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.action-item.active::before {
+  opacity: 1;
+}
+
+.action-name {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  margin-bottom: 8rpx;
+  color: #333333;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.muscle-group {
+  font-size: 24rpx;
+  color: #666666;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.action-detail {
+  border-top: 1rpx solid #eaeaea;
+  padding-top: 36rpx;
+}
+
+.detail-header {
+  text-align: center;
+  margin-bottom: 36rpx;
+}
+
+.detail-title {
+  display: block;
+  font-size: 38rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 12rpx;
+}
+
+.detail-subtitle {
+  font-size: 30rpx;
+  color: #07c160;
+}
+
+.detail-content {
+  padding: 0 20rpx;
+}
+
+.detail-section {
+  margin-bottom: 36rpx;
+}
+
+.section-title {
+  display: block;
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 18rpx;
+  position: relative;
+  padding-left: 16rpx;
+}
+
+.section-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 32rpx;
+  background: linear-gradient(135deg, #07c160, #06a552);
+  border-radius: 3rpx;
+}
+
+.section-content {
+  font-size: 30rpx;
+  line-height: 1.6;
+  color: #666666;
+}
+
+.detail-image {
+  display: flex;
+  justify-content: center;
+  margin-top: 36rpx;
+}
+
+.muscle-image {
+  width: 80%;
+  height: 400rpx;
+  border-radius: 16rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+}
+
+.image-placeholder {
+  width: 100%;
+  min-height: 300rpx;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 16rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 40rpx 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  border: 2rpx dashed #dee2e6;
+}
+
+.placeholder-icon {
+  font-size: 80rpx;
+  margin-bottom: 20rpx;
+}
+
+.placeholder-title {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-bottom: 16rpx;
+}
+
+.placeholder-note {
+  font-size: 26rpx;
+  color: #666;
+  margin-top: 8rpx;
+  text-align: center;
+  line-height: 1.6;
+}
+
+.placeholder-desc {
+  font-size: 28rpx;
+  color: #07c160;
+  margin-top: 20rpx;
+  padding: 20rpx;
+  background: rgba(7, 193, 96, 0.1);
+  border-radius: 12rpx;
+  text-align: center;
+  line-height: 1.6;
+  max-width: 100%;
+}
+
+/* 肌肉张力计算页面样式 */
+.knowledge-section {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 20rpx;
+  padding: 36rpx;
+  margin-bottom: 36rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+}
+
+.knowledge-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(90deg, #17a2b8, #138496);
+  border-radius: 20rpx 20rpx 0 0;
+}
+
+.knowledge-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 30rpx;
+  padding-bottom: 20rpx;
+  border-bottom: 2rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.knowledge-icon {
+  font-size: 48rpx;
+  margin-right: 16rpx;
+}
+
+.knowledge-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333;
+}
+
+.knowledge-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.knowledge-item {
+  background: rgba(23, 162, 184, 0.05);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border-left: 4rpx solid #17a2b8;
+}
+
+.knowledge-subtitle {
+  display: block;
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #17a2b8;
+  margin-bottom: 16rpx;
+}
+
+.knowledge-text {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  line-height: 1.8;
+}
+
+.factor-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-top: 12rpx;
+}
+
+.factor-item {
+  display: flex;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.8);
+  padding: 16rpx;
+  border-radius: 12rpx;
+}
+
+.factor-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+  flex-shrink: 0;
+}
+
+.factor-text {
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  flex: 1;
+}
+
+.exercise-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 36rpx;
+}
+
+.exercise-item {
+  width: 48%;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  margin-bottom: 24rpx;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+  position: relative;
+  overflow: hidden;
+}
+
+.exercise-item::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(135deg, #007aff, #0066cc);
+  border-radius: 16rpx 16rpx 0 0;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.exercise-item.active {
+  background: rgba(255, 152, 0, 0.1);
+  border: 2rpx solid #ff9500;
+  transform: translateY(-4rpx);
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.exercise-item.active::before {
+  opacity: 1;
+}
+
+.exercise-name {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  margin-bottom: 12rpx;
+  color: #333333;
+}
+
+.target-muscle {
+  font-size: 28rpx;
+  color: #666666;
+}
+
+.tension-calculator {
+  border-top: 1rpx solid #eaeaea;
+  padding-top: 36rpx;
+}
+
+.formula-section, .data-section, .custom-calculation {
+  margin-bottom: 48rpx;
+}
+
+.formula-title, .data-title, .calc-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 24rpx;
+  position: relative;
+  padding-left: 16rpx;
+}
+
+.formula-title::before, .data-title::before, .calc-title::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 6rpx;
+  height: 32rpx;
+  background: linear-gradient(135deg, #07c160, #06a552);
+  border-radius: 3rpx;
+}
+
+.formula-box {
+  background: rgba(7, 193, 96, 0.08);
+  padding: 30rpx;
+  border-radius: 16rpx;
+  margin-bottom: 24rpx;
+  border-left: 4rpx solid #07c160;
+}
+
+.formula-main {
+  display: block;
+  font-size: 36rpx;
+  color: #07c160;
+  font-weight: bold;
+  margin-bottom: 16rpx;
+  text-align: center;
+}
+
+.formula-detail {
+  display: block;
+  font-size: 26rpx;
+  color: #666;
+  line-height: 1.6;
+  margin-top: 12rpx;
+}
+
+.formula-simplified {
+  background: rgba(255, 152, 0, 0.1);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border-left: 4rpx solid #ff9500;
+}
+
+.formula-content {
+  display: block;
+  font-size: 32rpx;
+  color: #ff9500;
+  font-weight: bold;
+  margin: 12rpx 0;
+  text-align: center;
+}
+
+.formula-note {
+  display: block;
+  font-size: 24rpx;
+  color: #999;
+  text-align: center;
+  margin-top: 8rpx;
+}
+
+.data-table {
+  border: 1rpx solid #eaeaea;
+  border-radius: 16rpx;
+  overflow: hidden;
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+}
+
+.table-header {
+  display: flex;
+  background: linear-gradient(135deg, #f0f2f5, #e8e8e8);
+}
+
+.header-cell {
+  flex: 1;
+  text-align: center;
+  padding: 24rpx 0;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #333333;
+  border-right: 1rpx solid #eaeaea;
+}
+
+.header-cell:last-child {
+  border-right: none;
+}
+
+.table-row {
+  display: flex;
+  border-top: 1rpx solid #eaeaea;
+  transition: all 0.3s ease;
+}
+
+.table-row:active {
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.table-cell {
+  flex: 1;
+  text-align: center;
+  padding: 18rpx 0;
+  font-size: 30rpx;
+  color: #666666;
+  border-right: 1rpx solid #eaeaea;
+}
+
+.table-cell:last-child {
+  border-right: none;
+}
+
+.calc-form {
+  background: rgba(7, 193, 96, 0.05);
+  padding: 30rpx;
+  border-radius: 16rpx;
+  border: 1rpx solid rgba(7, 193, 96, 0.2);
+}
+
+.input-group {
+  margin-bottom: 24rpx;
+}
+
+.input-label {
+  display: block;
+  font-size: 28rpx;
+  color: #333;
+  font-weight: 500;
+  margin-bottom: 12rpx;
+}
+
+.weight-input {
+  width: 100%;
+  height: 88rpx;
+  border: 2rpx solid #eaeaea;
+  border-radius: 16rpx;
+  padding: 0 24rpx;
+  font-size: 30rpx;
+  background: #ffffff;
+  color: #333333;
+  box-shadow: inset 0 2rpx 4rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  box-sizing: border-box;
+}
+
+.weight-input:focus {
+  border-color: #07c160;
+  box-shadow: 0 0 0 4rpx rgba(7, 193, 96, 0.1);
+}
+
+.toggle-advanced {
+  text-align: center;
+  margin: 20rpx 0;
+}
+
+.toggle-text {
+  font-size: 26rpx;
+  color: #07c160;
+  text-decoration: underline;
+}
+
+.calculate-btn {
+  width: 220rpx;
+  height: 88rpx;
+  background: linear-gradient(135deg, #07c160, #06a552);
+  color: white;
+  font-size: 32rpx;
+  font-weight: bold;
+  border-radius: 16rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.calculate-btn:active {
+  transform: scale(0.95);
+  box-shadow: 0 2rpx 6rpx rgba(0, 0, 0, 0.05);
+}
+
+.result-section {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 16rpx;
+  padding: 36rpx;
+  margin-top: 30rpx;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  border: 2rpx solid rgba(7, 193, 96, 0.2);
+}
+
+.result-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6rpx;
+  background: linear-gradient(135deg, #07c160, #06a552);
+  border-radius: 16rpx 16rpx 0 0;
+}
+
+.result-header {
+  text-align: center;
+  margin-bottom: 30rpx;
+}
+
+.result-title {
+  display: block;
+  font-size: 32rpx;
+  color: #333;
+  font-weight: bold;
+}
+
+.result-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24rpx;
+}
+
+.result-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20rpx;
+  background: rgba(7, 193, 96, 0.05);
+  border-radius: 12rpx;
+}
+
+.result-label {
+  font-size: 28rpx;
+  color: #666;
+  font-weight: 500;
+}
+
+.result-value-large {
+  font-size: 40rpx;
+  font-weight: bold;
+  color: #07c160;
+  text-shadow: 0 2rpx 4rpx rgba(40, 167, 69, 0.1);
+}
+
+.result-note-box {
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid #eaeaea;
+}
+
+.result-note {
+  display: block;
+  font-size: 28rpx;
+  color: #666;
+  margin-bottom: 12rpx;
+  text-align: center;
+}
+
+.result-tip {
+  display: block;
+  font-size: 26rpx;
+  color: #ff9500;
+  text-align: center;
+  font-weight: 500;
+  background: rgba(255, 149, 0, 0.1);
+  padding: 16rpx;
+  border-radius: 8rpx;
+}
+/* 新增肌肉群标注位置样式 */
+
+/* 背部肌群 */
+.latissimus-muscle {
+  position: absolute;
+  top: 35%;
+  left: 25%;
+  width: 50%;
+  height: 25%;
+  background: rgba(255, 149, 0, 0.7);
+  border-radius: 12rpx;
+}
+
+.trapezius-muscle {
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  height: 20%;
+  background: rgba(0, 122, 255, 0.7);
+  border-radius: 12rpx;
+}
+
+.rhomboid-muscle {
+  position: absolute;
+  top: 25%;
+  left: 35%;
+  width: 30%;
+  height: 15%;
+  background: rgba(88, 86, 214, 0.7);
+  border-radius: 12rpx;
+}
+
+.erector-muscle {
+  position: absolute;
+  top: 30%;
+  left: 45%;
+  width: 10%;
+  height: 40%;
+  background: rgba(255, 59, 48, 0.7);
+  border-radius: 12rpx;
+}
+
+/* 肩部肌群 */
+.supraspinatus-muscle {
+  position: absolute;
+  top: 25%;
+  left: 20%;
+  width: 15%;
+  height: 10%;
+  background: rgba(175, 82, 222, 0.7);
+  border-radius: 12rpx;
+}
+
+/* 手臂肌群 */
+.triceps-muscle {
+  position: absolute;
+  top: 35%;
+  left: 75%;
+  width: 15%;
+  height: 20%;
+  background: rgba(255, 45, 85, 0.7);
+  border-radius: 12rpx;
+}
+
+.forearm-muscle {
+  position: absolute;
+  top: 55%;
+  left: 25%;
+  width: 12%;
+  height: 15%;
+  background: rgba(90, 200, 250, 0.7);
+  border-radius: 12rpx;
+}
+
+/* 核心肌群 */
+.oblique-muscle {
+  position: absolute;
+  top: 45%;
+  left: 35%;
+  width: 30%;
+  height: 15%;
+  background: rgba(255, 204, 0, 0.7);
+  border-radius: 12rpx;
+}
+
+.transverse-muscle {
+  position: absolute;
+  top: 50%;
+  left: 40%;
+  width: 20%;
+  height: 10%;
+  background: rgba(52, 199, 89, 0.7);
+  border-radius: 12rpx;
+}
+
+/* 臀部肌群 */
+.gluteus-medius-muscle {
+  position: absolute;
+  top: 58%;
+  left: 35%;
+  width: 30%;
+  height: 12%;
+  background: rgba(255, 149, 0, 0.7);
+  border-radius: 12rpx;
+}
+
+/* 大腿肌群 */
+.hamstrings-muscle {
+  position: absolute;
+  top: 70%;
+  left: 40%;
+  width: 20%;
+  height: 15%;
+  background: rgba(255, 59, 48, 0.7);
+  border-radius: 12rpx;
+}
+
+.adductors-muscle {
+  position: absolute;
+  top: 68%;
+  left: 48%;
+  width: 15%;
+  height: 18%;
+  background: rgba(88, 86, 214, 0.7);
+  border-radius: 12rpx;
+}
+
+/* 小腿肌群 */
+.gastrocnemius-muscle {
+  position: absolute;
+  top: 82%;
+  left: 45%;
+  width: 10%;
+  height: 12%;
+  background: rgba(255, 149, 0, 0.7);
+  border-radius: 12rpx;
+}
+
+.soleus-muscle {
+  position: absolute;
+  top: 85%;
+  left: 47%;
+  width: 6%;
+  height: 10%;
+  background: rgba(255, 204, 0, 0.7);
+  border-radius: 12rpx;
+}
+
+.tibialis-muscle {
+  position: absolute;
+  top: 82%;
+  left: 42%;
+  width: 8%;
+  height: 12%;
+  background: rgba(52, 199, 89, 0.7);
+  border-radius: 12rpx;
+}
+
+/* 肌肉标注通用样式增强 */
+.muscle-label {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2rpx solid transparent;
+}
+
+.muscle-label:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.2);
+}
+
+.muscle-label.active {
+  border-color: #07c160;
+  box-shadow: 0 0 0 4rpx rgba(7, 193, 96, 0.3);
+  transform: scale(1.1);
+  z-index: 10;
+}
+
+.muscle-name {
+  font-size: 20rpx;
+  font-weight: bold;
+  color: white;
+  text-shadow: 1rpx 1rpx 2rpx rgba(0, 0, 0, 0.5);
+  text-align: center;
+  line-height: 1.2;
+  padding: 4rpx;
+}
+
+/* 响应式调整 */
+@media (max-width: 750rpx) {
+  .muscle-name {
+    font-size: 18rpx;
+  }
+  
+  .muscle-label {
+    border-width: 1rpx;
+  }
+}
+
+/* 视图切换按钮 */
+.view-switcher {
+  display: flex;
+  justify-content: center;
+  gap: 20rpx;
+  margin: 20rpx 0 30rpx;
+  padding: 0 20rpx;
+}
+
+.view-btn {
+  flex: 1;
+  max-width: 200rpx;
+  padding: 20rpx 40rpx;
+  background: #f5f7fa;
+  border-radius: 50rpx;
+  text-align: center;
+  font-size: 28rpx;
+  color: #666;
+  transition: all 0.3s ease;
+  border: 2rpx solid transparent;
+}
+
+.view-btn.active {
+  background: linear-gradient(135deg, #07c160, #06a552);
+  color: #ffffff;
+  font-weight: bold;
+  box-shadow: 0 4rpx 12rpx rgba(7, 193, 96, 0.3);
+  transform: scale(1.05);
+}
+
+/* 人体图容器 - 支持3D效果 */
+.model-viewer {
+  position: relative;
+  width: 100%;
+  min-height: 800rpx;
+  perspective: 2000rpx;
+  overflow: hidden;
+}
+
+/* 人体图 - 3D翻转效果 */
+.human-body-diagram {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.6s ease;
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+}
+
+.human-body-diagram.show {
+  opacity: 1;
+  transform: rotateY(0deg);
+  z-index: 2;
+}
+
+.human-body-diagram.hide {
+  opacity: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* 背面视图特殊样式 */
+.human-body-diagram.back-view .body-svg-container {
+  transform: scaleX(-1);
+}
+
+.human-body-diagram.back-view .muscle-label {
+  transform: scaleX(-1);
+}
+
+/* 滑动提示 */
+.swipe-hint {
+  position: absolute;
+  bottom: 40rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0, 0, 0, 0.7);
+  color: #ffffff;
+  padding: 20rpx 40rpx;
+  border-radius: 50rpx;
+  font-size: 24rpx;
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+  animation: fadeInOut 3s ease-in-out infinite;
+  z-index: 10;
+}
+
+.hint-icon {
+  font-size: 32rpx;
+  animation: swipeAnimation 2s ease-in-out infinite;
+}
+
+.hint-text {
+  font-size: 24rpx;
+}
+
+@keyframes fadeInOut {
+  0%, 100% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+@keyframes swipeAnimation {
+  0%, 100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(10rpx);
+  }
+}
+
+/* 背面视图的身体部位样式 */
+.back-view .back-upper {
+  position: absolute;
+  top: 120rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200rpx;
+  height: 180rpx;
+  background: linear-gradient(135deg, #ffd4a3, #ffb366);
+  border-radius: 100rpx 100rpx 60rpx 60rpx;
+  box-shadow: inset 0 -10rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-view .back-lower {
+  position: absolute;
+  top: 290rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180rpx;
+  height: 160rpx;
+  background: linear-gradient(135deg, #ffd4a3, #ffb366);
+  border-radius: 40rpx;
+  box-shadow: inset 0 -10rpx 20rpx rgba(0, 0, 0, 0.1);
+}
+
+.back-view .gluteus {
+  position: absolute;
+  top: 440rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, #ffb366, #ff9933);
+  border-radius: 80rpx 80rpx 40rpx 40rpx;
+  box-shadow: inset 0 -8rpx 16rpx rgba(0, 0, 0, 0.15);
+}
+
+/* ========================================
+   导入增强版人体图样式
+   ======================================== */
+
+/* 覆盖原有样式，使用更美观的人体图 */
+
+/* 身体部位基础样式 */
+.body-part {
+  position: absolute;
+  transition: all 0.3s ease;
+}
+
+/* ========== 头部 - 更圆润自然 ========== */
+.head {
+  width: 90rpx !important;
+  height: 110rpx !important;
+  top: 20rpx !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, #ffd4a3 0%, #ffb366 50%, #ff9933 100%) !important;
+  border-radius: 45rpx 45rpx 40rpx 40rpx !important;
+  box-shadow: 
+    inset 0 -15rpx 25rpx rgba(0, 0, 0, 0.1),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15) !important;
+  z-index: 5 !important;
+}
+
+/* 眼睛高光效果 */
+.head::before {
+  content: '';
+  position: absolute;
+  top: 30rpx;
+  left: 20rpx;
+  width: 15rpx;
+  height: 15rpx;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  box-shadow: 35rpx 0 0 rgba(255, 255, 255, 0.3);
+}
+
+/* ========== 颈部 - 更自然的过渡 ========== */
+.neck {
+  width: 50rpx !important;
+  height: 40rpx !important;
+  top: 125rpx !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(180deg, #ffb366 0%, #ffa64d 100%) !important;
+  border-radius: 10rpx !important;
+  box-shadow: 
+    inset 0 -5rpx 10rpx rgba(0, 0, 0, 0.1),
+    0 2rpx 6rpx rgba(0, 0, 0, 0.1) !important;
+  z-index: 4 !important;
+}
+
+/* ========== 肩部 - 更立体的肌肉感 ========== */
+.shoulder-left,
+.shoulder-right {
+  width: 70rpx !important;
+  height: 50rpx !important;
+  top: 155rpx !important;
+  background: linear-gradient(135deg, #ff9966 0%, #ff7733 100%) !important;
+  border-radius: 35rpx 35rpx 20rpx 20rpx !important;
+  box-shadow: 
+    inset 0 -8rpx 15rpx rgba(0, 0, 0, 0.15),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.2) !important;
+  z-index: 3 !important;
+}
+
+.shoulder-left {
+  left: 50rpx !important;
+  transform: rotate(-15deg) !important;
+}
+
+.shoulder-right {
+  right: 50rpx !important;
+  transform: rotate(15deg) !important;
+}
+
+/* ========== 胸部 - 更真实的肌肉轮廓 ========== */
+.chest {
+  width: 180rpx !important;
+  height: 140rpx !important;
+  top: 165rpx !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 50%, #ff8040 100%) !important;
+  border-radius: 90rpx 90rpx 40rpx 40rpx !important;
+  box-shadow: 
+    inset 0 -20rpx 30rpx rgba(0, 0, 0, 0.12),
+    inset 0 20rpx 20rpx rgba(255, 255, 255, 0.1),
+    0 6rpx 15rpx rgba(0, 0, 0, 0.15) !important;
+  z-index: 2 !important;
+}
+
+/* 胸肌分隔线 */
+.chest::before {
+  content: '';
+  position: absolute;
+  top: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 100rpx;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+/* ========== 腹部 - 清晰的腹肌线条 ========== */
+.abdomen {
+  width: 160rpx !important;
+  height: 160rpx !important;
+  top: 295rpx !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 50%, #ff8040 100%) !important;
+  border-radius: 30rpx !important;
+  box-shadow: 
+    inset 0 -15rpx 25rpx rgba(0, 0, 0, 0.12),
+    inset 0 15rpx 20rpx rgba(255, 255, 255, 0.08),
+    0 6rpx 15rpx rgba(0, 0, 0, 0.15) !important;
+  z-index: 2 !important;
+}
+
+/* 腹肌中线 */
+.abdomen::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 100%;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0.1) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0.1) 100%
+  );
+}
+
+/* 横向腹肌线 */
+.abdomen::after {
+  content: '';
+  position: absolute;
+  top: 40rpx;
+  left: 20rpx;
+  right: 20rpx;
+  height: 2rpx;
+  background: rgba(0, 0, 0, 0.08);
+  box-shadow: 
+    0 40rpx 0 rgba(0, 0, 0, 0.08),
+    0 80rpx 0 rgba(0, 0, 0, 0.08);
+}
+
+/* ========== 骨盆 ========== */
+.pelvis {
+  width: 150rpx !important;
+  height: 80rpx !important;
+  top: 445rpx !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  background: linear-gradient(135deg, #ff9966 0%, #ff8040 100%) !important;
+  border-radius: 20rpx 20rpx 75rpx 75rpx !important;
+  box-shadow: 
+    inset 0 -10rpx 20rpx rgba(0, 0, 0, 0.15),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15) !important;
+  z-index: 2 !important;
+}
+
+/* ========== 手臂 - 更自然的肌肉形态 ========== */
+.arm-left,
+.arm-right {
+  position: absolute !important;
+  top: 190rpx !important;
+  z-index: 1 !important;
+}
+
+.arm-left {
+  left: 35rpx !important;
+}
+
+.arm-right {
+  right: 35rpx !important;
+}
+
+/* 上臂 */
+.arm-upper-left,
+.arm-upper-right {
+  width: 48rpx !important;
+  height: 130rpx !important;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 100%) !important;
+  border-radius: 24rpx !important;
+  box-shadow: 
+    inset -3rpx 0 8rpx rgba(0, 0, 0, 0.1),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.15) !important;
+  position: relative !important;
+}
+
+.arm-upper-left {
+  transform: rotate(-5deg) !important;
+}
+
+.arm-upper-right {
+  transform: rotate(5deg) !important;
+}
+
+/* 肱二头肌凸起 */
+.arm-upper-left::before,
+.arm-upper-right::before {
+  content: '';
+  position: absolute;
+  top: 30rpx;
+  width: 40rpx;
+  height: 50rpx;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.arm-upper-left::before {
+  left: 2rpx;
+}
+
+.arm-upper-right::before {
+  right: 2rpx;
+}
+
+/* 前臂 */
+.arm-lower-left,
+.arm-lower-right {
+  width: 42rpx !important;
+  height: 120rpx !important;
+  background: linear-gradient(135deg, #ffa64d 0%, #ff8c1a 100%) !important;
+  border-radius: 21rpx !important;
+  box-shadow: 
+    inset -3rpx 0 8rpx rgba(0, 0, 0, 0.12),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.15) !important;
+  margin-top: -3rpx !important;
+  position: relative !important;
+}
+
+.arm-lower-left {
+  margin-left: 3rpx !important;
+  transform: rotate(3deg) !important;
+}
+
+.arm-lower-right {
+  margin-left: 3rpx !important;
+  transform: rotate(-3deg) !important;
+}
+
+/* 手部 */
+.hand-left,
+.hand-right {
+  width: 38rpx !important;
+  height: 45rpx !important;
+  background: linear-gradient(135deg, #ffcc99 0%, #ffb380 100%) !important;
+  border-radius: 19rpx 19rpx 25rpx 25rpx !important;
+  box-shadow: 
+    inset 0 -5rpx 10rpx rgba(0, 0, 0, 0.1),
+    0 3rpx 8rpx rgba(0, 0, 0, 0.15) !important;
+  margin-top: -3rpx !important;
+  margin-left: 2rpx !important;
+}
+
+/* ========== 腿部 - 更强壮的肌肉线条 ========== */
+.leg-left,
+.leg-right {
+  position: absolute !important;
+  top: 515rpx !important;
+  z-index: 1 !important;
+}
+
+.leg-left {
+  left: 105rpx !important;
+}
+
+.leg-right {
+  right: 105rpx !important;
+}
+
+/* 大腿 */
+.leg-upper-left,
+.leg-upper-right {
+  width: 60rpx !important;
+  height: 160rpx !important;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 100%) !important;
+  border-radius: 30rpx 30rpx 25rpx 25rpx !important;
+  box-shadow: 
+    inset -4rpx 0 10rpx rgba(0, 0, 0, 0.1),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15) !important;
+  position: relative !important;
+}
+
+/* 股四头肌凸起 */
+.leg-upper-left::before,
+.leg-upper-right::before {
+  content: '';
+  position: absolute;
+  top: 40rpx;
+  width: 50rpx;
+  height: 80rpx;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.leg-upper-left::before {
+  left: 3rpx;
+}
+
+.leg-upper-right::before {
+  right: 3rpx;
+}
+
+/* 小腿 */
+.leg-lower-left,
+.leg-lower-right {
+  width: 50rpx !important;
+  height: 150rpx !important;
+  background: linear-gradient(135deg, #ffa64d 0%, #ff8c1a 100%) !important;
+  border-radius: 25rpx !important;
+  box-shadow: 
+    inset -3rpx 0 8rpx rgba(0, 0, 0, 0.12),
+    0 4rpx 10rpx rgba(0, 0, 0, 0.15) !important;
+  margin-top: -3rpx !important;
+  margin-left: 5rpx !important;
+  position: relative !important;
+}
+
+/* 小腿肌肉凸起 */
+.leg-lower-left::before,
+.leg-lower-right::before {
+  content: '';
+  position: absolute;
+  top: 30rpx;
+  width: 40rpx;
+  height: 60rpx;
+  background: radial-gradient(ellipse at center, 
+    rgba(255, 255, 255, 0.12) 0%,
+    transparent 70%
+  );
+  border-radius: 50%;
+}
+
+.leg-lower-left::before {
+  left: 3rpx;
+}
+
+.leg-lower-right::before {
+  right: 3rpx;
+}
+
+/* 脚部 */
+.foot-left,
+.foot-right {
+  width: 65rpx !important;
+  height: 35rpx !important;
+  background: linear-gradient(135deg, #ffcc99 0%, #ffb380 100%) !important;
+  border-radius: 18rpx 18rpx 12rpx 12rpx !important;
+  box-shadow: 
+    inset 0 -4rpx 8rpx rgba(0, 0, 0, 0.1),
+    0 3rpx 8rpx rgba(0, 0, 0, 0.15) !important;
+  margin-top: -3rpx !important;
+  margin-left: -8rpx !important;
+}
+
+/* ========== 背面视图特殊样式 ========== */
+.back-view .back-upper {
+  position: absolute;
+  top: 165rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 180rpx;
+  height: 140rpx;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 50%, #ff8040 100%);
+  border-radius: 90rpx 90rpx 40rpx 40rpx;
+  box-shadow: 
+    inset 0 -20rpx 30rpx rgba(0, 0, 0, 0.12),
+    0 6rpx 15rpx rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* 脊柱线条 */
+.back-view .back-upper::before {
+  content: '';
+  position: absolute;
+  top: 20rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 100rpx;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+.back-view .back-lower {
+  position: absolute;
+  top: 295rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 160rpx;
+  height: 160rpx;
+  background: linear-gradient(135deg, #ffb380 0%, #ff9966 50%, #ff8040 100%);
+  border-radius: 30rpx;
+  box-shadow: 
+    inset 0 -15rpx 25rpx rgba(0, 0, 0, 0.12),
+    0 6rpx 15rpx rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+.back-view .gluteus {
+  position: absolute;
+  top: 445rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150rpx;
+  height: 90rpx;
+  background: linear-gradient(135deg, #ff9966 0%, #ff7733 100%);
+  border-radius: 75rpx 75rpx 40rpx 40rpx;
+  box-shadow: 
+    inset 0 -12rpx 20rpx rgba(0, 0, 0, 0.15),
+    0 4rpx 12rpx rgba(0, 0, 0, 0.15);
+  z-index: 2;
+}
+
+/* 臀部肌肉分隔 */
+.back-view .gluteus::before {
+  content: '';
+  position: absolute;
+  top: 10rpx;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2rpx;
+  height: 70rpx;
+  background: linear-gradient(180deg, 
+    rgba(0, 0, 0, 0) 0%,
+    rgba(0, 0, 0, 0.15) 50%,
+    rgba(0, 0, 0, 0) 100%
+  );
+}
+
+
+/* 肌肉分布图示样式 */
+.muscle-diagram {
+  width: 100%;
+  min-height: 400rpx;
+  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  border-radius: 20rpx;
+  overflow: hidden;
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  margin: 20rpx 0;
+  padding: 40rpx 30rpx;
+}
+
+.diagram-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30rpx;
+}
+
+.diagram-icon {
+  font-size: 120rpx;
+  filter: drop-shadow(0 4rpx 8rpx rgba(0, 0, 0, 0.1));
+}
+
+.diagram-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+}
+
+.muscle-groups {
+  display: flex;
+  gap: 20rpx;
+  width: 100%;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.muscle-group-item {
+  flex: 1;
+  min-width: 180rpx;
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
+  border: 2rpx solid #e0e0e0;
+}
+
+.group-icon {
+  font-size: 48rpx;
+}
+
+.group-name {
+  font-size: 26rpx;
+  color: #555555;
+  font-weight: 500;
+  text-align: center;
+}
+
+.diagram-note {
+  font-size: 24rpx;
+  color: #777777;
+  text-align: center;
+  line-height: 1.6;
+  padding: 0 20rpx;
+}
+

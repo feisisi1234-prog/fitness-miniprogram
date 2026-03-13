@@ -1,0 +1,126 @@
+/* components/training-card/training-card.wxss */
+.training-card {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  box-shadow: var(--shadow);
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.training-card:active {
+  transform: translateY(-4rpx);
+  box-shadow: var(--shadow-lg);
+}
+
+.training-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  padding: 30rpx;
+  border-bottom: 1rpx solid var(--border-color);
+}
+
+.card-icon {
+  width: 80rpx;
+  height: 80rpx;
+  margin-right: 20rpx;
+  background: linear-gradient(135deg, rgba(7, 193, 96, 0.1), rgba(7, 193, 96, 0.2));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-sm);
+}
+
+.card-icon image {
+  width: 50rpx;
+  height: 50rpx;
+}
+
+.card-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.card-category {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+  background: linear-gradient(135deg, rgba(7, 193, 96, 0.1), rgba(7, 193, 96, 0.2));
+  padding: 10rpx 20rpx;
+  border-radius: 30rpx;
+  font-weight: 500;
+}
+
+.card-content {
+  padding: 30rpx;
+}
+
+.card-description {
+  font-size: 30rpx;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin-bottom: 20rpx;
+}
+
+.card-info {
+  display: flex;
+  justify-content: space-between;
+  gap: 20rpx;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  background: linear-gradient(135deg, #f8f9fa, #f1f3f4);
+  padding: 20rpx 10rpx;
+  border-radius: 16rpx;
+  box-shadow: var(--shadow-sm);
+}
+
+.info-label {
+  font-size: 26rpx;
+  color: var(--text-muted);
+  margin-bottom: 10rpx;
+  font-weight: 500;
+}
+
+.info-value {
+  font-size: 32rpx;
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+.card-footer {
+  display: flex;
+  padding: 0 30rpx 30rpx;
+  gap: 20rpx;
+}
+
+.btn-small {
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 30rpx;
+  border-radius: 36rpx;
+  font-weight: bold;
+  box-shadow: var(--shadow-sm);
+  transition: all 0.3s ease;
+}
+
+.btn-small:active {
+  transform: scale(0.95);
+}

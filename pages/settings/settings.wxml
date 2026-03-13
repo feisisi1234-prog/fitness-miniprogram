@@ -1,0 +1,241 @@
+<!--settings.wxml-->
+<view class="page-container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">设置</text>
+  </view>
+
+  <!-- 个人信息设置 -->
+  <view class="settings-section">
+    <view class="section-title">个人信息</view>
+    <view class="settings-list">
+      <view class="setting-item" bindtap="editProfile">
+        <view class="item-left">
+          <text class="item-icon">👤</text>
+          <text class="item-label">编辑资料</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">{{userInfo.name}}</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="editAvatar">
+        <view class="item-left">
+          <text class="item-icon">📷</text>
+          <text class="item-label">头像</text>
+        </view>
+        <view class="item-right">
+          <image class="avatar-preview" src="{{userInfo.avatar || '/images/placeholder.png'}}"></image>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 训练设置 -->
+  <view class="settings-section">
+    <view class="section-title">训练设置</view>
+    <view class="settings-list">
+      <view class="setting-item" bindtap="setDailyGoal">
+        <view class="item-left">
+          <text class="item-icon">🎯</text>
+          <text class="item-label">每日目标</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">{{dailyGoal.minutes}}分钟</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item">
+        <view class="item-left">
+          <text class="item-icon">🔔</text>
+          <text class="item-label">训练提醒</text>
+        </view>
+        <view class="item-right">
+          <switch checked="{{reminderEnabled}}" bindchange="toggleReminder" color="#07c160"/>
+        </view>
+      </view>
+      
+      <view class="setting-item" wx:if="{{reminderEnabled}}" bindtap="setReminderTime">
+        <view class="item-left">
+          <text class="item-icon">⏰</text>
+          <text class="item-label">提醒时间</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">{{reminderTime}}</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item">
+        <view class="item-left">
+          <text class="item-icon">🔊</text>
+          <text class="item-label">语音提示</text>
+        </view>
+        <view class="item-right">
+          <switch checked="{{voiceEnabled}}" bindchange="toggleVoice" color="#07c160"/>
+        </view>
+      </view>
+      
+      <view class="setting-item" wx:if="{{voiceEnabled}}" bindtap="setVoiceInterval">
+        <view class="item-left">
+          <text class="item-icon">⏱️</text>
+          <text class="item-label">语音间隔</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">{{voiceInterval}}秒</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 显示设置 -->
+  <view class="settings-section">
+    <view class="section-title">显示设置</view>
+    <view class="settings-list">
+      <view class="setting-item" bindtap="selectUnit">
+        <view class="item-left">
+          <text class="item-icon">📏</text>
+          <text class="item-label">单位制式</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">{{unit === 'metric' ? '公制' : '英制'}}</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item">
+        <view class="item-left">
+          <text class="item-icon">🌙</text>
+          <text class="item-label">深色模式</text>
+        </view>
+        <view class="item-right">
+          <switch checked="{{darkMode}}" bindchange="toggleDarkMode" color="#07c160"/>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 数据管理 -->
+  <view class="settings-section">
+    <view class="section-title">数据管理</view>
+    <view class="settings-list">
+      <view class="setting-item" bindtap="generateTestData">
+        <view class="item-left">
+          <text class="item-icon">🧪</text>
+          <text class="item-label">生成测试数据</text>
+        </view>
+        <view class="item-right">
+          <text class="item-desc">2月份10天</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="viewAllRecords">
+        <view class="item-left">
+          <text class="item-icon">📊</text>
+          <text class="item-label">查看所有记录</text>
+        </view>
+        <view class="item-right">
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="exportData">
+        <view class="item-left">
+          <text class="item-icon">📤</text>
+          <text class="item-label">导出数据</text>
+        </view>
+        <view class="item-right">
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="clearCache">
+        <view class="item-left">
+          <text class="item-icon">🗑️</text>
+          <text class="item-label">清除缓存</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">{{cacheSize}}</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="clearAllRecords">
+        <view class="item-left">
+          <text class="item-icon">🗑️</text>
+          <text class="item-label">清除所有记录</text>
+        </view>
+        <view class="item-right">
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="resetData">
+        <view class="item-left">
+          <text class="item-icon">⚠️</text>
+          <text class="item-label">重置数据</text>
+        </view>
+        <view class="item-right">
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于 -->
+  <view class="settings-section">
+    <view class="section-title">关于</view>
+    <view class="settings-list">
+      <view class="setting-item" bindtap="checkUpdate">
+        <view class="item-left">
+          <text class="item-icon">🔄</text>
+          <text class="item-label">检查更新</text>
+        </view>
+        <view class="item-right">
+          <text class="item-value">v1.0.0</text>
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="showAbout">
+        <view class="item-left">
+          <text class="item-icon">ℹ️</text>
+          <text class="item-label">关于我们</text>
+        </view>
+        <view class="item-right">
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="showPrivacy">
+        <view class="item-left">
+          <text class="item-icon">🔒</text>
+          <text class="item-label">隐私政策</text>
+        </view>
+        <view class="item-right">
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+      
+      <view class="setting-item" bindtap="showTerms">
+        <view class="item-left">
+          <text class="item-icon">📄</text>
+          <text class="item-label">用户协议</text>
+        </view>
+        <view class="item-right">
+          <text class="item-arrow">›</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 退出登录按钮 -->
+  <view class="logout-section">
+    <button class="logout-btn" bindtap="logout">退出登录</button>
+  </view>
+</view>

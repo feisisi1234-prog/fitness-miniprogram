@@ -1,0 +1,620 @@
+/* pages/custom-plans/custom-plans.wxss */
+.container {
+  padding: 20rpx;
+  background-color: #f5f7fa;
+  min-height: 100vh;
+}
+
+/* 添加计划按钮组 */
+.add-plan-buttons {
+  display: flex;
+  gap: 20rpx;
+  margin-bottom: 40rpx;
+}
+
+/* 添加计划按钮 */
+.add-plan-btn {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #07c160, #007aff);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+}
+
+.scan-btn {
+  background: linear-gradient(135deg, #ff9500, #ff6b00);
+}
+
+.add-plan-btn:active {
+  transform: translateY(-4rpx);
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+}
+
+.btn-icon {
+  font-size: 36rpx;
+  margin-right: 16rpx;
+  color: #fff;
+}
+
+.btn-text {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #fff;
+}
+
+/* 计划列表 */
+.plans-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30rpx;
+}
+
+.plan-card {
+  background: linear-gradient(135deg, #ffffff, #f8f9fa);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  box-shadow: 0 2rpx 10rpx rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #ff9500, #ff9500);
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.plan-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.plan-category {
+  background: linear-gradient(135deg, rgba(255, 159, 64, 0.1), rgba(255, 159, 64, 0.2));
+  color: #ff9500;
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+
+/* 计划动作列表 */
+.plan-exercises {
+  margin-bottom: 20rpx;
+}
+
+.exercise-item {
+  display: flex;
+  align-items: center;
+  padding: 20rpx 0;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.exercise-item:last-child {
+  border-bottom: none;
+}
+
+.exercise-checkbox {
+  margin-right: 20rpx;
+}
+
+.exercise-content {
+  flex: 1;
+}
+
+.exercise-name {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 8rpx;
+  display: block;
+}
+
+.exercise-details {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+/* 计划元信息 */
+.plan-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+}
+
+.meta-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.meta-text {
+  font-size: 24rpx;
+  color: #666666;
+  font-weight: 500;
+}
+
+/* 计划操作按钮 */
+.plan-actions {
+  display: flex;
+  justify-content: space-between;
+  gap: 10rpx;
+}
+
+.action-btn {
+  flex: 1;
+  height: 70rpx;
+  border-radius: 35rpx;
+  font-size: 26rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.start-btn {
+  background: linear-gradient(135deg, #07c160, #007aff);
+  color: #fff;
+}
+
+.edit-btn {
+  background: linear-gradient(135deg, #ff9500, #ff9500);
+  color: #fff;
+}
+
+.delete-btn {
+  background: linear-gradient(135deg, #ff6b6b, #ee5a52);
+  color: #fff;
+}
+
+/* 空状态 */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+}
+
+.empty-icon {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.5;
+}
+
+.empty-text {
+  font-size: 32rpx;
+  color: #999999;
+  margin-bottom: 15rpx;
+}
+
+.empty-tip {
+  font-size: 26rpx;
+  color: #999999;
+  opacity: 0.7;
+}
+
+/* 文字选择弹窗样式 */
+.text-selection-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-selection-modal .modal-content {
+  position: relative;
+  width: 90%;
+  max-height: 70%;
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.15);
+  z-index: 1101;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-tip {
+  display: flex;
+  align-items: center;
+  background: rgba(255, 159, 64, 0.1);
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.tip-icon {
+  font-size: 32rpx;
+  margin-right: 12rpx;
+}
+
+.tip-text {
+  font-size: 26rpx;
+  color: #666666;
+  flex: 1;
+}
+
+.selection-actions {
+  display: flex;
+  gap: 15rpx;
+  margin-bottom: 20rpx;
+}
+
+.selection-action-btn {
+  flex: 1;
+  height: 60rpx;
+  background: linear-gradient(135deg, #07c160, #007aff);
+  color: #fff;
+  font-size: 26rpx;
+  border-radius: 30rpx;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text-lines-scroll {
+  flex: 1;
+  overflow-y: auto;
+  margin-bottom: 20rpx;
+}
+
+.text-line-item {
+  display: flex;
+  align-items: flex-start;
+  padding: 20rpx;
+  margin-bottom: 15rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+}
+
+.text-line-item.selected {
+  background: rgba(7, 193, 96, 0.1);
+  border-color: #07c160;
+}
+
+.line-checkbox {
+  margin-right: 15rpx;
+  padding-top: 4rpx;
+}
+
+.line-text {
+  flex: 1;
+  font-size: 28rpx;
+  color: #333333;
+  line-height: 1.6;
+  word-break: break-all;
+}
+
+.text-line-item.selected .line-text {
+  color: #07c160;
+  font-weight: 500;
+}
+
+/* 表单弹窗样式 */
+.plan-form-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content {
+  position: relative;
+  width: 90%;
+  height: 80%;
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30rpx;
+}
+
+.modal-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.close-btn {
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: #666666;
+}
+
+.form-scroll {
+  flex: 1;
+  overflow-y: auto;
+}
+
+.form-group {
+  margin-bottom: 30rpx;
+}
+
+.form-label {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 0 20rpx;
+  font-size: 30rpx;
+  color: #333333;
+  border: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+/* 类别选择 */
+.category-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20rpx;
+}
+
+.category-option {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx;
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  border: 2rpx solid transparent;
+  transition: all 0.3s ease;
+  min-width: 160rpx;
+}
+
+.category-option.active {
+  border-color: #07c160;
+  background: rgba(7, 193, 96, 0.1);
+}
+
+.category-icon {
+  font-size: 36rpx;
+  margin-bottom: 10rpx;
+}
+
+.category-name {
+  font-size: 26rpx;
+  color: #666666;
+}
+
+.category-option.active .category-name {
+  color: #07c160;
+}
+
+/* 动作模板 */
+.exercise-templates {
+  margin-bottom: 30rpx;
+}
+
+.template-title {
+  font-size: 28rpx;
+  color: #666666;
+  margin-bottom: 20rpx;
+  display: block;
+}
+
+.template-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15rpx;
+}
+
+.template-item {
+  background: rgba(7, 193, 96, 0.05);
+  border: 1rpx solid rgba(7, 193, 96, 0.2);
+  border-radius: 30rpx;
+  padding: 10rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.template-item:active {
+  background: rgba(7, 193, 96, 0.1);
+  transform: scale(0.95);
+}
+
+.template-name {
+  font-size: 26rpx;
+  color: #333333;
+  font-weight: 500;
+}
+
+.template-category {
+  font-size: 22rpx;
+  color: #999999;
+}
+
+/* 训练动作表单 */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.add-exercise-btn {
+  background: linear-gradient(135deg, #07c160, #007aff);
+  color: #fff;
+  font-size: 26rpx;
+  padding: 10rpx 20rpx;
+  border-radius: 20rpx;
+  border: none;
+}
+
+.exercise-form-list {
+  margin-top: 20rpx;
+}
+
+.exercise-form-item {
+  background: #f8f9fa;
+  border-radius: 16rpx;
+  padding: 20rpx;
+  margin-bottom: 20rpx;
+}
+
+.exercise-form-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.exercise-index {
+  font-size: 30rpx;
+  font-weight: bold;
+  color: #333333;
+}
+
+.delete-exercise-btn {
+  font-size: 26rpx;
+  color: #ff6b6b;
+}
+
+.form-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20rpx;
+  gap: 20rpx;
+}
+
+.form-label-small {
+  font-size: 26rpx;
+  color: #666666;
+  width: 160rpx;
+}
+
+.form-input-small {
+  flex: 1;
+  height: 60rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  padding: 0 15rpx;
+  font-size: 26rpx;
+  color: #333333;
+  border: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.image-upload {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 120rpx;
+  background: #fff;
+  border-radius: 12rpx;
+  border: 1rpx dashed rgba(0, 0, 0, 0.2);
+}
+
+.exercise-image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 8rpx;
+  margin-bottom: 10rpx;
+}
+
+.upload-tip {
+  font-size: 24rpx;
+  color: #999999;
+}
+
+.modal-footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.1);
+}
+
+.cancel-btn, .save-btn {
+  width: 45%;
+  height: 80rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 500;
+  border: none;
+}
+
+.cancel-btn {
+  background: #f8f9fa;
+  color: #666666;
+}
+
+.save-btn {
+  background: linear-gradient(135deg, #07c160, #007aff);
+  color: #fff;
+}

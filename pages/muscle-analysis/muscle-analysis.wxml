@@ -1,0 +1,266 @@
+<view class="container">
+  <!-- 标签页切换 -->
+  <view class="tabs">
+    <view class="tab-item {{currentTab === 0 ? 'active' : ''}}" bindtap="switchTab" data-index="0">肌纤维走向</view>
+    <view class="tab-item {{currentTab === 1 ? 'active' : ''}}" bindtap="switchTab" data-index="1">肌肉张力计算</view>
+  </view>
+
+  <!-- 肌纤维走向页面 -->
+  <view class="tab-content" wx:if="{{currentTab === 0}}">
+    <!-- 肌肉分布说明区域 -->
+    <view class="model-container">
+      <view class="diagram-title">
+        <text>人体肌肉分布图</text>
+        <text class="diagram-tip">点击下方动作查看肌肉详情</text>
+      </view>
+      
+      <!-- 肌肉分布图示 -->
+      <view class="muscle-diagram">
+        <view class="diagram-content">
+          <text class="diagram-icon">🧍</text>
+          <text class="diagram-text">人体主要肌肉群</text>
+          <view class="muscle-groups">
+            <view class="muscle-group-item">
+              <text class="group-icon">💪</text>
+              <text class="group-name">上肢肌群</text>
+            </view>
+            <view class="muscle-group-item">
+              <text class="group-icon">🫀</text>
+              <text class="group-name">核心肌群</text>
+            </view>
+            <view class="muscle-group-item">
+              <text class="group-icon">🦵</text>
+              <text class="group-name">下肢肌群</text>
+            </view>
+          </view>
+          <text class="diagram-note">选择下方动作了解具体肌肉的纤维走向</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 肌肉动作选择 -->
+    <view class="action-list">
+      <view class="action-item {{selectedAction === index ? 'active' : ''}}" 
+            wx:for="{{muscleActions}}" 
+            wx:key="id"
+            bindtap="selectAction" 
+            data-index="{{index}}">
+        <text class="action-name">{{item.name}}</text>
+        <text class="muscle-group">{{item.muscleGroup}}</text>
+      </view>
+    </view>
+
+    <!-- 动作详情 -->
+    <view class="action-detail" wx:if="{{selectedAction !== null}}">
+      <view class="detail-header">
+        <text class="detail-title">{{muscleActions[selectedAction].name}}</text>
+        <text class="detail-subtitle">目标肌群: {{muscleActions[selectedAction].muscleGroup}}</text>
+      </view>
+      
+      <view class="detail-content">
+        <view class="detail-section">
+          <text class="section-title">肌纤维走向</text>
+          <text class="section-content">{{muscleActions[selectedAction].fiberDirection}}</text>
+        </view>
+        
+        <view class="detail-section">
+          <text class="section-title">动作描述</text>
+          <text class="section-content">{{muscleActions[selectedAction].description}}</text>
+        </view>
+        
+        <view class="detail-image">
+          <view class="image-placeholder">
+            <text class="placeholder-icon">💪</text>
+            <text class="placeholder-title">肌纤维走向示意图</text>
+            <text class="placeholder-note">当前动作：{{muscleActions[selectedAction].name}}</text>
+            <text class="placeholder-note">目标肌群：{{muscleActions[selectedAction].muscleGroup}}</text>
+            <text class="placeholder-desc">{{muscleActions[selectedAction].fiberDirection}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 肌肉详情弹窗 -->
+  <view class="muscle-detail-modal" wx:if="{{showMuscleDetail}}">
+    <view class="modal-mask" bindtap="hideMuscleDetail"></view>
+    <view class="modal-content">
+      <view class="modal-header">
+        <text class="modal-title">{{muscleDetails[selectedMuscle].name}}</text>
+        <button class="close-btn" bindtap="hideMuscleDetail">×</button>
+      </view>
+      
+      <view class="modal-body">
+        <view class="detail-row">
+          <text class="detail-label">功能:</text>
+          <text class="detail-value">{{muscleDetails[selectedMuscle].function}}</text>
+        </view>
+        
+        <view class="detail-row">
+          <text class="detail-label">起点:</text>
+          <text class="detail-value">{{muscleDetails[selectedMuscle].origin}}</text>
+        </view>
+        
+        <view class="detail-row">
+          <text class="detail-label">止点:</text>
+          <text class="detail-value">{{muscleDetails[selectedMuscle].insertion}}</text>
+        </view>
+        
+        <view class="detail-row">
+          <text class="detail-label">神经支配:</text>
+          <text class="detail-value">{{muscleDetails[selectedMuscle].innervation}}</text>
+        </view>
+        
+        <view class="detail-row">
+          <text class="detail-label">血液供应:</text>
+          <text class="detail-value">{{muscleDetails[selectedMuscle].bloodSupply}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 肌肉张力计算页面 -->
+  <view class="tab-content" wx:if="{{currentTab === 1}}">
+    <!-- 肌肉张力知识点 -->
+    <view class="knowledge-section">
+      <view class="knowledge-header">
+        <text class="knowledge-icon">📚</text>
+        <text class="knowledge-title">肌肉张力基础知识</text>
+      </view>
+      
+      <view class="knowledge-content">
+        <view class="knowledge-item">
+          <text class="knowledge-subtitle">什么是肌肉张力？</text>
+          <text class="knowledge-text">肌肉张力是指肌肉在静止或收缩状态下产生的内部张力。它由主动收缩力和被动弹性力组成，是评估肌肉功能的重要指标。</text>
+        </view>
+        
+        <view class="knowledge-item">
+          <text class="knowledge-subtitle">影响因素</text>
+          <view class="factor-list">
+            <view class="factor-item">
+              <text class="factor-icon">💪</text>
+              <text class="factor-text">肌纤维类型：快肌纤维产生更大张力</text>
+            </view>
+            <view class="factor-item">
+              <text class="factor-icon">📏</text>
+              <text class="factor-text">肌肉长度：最佳长度时张力最大</text>
+            </view>
+            <view class="factor-item">
+              <text class="factor-icon">⚡</text>
+              <text class="factor-text">收缩速度：速度越快张力越小</text>
+            </view>
+            <view class="factor-item">
+              <text class="factor-icon">🔄</text>
+              <text class="factor-text">杠杆效应：力臂长度影响实际张力</text>
+            </view>
+          </view>
+        </view>
+        
+        <view class="knowledge-item">
+          <text class="knowledge-subtitle">计算原理</text>
+          <text class="knowledge-text">根据力矩平衡原理：肌肉张力 × 肌肉力臂 = 负重 × 负重力臂。通过测量负重和力臂距离，可以估算肌肉承受的张力。</text>
+        </view>
+        
+        <view class="knowledge-item">
+          <text class="knowledge-subtitle">训练意义</text>
+          <text class="knowledge-text">了解肌肉张力有助于：1) 选择合适的训练重量；2) 避免肌肉过度疲劳；3) 优化训练效果；4) 预防运动损伤。</text>
+        </view>
+      </view>
+    </view>
+
+    <!-- 练习选择列表 -->
+    <view class="exercise-list">
+      <text class="section-title">选择训练动作</text>
+      <view class="exercise-item {{selectedExercise === index ? 'active' : ''}}" 
+            wx:for="{{dumbbellData}}" 
+            wx:key="index"
+            bindtap="selectExercise" 
+            data-index="{{index}}">
+        <text class="exercise-name">{{item.exercise}}</text>
+        <text class="target-muscle">目标: {{item.muscle}}</text>
+      </view>
+    </view>
+
+    <!-- 计算器内容 -->
+    <view class="tension-calculator">
+      <view class="formula-section">
+        <text class="formula-title">肌肉张力计算公式</text>
+        <view class="formula-box">
+          <text class="formula-main">弯矩(M) = 力(F) × 力臂(L)</text>
+          <text class="formula-detail">其中：力(F) = 重量(kg) × 9.8 N/kg</text>
+          <text class="formula-detail">力臂(L) = 从重量质心到关节的垂直距离(m)</text>
+        </view>
+        <view class="formula-simplified">
+          <text class="formula-label">简化公式：</text>
+          <text class="formula-content">{{dumbbellData[selectedExercise].tensionFormula}}</text>
+          <text class="formula-note">{{dumbbellData[selectedExercise].formulaNote}}</text>
+        </view>
+      </view>
+
+      <view class="data-section">
+        <text class="data-title">参考数据表</text>
+        <view class="data-table">
+          <view class="table-header">
+            <text class="header-cell">哑铃重量(kg)</text>
+            <text class="header-cell">弯矩(N·m)</text>
+            <text class="header-cell">肌肉张力(kg)</text>
+          </view>
+          <view class="table-row" wx:for="{{dumbbellData[selectedExercise].data}}" wx:key="index" wx:for-item="dataItem">
+            <text class="table-cell">{{dataItem.weight}}</text>
+            <text class="table-cell">{{dataItem.moment}}</text>
+            <text class="table-cell">{{dataItem.tension}}</text>
+          </view>
+        </view>
+      </view>
+
+      <view class="custom-calculation">
+        <text class="calc-title">自定义计算</text>
+        <view class="calc-form">
+          <view class="input-group">
+            <text class="input-label">哑铃重量 (kg)</text>
+            <input class="weight-input" 
+                   type="digit" 
+                   placeholder="请输入重量" 
+                   value="{{customWeight}}"
+                   bindinput="onWeightInput" />
+          </view>
+          
+          <view class="input-group" wx:if="{{showAdvanced}}">
+            <text class="input-label">力臂长度 (m，可选)</text>
+            <input class="weight-input" 
+                   type="digit" 
+                   placeholder="默认使用标准力臂" 
+                   value="{{customLeverArm}}"
+                   bindinput="onLeverArmInput" />
+          </view>
+          
+          <view class="toggle-advanced">
+            <text class="toggle-text" bindtap="toggleAdvanced">{{showAdvanced ? '隐藏' : '显示'}}高级选项</text>
+          </view>
+          
+          <button class="calculate-btn" bindtap="calculateTension">计算肌肉张力</button>
+        </view>
+        
+        <view class="result-section" wx:if="{{calculatedTension > 0}}">
+          <view class="result-header">
+            <text class="result-title">计算结果</text>
+          </view>
+          <view class="result-content">
+            <view class="result-item">
+              <text class="result-label">弯矩 (N·m)</text>
+              <text class="result-value-large">{{calculatedMoment}}</text>
+            </view>
+            <view class="result-item">
+              <text class="result-label">肌肉张力 (kg)</text>
+              <text class="result-value-large">{{calculatedTension}}</text>
+            </view>
+            <view class="result-note-box">
+              <text class="result-note">这是{{dumbbellData[selectedExercise].muscle}}所受的张力</text>
+              <text class="result-tip">{{dumbbellData[selectedExercise].trainingTip}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

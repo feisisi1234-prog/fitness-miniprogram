@@ -1,0 +1,156 @@
+/**edit.wxss**/
+page {
+  height: 100vh;
+  background-color: var(--bg-secondary);
+}
+
+.container {
+  padding: 20rpx;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.header {
+  margin-bottom: 40rpx;
+}
+
+.title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #333333;
+  text-align: center;
+  margin-top: 40rpx;
+}
+
+.form-section {
+  flex: 1;
+}
+
+.form-item {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 30rpx;
+  margin-bottom: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.05);
+}
+
+.form-label {
+  font-size: 32rpx;
+  color: #333333;
+  margin-bottom: 20rpx;
+  font-weight: 500;
+}
+
+.form-input {
+  width: 100%;
+  height: 80rpx;
+  font-size: 30rpx;
+  color: #333333;
+  border: 2rpx solid #e0e0e0;
+  border-radius: 12rpx;
+  padding: 0 20rpx;
+  box-sizing: border-box;
+}
+
+.avatar-container {
+  position: relative;
+  width: 160rpx;
+  height: 160rpx;
+  margin: 0 auto;
+}
+
+.avatar-img {
+  width: 160rpx;
+  height: 160rpx;
+  border-radius: 80rpx;
+  border: 4rpx solid #e0e0e0;
+}
+
+.edit-icon {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 50rpx;
+  height: 50rpx;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 28rpx;
+}
+
+.gender-options {
+  display: flex;
+  justify-content: space-between;
+}
+
+.gender-option {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20rpx 10rpx;
+  border-radius: 12rpx;
+  border: 2rpx solid #e0e0e0;
+  margin: 0 10rpx;
+  transition: all 0.3s ease;
+}
+
+.gender-option:first-child {
+  margin-left: 0;
+}
+
+.gender-option:last-child {
+  margin-right: 0;
+}
+
+.gender-option.active {
+  border-color: var(--primary-color);
+  background-color: rgba(7, 193, 96, 0.1);
+}
+
+.gender-icon {
+  font-size: 40rpx;
+  margin-bottom: 10rpx;
+}
+
+.input-with-unit {
+  display: flex;
+  align-items: center;
+}
+
+.input-with-unit .form-input {
+  flex: 1;
+}
+
+.unit {
+  margin-left: 20rpx;
+  font-size: 30rpx;
+  color: #666666;
+}
+
+.button-section {
+  margin-top: 40rpx;
+  padding-bottom: 40rpx;
+}
+
+.save-btn {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(135deg, #07c160, #06ae56);
+  color: white;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+}
+
+.save-btn:active {
+  opacity: 0.8;
+}

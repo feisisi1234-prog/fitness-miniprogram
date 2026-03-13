@@ -1,0 +1,80 @@
+{
+  "setting": {
+    "es6": true,
+    "postcss": true,
+    "minified": true,
+    "uglifyFileName": false,
+    "enhance": true,
+    "packNpmRelationList": [],
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useCompilerPlugins": false,
+    "minifyWXML": true,
+    "compileWorklet": false,
+    "uploadWithSourceMap": true,
+    "packNpmManually": false,
+    "minifyWXSS": true,
+    "localPlugins": false,
+    "disableUseStrict": false,
+    "condition": false,
+    "swc": false,
+    "disableSWC": true
+  },
+  "compileType": "miniprogram",
+  "simulatorPluginLibVersion": {},
+  "packOptions": {
+    "ignore": [
+      {
+        "type": "file",
+        "value": "*.mp4"
+      },
+      {
+        "type": "file",
+        "value": "*backup*"
+      },
+      {
+        "type": "folder",
+        "value": "docs"
+      },
+      {
+        "type": "folder",
+        "value": "scripts"
+      },
+      {
+        "type": "folder",
+        "value": "components/model-viewer"
+      },
+      {
+        "type": "folder",
+        "value": "components/muscle-video-player"
+      },
+      {
+        "type": "folder",
+        "value": "components/training-card"
+      },
+      {
+        "type": "file",
+        "value": "libs/three.weapp.js"
+      },
+      {
+        "type": "file",
+        "value": "images/README.md"
+      },
+      {
+        "type": "file",
+        "value": ".eslintrc.js"
+      },
+      {
+        "type": "file",
+        "value": "README.md"
+      }
+    ],
+    "include": []
+  },
+  "appid": "wx842d6260ee3eafad",
+  "editorSetting": {},
+  "libVersion": "3.11.1"
+}

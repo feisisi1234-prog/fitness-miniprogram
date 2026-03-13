@@ -1,0 +1,87 @@
+<!--pages/food-recognition/food-recognition.wxml-->
+<navigation-bar title="食物识别" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="container">
+  <!-- 未选择图片状态 -->
+  <view class="upload-area" wx:if="{{!selectedImage}}" bindtap="chooseImage">
+    <view class="upload-icon">📷</view>
+    <view class="upload-text">轻触此处拍照</view>
+    <view class="upload-hint">也可以从相册选择图片</view>
+  </view>
+
+  <!-- 已选择图片状态 -->
+  <view class="preview-area" wx:if="{{selectedImage && !showResult}}">
+    <image class="preview-image" src="{{selectedImage}}" mode="aspectFit"></image>
+    
+    <view class="action-buttons">
+      <button class="action-btn reselect-btn" bindtap="chooseImage">重新选择</button>
+      <button class="action-btn recognize-btn" bindtap="startRecognition" disabled="{{isRecognizing}}">
+        {{isRecognizing ? '识别中...' : '开始识别'}}
+      </button>
+    </view>
+  </view>
+
+  <!-- 识别结果 -->
+  <view class="result-area" wx:if="{{showResult && recognitionResult}}">
+    <view class="result-image-wrapper">
+      <image class="result-image" src="{{selectedImage}}" mode="aspectFit"></image>
+    </view>
+
+    <view class="result-card">
+      <view class="result-header">
+        <text class="result-title">识别结果</text>
+        <view class="result-badge">✓</view>
+      </view>
+
+      <view class="result-item">
+        <view class="result-label">食物名称</view>
+        <view class="result-value name-value">{{recognitionResult.name}}</view>
+      </view>
+
+      <view class="result-divider"></view>
+
+      <view class="result-grid">
+        <view class="result-grid-item">
+          <view class="grid-icon">🔥</view>
+          <view class="grid-label">热量</view>
+          <view class="grid-value">{{recognitionResult.calories}}</view>
+        </view>
+
+        <view class="result-grid-item">
+          <view class="grid-icon">📊</view>
+          <view class="grid-label">升糖指数(GI)</view>
+          <view class="grid-value">{{recognitionResult.gi}}</view>
+        </view>
+
+        <view class="result-grid-item">
+          <view class="grid-icon">📈</view>
+          <view class="grid-label">升糖负荷(GL)</view>
+          <view class="grid-value">{{recognitionResult.gl}}</view>
+        </view>
+      </view>
+
+      <view class="result-divider"></view>
+
+      <view class="result-item suggestion-item">
+        <view class="result-label">
+          <text class="label-icon">💡</text>
+          <text>食用建议</text>
+        </view>
+        <view class="result-value suggestion-value">{{recognitionResult.suggestion}}</view>
+      </view>
+    </view>
+
+    <view class="bottom-actions">
+      <button class="bottom-btn" bindtap="resetRecognition">识别其他食物</button>
+    </view>
+  </view>
+
+  <!-- 加载状态 -->
+  <view class="loading-overlay" wx:if="{{isRecognizing}}">
+    <view class="loading-content">
+      <view class="loading-spinner"></view>
+      <view class="loading-text">AI 正在识别中...</view>
+      <view class="loading-hint">请稍候，这可能需要几秒钟</view>
+    </view>
+  </view>
+</view>

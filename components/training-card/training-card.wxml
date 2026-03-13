@@ -1,0 +1,34 @@
+<!--components/training-card/training-card.wxml-->
+<view class="training-card" bindtap="onCardTap">
+  <view class="card-header">
+    <view class="card-icon">
+      <image src="{{icon}}" mode="aspectFit"></image>
+    </view>
+    <view class="card-title">{{title}}</view>
+    <view class="card-category">{{category}}</view>
+  </view>
+  
+  <view class="card-content">
+    <view class="card-description">{{description}}</view>
+    
+    <view class="card-info">
+      <view class="info-item" wx:if="{{duration}}">
+        <text class="info-label">时长</text>
+        <text class="info-value">{{duration}}</text>
+      </view>
+      <view class="info-item" wx:if="{{calories}}">
+        <text class="info-label">消耗</text>
+        <text class="info-value">{{calories}}卡</text>
+      </view>
+      <view class="info-item" wx:if="{{difficulty}}">
+        <text class="info-label">难度</text>
+        <text class="info-value">{{difficulty}}</text>
+      </view>
+    </view>
+  </view>
+  
+  <view class="card-footer" wx:if="{{showActions}}">
+    <button class="btn btn-primary btn-small" catchtap="onStart">开始训练</button>
+    <button class="btn btn-outline btn-small" catchtap="onDetail">查看详情</button>
+  </view>
+</view>

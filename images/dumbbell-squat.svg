@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" fill="none">
+  <rect width="100" height="100" fill="#f0f2f5"/>
+  <!-- 哑铃深蹲 -->
+  <g transform="translate(50, 50)">
+    <circle cx="0" cy="-12" r="5" fill="#6c5ce7"/>
+    <path d="M0,-7 L0,5" stroke="#6c5ce7" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0,0 L-8,3 M0,0 L8,3" stroke="#6c5ce7" stroke-width="3" stroke-linecap="round"/>
+    <path d="M0,5 L-6,15 M0,5 L6,15" stroke="#6c5ce7" stroke-width="3" stroke-linecap="round"/>
+    <rect x="-12" y="1" width="6" height="3" rx="1" fill="#2d3436"/>
+    <circle cx="-9" cy="2.5" r="2" fill="#2d3436"/>
+    <rect x="6" y="1" width="6" height="3" rx="1" fill="#2d3436"/>
+    <circle cx="9" cy="2.5" r="2" fill="#2d3436"/>
+  </g>
+</svg>

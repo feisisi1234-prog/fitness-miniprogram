@@ -1,0 +1,85 @@
+<!--timer.wxml-->
+<navigation-bar title="运动计时" back="{{false}}" color="black" background="#FFF"></navigation-bar>
+<view class="container">
+  <!-- 计时器显示 -->
+  <view class="timer-display">
+    <view class="timer-circle">
+      <view class="timer-text">{{formatTime}}</view>
+      <view class="timer-status">{{isRunning ? '运动中' : '准备就绪'}}</view>
+    </view>
+    <view class="calories-display">
+      <view class="calories-text">{{totalCalories}}</view>
+      <view class="calories-label">千卡</view>
+    </view>
+  </view>
+
+  <!-- 计时器控制 -->
+  <view class="timer-controls">
+    <view class="control-btn {{isRunning ? 'pause' : 'start'}}" bindtap="toggleTimer">
+      <text>{{isRunning ? '暂停' : '开始'}}</text>
+    </view>
+    <view class="control-btn reset" bindtap="resetTimer" wx:if="{{!isRunning && seconds > 0}}">
+      <text>重置</text>
+    </view>
+    <view class="control-btn lap" bindtap="recordLap" wx:if="{{isRunning}}">
+      <text>记录</text>
+    </view>
+    <view class="control-btn finish" bindtap="finishTraining" wx:if="{{!isRunning && seconds > 0}}">
+      <text>完成</text>
+    </view>
+  </view>
+
+  <!-- 语音设置 -->
+  <view class="voice-settings">
+    <view class="section-title">语音设置</view>
+    <view class="voice-control">
+      <view class="voice-toggle">
+        <text class="voice-label">语音提示</text>
+        <switch class="voice-switch" checked="{{voiceEnabled}}" bindchange="toggleVoice" color="#07c160" />
+      </view>
+      <view class="voice-interval" wx:if="{{voiceEnabled}}">
+        <text class="interval-label">提示间隔</text>
+        <view class="interval-options">
+          <view class="interval-option {{voiceInterval === 30 ? 'active' : ''}}" bindtap="setVoiceInterval" data-interval="30">30秒</view>
+          <view class="interval-option {{voiceInterval === 60 ? 'active' : ''}}" bindtap="setVoiceInterval" data-interval="60">1分钟</view>
+          <view class="interval-option {{voiceInterval === 120 ? 'active' : ''}}" bindtap="setVoiceInterval" data-interval="120">2分钟</view>
+          <view class="interval-option {{voiceInterval === 300 ? 'active' : ''}}" bindtap="setVoiceInterval" data-interval="300">5分钟</view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 预设时间 -->
+  <view class="preset-times">
+    <view class="section-title">快速设置</view>
+    <view class="preset-grid">
+      <view class="preset-item" wx:for="{{presetTimes}}" wx:key="seconds" bindtap="setPresetTime" data-seconds="{{item.seconds}}">
+        <text>{{item.name}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 记录列表 -->
+  <view class="lap-times" wx:if="{{lapTimes.length > 0}}">
+    <view class="section-title">运动记录</view>
+    <scroll-view class="lap-list" scroll-y>
+      <view class="lap-item" wx:for="{{lapTimes}}" wx:key="index">
+        <view class="lap-index">记录 {{index + 1}}</view>
+        <view class="lap-time">{{item.time}}</view>
+        <view class="lap-calories">{{item.calories}}千卡</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 运动类型选择 -->
+  <view class="exercise-type">
+    <view class="section-title">运动类型</view>
+    <view class="type-list">
+      <view class="type-item {{currentType === item.type ? 'active' : ''}}" wx:for="{{exerciseTypes}}" wx:key="type" bindtap="selectExerciseType" data-type="{{item.type}}">
+        <image src="{{item.icon}}" class="type-icon"></image>
+        <text>{{item.name}}</text>
+        <text class="calories-rate">{{item.caloriesPerMinute}}千卡/分钟</text>
+      </view>
+    </view>
+  </view>
+</view>

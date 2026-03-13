@@ -1,0 +1,131 @@
+<!--index.wxml-->
+<view class="page-container">
+  <!-- 顶部欢迎区域 -->
+  <view class="welcome-section">
+    <view class="welcome-header">
+      <view class="user-greeting">
+        <text class="greeting-text">你好，{{userInfo.name || '健身达人'}}</text>
+        <text class="greeting-subtitle">今天也要坚持锻炼哦！</text>
+      </view>
+      <view class="user-avatar">
+        <image src="{{userInfo.avatar || '/images/placeholder.png'}}" class="avatar-image"></image>
+      </view>
+    </view>
+    
+    <!-- 今日目标卡片 -->
+    <view class="goal-card card">
+      <view class="goal-header">
+        <text class="goal-title">今日目标</text>
+        <text class="goal-progress">{{todayProgress}}%</text>
+      </view>
+      <view class="goal-content">
+        <view class="goal-item">
+          <text class="goal-label">运动时长</text>
+          <text class="goal-value">{{todayMinutes}}/{{dailyGoal.minutes}}分钟</text>
+        </view>
+        <view class="goal-item">
+          <text class="goal-label">消耗卡路里</text>
+          <text class="goal-value">{{todayCalories}}/{{dailyGoal.calories}}千卡</text>
+        </view>
+      </view>
+      <view class="progress-bar">
+        <view class="progress-fill" style="width: {{todayProgress}}%"></view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 快速开始区域 -->
+  <view class="quick-start-section">
+    <view class="section-header">
+      <text class="section-title">快速开始</text>
+    </view>
+    
+    <view class="quick-actions">
+      <view class="action-card" bindtap="goToTraining">
+        <view class="action-icon">🏋️</view>
+        <text class="action-title">开始训练</text>
+        <text class="action-desc">选择训练计划</text>
+      </view>
+      
+      <view class="action-card" bindtap="goToFoodRecognition">
+        <view class="action-icon">🍎</view>
+        <text class="action-title">食物识别</text>
+        <text class="action-desc">AI智能识别</text>
+      </view>
+      
+      <view class="action-card" bindtap="goToCustomPlans">
+        <view class="action-icon">📋</view>
+        <text class="action-title">我的计划</text>
+        <text class="action-desc">自定义训练</text>
+      </view>
+      
+      <view class="action-card" bindtap="goToMuscleAnalysis">
+        <view class="action-icon">🔬</view>
+        <text class="action-title">肌肉分析</text>
+        <text class="action-desc">科学训练</text>
+      </view>
+      
+      <view class="action-card" bindtap="goToRecords">
+        <view class="action-icon">📊</view>
+        <text class="action-title">训练记录</text>
+        <text class="action-desc">查看历史</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 推荐训练区域 -->
+  <view class="recommended-section">
+    <view class="section-header">
+      <text class="section-title">推荐训练</text>
+      <text class="section-more" bindtap="goToTraining">查看更多</text>
+    </view>
+    
+    <scroll-view class="recommended-scroll" scroll-x="true" show-scrollbar="false">
+      <view class="recommended-list">
+        <view class="recommended-card" wx:for="{{recommendedPlans}}" wx:key="id" bindtap="goToPlanDetail" data-id="{{item.id}}">
+          <view class="plan-image">
+            <image src="{{item.coverImage}}" class="plan-cover" mode="aspectFill"></image>
+            <view class="plan-difficulty">{{item.difficulty}}</view>
+          </view>
+          <view class="plan-info">
+            <text class="plan-title">{{item.title}}</text>
+            <view class="plan-meta">
+              <text class="plan-duration">{{item.duration}}</text>
+              <text class="plan-calories">{{item.calories}}千卡</text>
+            </view>
+            <view class="plan-rating">
+              <text class="rating-text">⭐ {{item.rating}}</text>
+              <text class="rating-count">({{item.formattedParticipants}})</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <!-- 统计数据区域 -->
+  <view class="stats-section">
+    <view class="section-header">
+      <text class="section-title">本周数据</text>
+    </view>
+    
+    <view class="stats-grid">
+      <view class="stat-card">
+        <text class="stat-number">{{weekStats.totalDays}}</text>
+        <text class="stat-label">训练天数</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{weekStats.totalMinutes}}</text>
+        <text class="stat-label">总时长(分)</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{weekStats.totalCalories}}</text>
+        <text class="stat-label">消耗卡路里</text>
+      </view>
+      <view class="stat-card">
+        <text class="stat-number">{{weekStats.continuousDays}}</text>
+        <text class="stat-label">连续天数</text>
+      </view>
+    </view>
+  </view>
+</view>

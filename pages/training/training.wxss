@@ -1,0 +1,894 @@
+/* pages/training/training.wxss */
+.container {
+  padding: 20rpx;
+  background-color: var(--bg-secondary);
+  min-height: 100vh;
+}
+
+/* 搜索栏样式 */
+.search-bar {
+  display: flex;
+  margin-bottom: 30rpx;
+  gap: 20rpx;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  position: relative;
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.search-input {
+  width: 100%;
+  height: 80rpx;
+  padding: 0 100rpx 0 30rpx;
+  font-size: 30rpx;
+  color: var(--text-primary);
+  background: transparent;
+}
+
+.search-placeholder {
+  color: var(--text-muted);
+}
+
+.search-icon {
+  position: absolute;
+  right: 30rpx;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 32rpx;
+  color: var(--text-muted);
+}
+
+.sort-wrapper {
+  width: 180rpx;
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
+
+.sort-picker {
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 20rpx;
+}
+
+.sort-text {
+  font-size: 28rpx;
+  color: var(--text-primary);
+  margin-right: 10rpx;
+}
+
+.sort-arrow {
+  font-size: 20rpx;
+  color: var(--text-muted);
+}
+
+/* 分类标签样式 */
+.category-tabs {
+  display: flex;
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 20rpx;
+  padding: 10rpx;
+  margin-bottom: 40rpx;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.category-tabs::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+}
+
+.tab-item {
+  flex: 1;
+  text-align: center;
+  padding: 20rpx 10rpx;
+  border-radius: 16rpx;
+  transition: all 0.3s ease;
+  font-weight: 500;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.tab-icon {
+  font-size: 32rpx;
+  margin-bottom: 8rpx;
+}
+
+.tab-name {
+  font-size: 26rpx;
+  color: var(--text-secondary);
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, var(--primary-color), #06a552);
+  color: #fff;
+  font-weight: bold;
+  box-shadow: var(--shadow-sm);
+}
+
+.tab-item.active .tab-name {
+  color: #fff;
+}
+
+/* 自定义计划入口 */
+ .custom-plans-entry {
+   display: flex;
+   align-items: center;
+   background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+   border-radius: 24rpx;
+   padding: 40rpx;
+   margin-bottom: 30rpx;
+   box-shadow: var(--shadow);
+   transition: all 0.3s ease;
+   position: relative;
+   overflow: hidden;
+ }
+
+ .custom-plans-entry::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 4rpx;
+   background: linear-gradient(90deg, var(--secondary-color), var(--warning-color));
+ }
+
+ .custom-plans-entry:active {
+   transform: translateY(-4rpx);
+   box-shadow: var(--shadow-lg);
+ }
+
+ .muscle-analysis-entry {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.muscle-analysis-entry::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, var(--secondary-color), var(--warning-color));
+}
+
+.muscle-analysis-entry:active {
+  transform: translateY(-4rpx);
+  box-shadow: var(--shadow-lg);
+}
+
+.history-plans-entry {
+  display: flex;
+  align-items: center;
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  margin-bottom: 40rpx;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.history-plans-entry::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #17a2b8, #138496);
+}
+
+.history-plans-entry:active {
+  transform: translateY(-4rpx);
+  box-shadow: var(--shadow-lg);
+}
+
+.entry-icon {
+  width: 100rpx;
+  height: 100rpx;
+  background: linear-gradient(135deg, rgba(7, 193, 96, 0.1), rgba(7, 193, 96, 0.2));
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 30rpx;
+  box-shadow: var(--shadow-sm);
+}
+
+.icon-text {
+  font-size: 50rpx;
+}
+
+.entry-content {
+  flex: 1;
+}
+
+.entry-title {
+  display: block;
+  font-size: 34rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  margin-bottom: 12rpx;
+}
+
+.entry-desc {
+  font-size: 28rpx;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+.entry-arrow {
+  font-size: 36rpx;
+  color: var(--text-muted);
+}
+
+.training-list {
+  margin-bottom: 40rpx;
+}
+
+/* 训练计划卡片 */
+.plan-list {
+  margin-bottom: 40rpx;
+}
+
+.plan-card {
+  background: linear-gradient(135deg, var(--bg-primary), #f8f9fa);
+  border-radius: 24rpx;
+  padding: 30rpx;
+  margin-bottom: 30rpx;
+  box-shadow: var(--shadow);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.plan-card::before {
+   content: "";
+   position: absolute;
+   top: 0;
+   left: 0;
+   right: 0;
+   height: 4rpx;
+   background: linear-gradient(90deg, var(--primary-color), var(--accent-color));
+ }
+
+ .plan-card:active {
+   transform: translateY(-4rpx);
+   box-shadow: var(--shadow-lg);
+ }
+
+.card-content {
+  margin-bottom: 20rpx;
+}
+
+.plan-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.plan-title {
+  font-size: 34rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+  flex: 1;
+}
+
+.plan-category {
+  background: linear-gradient(135deg, rgba(7, 193, 96, 0.1), rgba(7, 193, 96, 0.2));
+  color: var(--primary-color);
+  font-size: 24rpx;
+  padding: 8rpx 16rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+
+.custom-badge {
+   background: linear-gradient(135deg, rgba(255, 159, 64, 0.1), rgba(255, 159, 64, 0.2));
+   color: var(--warning-color);
+   font-size: 24rpx;
+   padding: 8rpx 16rpx;
+   border-radius: 20rpx;
+   font-weight: 500;
+   margin-left: 10rpx;
+ }
+
+ .plan-desc {
+   font-size: 28rpx;
+   color: var(--text-secondary);
+   line-height: 1.5;
+   margin-bottom: 20rpx;
+ }
+
+/* 标签样式 */
+.plan-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 20rpx;
+  gap: 10rpx;
+}
+
+.tag {
+  background: rgba(7, 193, 96, 0.1);
+  color: var(--primary-color);
+  font-size: 24rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 20rpx;
+  font-weight: 500;
+}
+
+/* 评分和参与人数样式 */
+.plan-stats {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 20rpx;
+  padding-top: 20rpx;
+  border-top: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+}
+
+.rating-stars {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.rating-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.participants {
+  display: flex;
+  align-items: center;
+}
+
+.participants-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.participants-value {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+.plan-meta {
+  display: flex;
+  justify-content: space-between;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.meta-icon {
+  font-size: 28rpx;
+  margin-right: 8rpx;
+}
+
+.meta-text {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.card-actions {
+   display: flex;
+   justify-content: space-between;
+ }
+
+.detail-btn, .start-btn {
+  height: 70rpx;
+  border-radius: 35rpx;
+  font-size: 28rpx;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48%;
+  border: none;
+}
+
+.detail-btn {
+  background: linear-gradient(135deg, #f0f0f0, #e6e6e6);
+  color: var(--text-secondary);
+}
+
+.start-btn {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  color: #fff;
+}
+
+.detail-btn:active, .start-btn:active {
+  transform: scale(0.98);
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+}
+
+.empty-state image {
+  width: 240rpx;
+  height: 240rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.8;
+}
+
+.empty-state .empty-icon {
+   font-size: 120rpx;
+   margin-bottom: 30rpx;
+   display: block;
+   text-align: center;
+ }
+
+ .empty-state .empty-text {
+   font-size: 30rpx;
+   color: var(--text-muted);
+   font-weight: 500;
+ }
+
+/* 计时器弹窗样式 */
+.timer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.timer-content {
+  position: relative;
+  width: 90%;
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.timer-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.close-btn {
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: var(--text-secondary);
+}
+
+/* 计时器显示 */
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.timer-circle {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.3);
+}
+
+.timer-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+.timer-status {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.calories-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calories-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.calories-label {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+/* 计时器控制 */
+.timer-controls {
+  display: flex;
+  justify-content: space-around;
+}
+
+.control-btn {
+  width: 150rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+}
+
+.control-btn.start {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.control-btn.pause {
+  background: linear-gradient(135deg, var(--warning-color), #ff9f43);
+}
+
+.control-btn.reset {
+  background: linear-gradient(135deg, #868e96, #495057);
+}
+
+.control-btn.finish {
+  background: linear-gradient(135deg, var(--secondary-color), #ff6b6b);
+}
+
+/* 计时器弹窗样式 */
+.timer-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.timer-mask {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+.timer-content {
+  position: relative;
+  width: 90%;
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 24rpx;
+  padding: 40rpx;
+  box-shadow: 0 10rpx 30rpx rgba(0, 0, 0, 0.1);
+  z-index: 1001;
+}
+
+.timer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.timer-title {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.close-btn {
+  width: 60rpx;
+  height: 60rpx;
+  background: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36rpx;
+  color: var(--text-secondary);
+}
+
+/* 计时器显示 */
+.timer-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.timer-circle {
+  width: 300rpx;
+  height: 300rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30rpx;
+  box-shadow: 0 8rpx 20rpx rgba(7, 193, 96, 0.3);
+}
+
+.timer-text {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 10rpx;
+}
+
+.timer-status {
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.calories-display {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.calories-text {
+  font-size: 36rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+.calories-label {
+  font-size: 24rpx;
+  color: var(--text-secondary);
+}
+
+/* 计时器控制 */
+.timer-controls {
+  display: flex;
+  justify-content: space-around;
+}
+
+.control-btn {
+  width: 150rpx;
+  height: 80rpx;
+  border-radius: 40rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  font-weight: 500;
+  color: #fff;
+  border: none;
+}
+
+.control-btn.start {
+  background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+}
+
+.control-btn.pause {
+  background: linear-gradient(135deg, var(--warning-color), #ff9f43);
+}
+
+.control-btn.reset {
+  background: linear-gradient(135deg, #868e96, #495057);
+}
+
+.control-btn.finish {
+  background: linear-gradient(135deg, var(--secondary-color), #ff6b6b);
+}
+
+
+/* 往期计划弹窗 */
+.history-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.history-content {
+  position: relative;
+  width: 90%;
+  max-height: 80vh;
+  background: linear-gradient(135deg, #fff, #f8f9fa);
+  border-radius: 24rpx;
+  overflow: hidden;
+  z-index: 1001;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0 10rpx 40rpx rgba(0, 0, 0, 0.2);
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #17a2b8, #138496);
+  color: #fff;
+}
+
+.history-title {
+  font-size: 36rpx;
+  font-weight: bold;
+}
+
+.history-scroll {
+  flex: 1;
+  padding: 20rpx;
+}
+
+.history-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20rpx;
+}
+
+.history-item {
+  background: #ffffff;
+  border-radius: 16rpx;
+  padding: 24rpx;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.08);
+}
+
+.history-date-info {
+  display: flex;
+  align-items: center;
+  margin-bottom: 16rpx;
+  padding-bottom: 16rpx;
+  border-bottom: 1rpx solid rgba(0, 0, 0, 0.05);
+}
+
+.history-date {
+  font-size: 32rpx;
+  font-weight: bold;
+  color: #333;
+  margin-right: 16rpx;
+}
+
+.history-weekday {
+  font-size: 26rpx;
+  color: #666;
+  background: rgba(23, 162, 184, 0.1);
+  padding: 4rpx 12rpx;
+  border-radius: 12rpx;
+}
+
+.history-stats {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 16rpx;
+}
+
+.history-stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-label {
+  font-size: 24rpx;
+  color: #999;
+  margin-bottom: 8rpx;
+}
+
+.stat-value {
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #17a2b8;
+}
+
+.history-records {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10rpx;
+}
+
+.record-tag {
+  background: linear-gradient(135deg, rgba(7, 193, 96, 0.1), rgba(7, 193, 96, 0.15));
+  color: #07c160;
+  font-size: 24rpx;
+  padding: 6rpx 16rpx;
+  border-radius: 16rpx;
+  font-weight: 500;
+}
+
+.history-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 120rpx 0;
+}
+
+.history-empty .empty-icon {
+  font-size: 120rpx;
+  margin-bottom: 30rpx;
+  opacity: 0.5;
+}
+
+.history-empty .empty-text {
+  font-size: 30rpx;
+  color: #999;
+}
