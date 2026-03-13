@@ -1987,75 +1987,129 @@
 }
 
 
-/* 肌肉分布图示样式 */
-.muscle-diagram {
+/* 视频容器样式 */
+.video-container {
   width: 100%;
-  min-height: 400rpx;
-  background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+  background: #000000;
   border-radius: 20rpx;
   overflow: hidden;
-  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4rpx 20rpx rgba(0, 0, 0, 0.2);
   margin: 20rpx 0;
-  padding: 40rpx 30rpx;
+  position: relative;
 }
 
-.diagram-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 30rpx;
-}
-
-.diagram-icon {
-  font-size: 120rpx;
-  filter: drop-shadow(0 4rpx 8rpx rgba(0, 0, 0, 0.1));
-}
-
-.diagram-text {
-  font-size: 32rpx;
-  font-weight: bold;
-  color: #333333;
-  text-align: center;
-}
-
-.muscle-groups {
-  display: flex;
-  gap: 20rpx;
+.muscle-video {
   width: 100%;
-  justify-content: center;
-  flex-wrap: wrap;
+  height: 400rpx;
+  display: block;
 }
 
-.muscle-group-item {
-  flex: 1;
-  min-width: 180rpx;
-  background: #ffffff;
-  border-radius: 16rpx;
-  padding: 30rpx 20rpx;
+.video-error-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12rpx;
-  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.06);
-  border: 2rpx solid #e0e0e0;
+  justify-content: center;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 40rpx;
+  gap: 20rpx;
 }
 
-.group-icon {
-  font-size: 48rpx;
+.error-icon {
+  font-size: 80rpx;
 }
 
-.group-name {
+.error-title {
+  font-size: 32rpx;
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.error-desc {
   font-size: 26rpx;
-  color: #555555;
-  font-weight: 500;
-  text-align: center;
-}
-
-.diagram-note {
-  font-size: 24rpx;
-  color: #777777;
+  color: #cccccc;
   text-align: center;
   line-height: 1.6;
-  padding: 0 20rpx;
+}
+
+.config-btn {
+  margin-top: 20rpx;
+  padding: 20rpx 40rpx;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: #ffffff;
+  border-radius: 50rpx;
+  font-size: 28rpx;
+  border: none;
+}
+
+.video-info {
+  padding: 30rpx;
+  background: linear-gradient(135deg, #fff3e0, #ffe0b2);
+  border-radius: 0 0 20rpx 20rpx;
+  display: flex;
+  flex-direction: column;
+  gap: 15rpx;
+  align-items: center;
+}
+
+.info-text {
+  font-size: 26rpx;
+  color: #ff6f00;
+  text-align: center;
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* 配置说明 */
+.config-notice {
+  margin-top: 30rpx;
+  padding: 30rpx;
+  background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+  border-radius: 20rpx;
+  border-left: 6rpx solid #2196f3;
+}
+
+.notice-title {
+  display: block;
+  font-size: 28rpx;
+  font-weight: bold;
+  color: #1976d2;
+  margin-bottom: 15rpx;
+}
+
+.notice-text {
+  display: block;
+  font-size: 26rpx;
+  color: #424242;
+  line-height: 1.6;
+  margin-bottom: 15rpx;
+}
+
+.domain-box {
+  background: #ffffff;
+  padding: 20rpx;
+  border-radius: 12rpx;
+  margin: 15rpx 0;
+  border: 2rpx dashed #2196f3;
+}
+
+.domain-text {
+  font-size: 24rpx;
+  color: #1976d2;
+  font-family: monospace;
+  word-break: break-all;
+}
+
+.notice-step {
+  display: block;
+  font-size: 24rpx;
+  color: #666666;
+  line-height: 1.6;
+  margin-top: 15rpx;
+  font-style: italic;
 }
 

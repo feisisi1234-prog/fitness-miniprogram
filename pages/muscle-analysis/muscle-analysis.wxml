@@ -7,34 +7,54 @@
 
   <!-- 肌纤维走向页面 -->
   <view class="tab-content" wx:if="{{currentTab === 0}}">
-    <!-- 肌肉分布说明区域 -->
+    <!-- 视频展示区域 -->
     <view class="model-container">
       <view class="diagram-title">
-        <text>人体肌肉分布图</text>
-        <text class="diagram-tip">点击下方动作查看肌肉详情</text>
+        <text>人体肌肉分布</text>
+        <text class="diagram-tip">了解肌肉结构 · 点击下方动作查看详情</text>
       </view>
       
-      <!-- 肌肉分布图示 -->
-      <view class="muscle-diagram">
-        <view class="diagram-content">
-          <text class="diagram-icon">🧍</text>
-          <text class="diagram-text">人体主要肌肉群</text>
-          <view class="muscle-groups">
-            <view class="muscle-group-item">
-              <text class="group-icon">💪</text>
-              <text class="group-name">上肢肌群</text>
-            </view>
-            <view class="muscle-group-item">
-              <text class="group-icon">🫀</text>
-              <text class="group-name">核心肌群</text>
-            </view>
-            <view class="muscle-group-item">
-              <text class="group-icon">🦵</text>
-              <text class="group-name">下肢肌群</text>
-            </view>
-          </view>
-          <text class="diagram-note">选择下方动作了解具体肌肉的纤维走向</text>
+      <!-- 视频播放器 -->
+      <view class="video-container">
+        <video 
+          id="muscleVideo"
+          class="muscle-video"
+          src="https://jrchbzzwgqndaxsckvub.supabase.co/storage/v1/object/public/video/muscle.mp4"
+          controls
+          show-center-play-btn="{{true}}"
+          show-play-btn="{{true}}"
+          show-fullscreen-btn="{{true}}"
+          object-fit="contain"
+          bindplay="onVideoPlay"
+          bindpause="onVideoPause"
+          bindended="onVideoEnded"
+          binderror="onVideoError"
+          bindwaiting="onVideoWaiting"
+          bindloadedmetadata="onVideoLoaded"
+        ></video>
+        
+        <!-- 视频加载失败提示 -->
+        <view class="video-error-tip" wx:if="{{videoLoadError}}">
+          <view class="error-icon">⚠️</view>
+          <text class="error-title">视频暂时无法播放</text>
+          <text class="error-desc">请在真机上测试或配置域名白名单</text>
+          <button class="config-btn" bindtap="showVideoConfig">查看配置说明</button>
         </view>
+        
+        <view class="video-info" wx:if="{{!videoLoadError}}">
+          <text class="info-text">💡 人体肌肉分布视频</text>
+          <text class="info-text">点击播放观看详细讲解</text>
+        </view>
+      </view>
+      
+      <!-- 配置说明 -->
+      <view class="config-notice">
+        <text class="notice-title">📌 视频配置说明</text>
+        <text class="notice-text">如需在小程序中播放视频，请在微信公众平台配置以下域名：</text>
+        <view class="domain-box">
+          <text class="domain-text">jrchbzzwgqndaxsckvub.supabase.co</text>
+        </view>
+        <text class="notice-step">配置路径：开发 > 开发管理 > 开发设置 > 服务器域名 > request合法域名</text>
       </view>
     </view>
 

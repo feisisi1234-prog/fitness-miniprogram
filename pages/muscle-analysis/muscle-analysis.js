@@ -457,6 +457,8 @@ Page({
     calculatedMoment: 0,
     // 模型加载状态
     isModelLoading: false,
+    // 视频加载错误状态
+    videoLoadError: false,
     // 动画相关
     isAnimating: false,
     animationProgress: 0,
@@ -814,6 +816,81 @@ Page({
     this.setData({
       bodyView: view,
       showSwipeHint: false
+    });
+  },
+
+  // 视频播放事件
+  onVideoPlay(e) {
+    console.log('✅ 视频开始播放', e.detail);
+  },
+
+  onVideoPause(e) {
+    console.log('⏸ 视频暂停', e.detail);
+  },
+
+  onVideoEnded(e) {
+    console.log('✅ 视频播放结束', e.detail);
+  },
+
+  onVideoWaiting(e) {
+    console.log('⏳ 视频加载中...', e.detail);
+  },
+
+  onVideoLoaded(e) {
+    console.log('✅ 视频元数据加载完成', e.detail);
+  },
+
+  onVideoError(e) {
+    console.error('❌ 视频加载失败', e.detail);
+    
+    // 设置错误状态
+    this.setData({
+      videoLoadError: true
+    });
+    
+    let errorMsg = '视频加载失败';
+    let suggestion = '';
+    
+    // 根据错误类型提供具体信息
+    if (e.detail.errMsg) {
+      const errMsg = e.detail.errMsg;
+      
+      if (errMsg.includes('ERR_NAME_NOT_RESOLVED') || errMsg.includes('ERR_FAILED')) {
+        errorMsg = '无法连接到视频服务器';
+        suggestion = '可能的原因：\n\n1. 域名未配置白名单\n   需在微信公众平台配置：\n   jrchbzzwgqndaxsckvub.supabase.co\n\n2. 网络连接问题\n   请检查网络连接\n\n3. 开发者工具限制\n   建议在真机上测试\n\n配置路径：\n微信公众平台 > 开发 > 开发管理 > 开发设置 > 服务器域名 > request合法域名';
+      } else if (errMsg.includes('SRC_NOT_SUPPORTED') || errMsg.includes('Format error')) {
+        errorMsg = '视频格式错误';
+        suggestion = '请确保视频格式为MP4，编码为H.264';
+      } else if (errMsg.includes('DECODE')) {
+        errorMsg = '视频解码失败';
+        suggestion = '请检查视频编码格式';
+      }
+    }
+    
+    console.log('错误提示:', errorMsg, suggestion);
+  },
+
+  // 显示视频配置说明
+  showVideoConfig() {
+    wx.showModal({
+      title: '视频域名配置',
+      content: '请在微信公众平台配置以下域名到request合法域名：\n\njrchbzzwgqndaxsckvub.supabase.co\n\n配置路径：\n开发 > 开发管理 > 开发设置 > 服务器域名\n\n配置后需要重新编译小程序。',
+      showCancel: true,
+      cancelText: '知道了',
+      confirmText: '复制域名',
+      success: (res) => {
+        if (res.confirm) {
+          wx.setClipboardData({
+            data: 'jrchbzzwgqndaxsckvub.supabase.co',
+            success: () => {
+              wx.showToast({
+                title: '域名已复制',
+                icon: 'success'
+              });
+            }
+          });
+        }
+      }
     });
   },
 
