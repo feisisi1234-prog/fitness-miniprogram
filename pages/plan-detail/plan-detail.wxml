@@ -1,5 +1,12 @@
 <!-- 训练计划详情页面 -->
 <view class="container">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="gradient-orb orb-1"></view>
+    <view class="gradient-orb orb-2"></view>
+    <view class="gradient-orb orb-3"></view>
+  </view>
+
   <view class="plan-header">
     <view class="plan-title">{{plan.title}}</view>
     <view class="plan-meta">
