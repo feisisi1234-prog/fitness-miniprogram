@@ -4,15 +4,15 @@
     <view class="plan-title">{{plan.title}}</view>
     <view class="plan-meta">
       <view class="meta-item">
-        <text class="meta-icon">⏱️</text>
+        <image class="meta-icon" src="/images/icons/clock.svg" mode="aspectFit"></image>
         <text class="meta-text">{{plan.duration}}</text>
       </view>
       <view class="meta-item">
-        <text class="meta-icon">🔥</text>
+        <image class="meta-icon" src="/images/icons/fire.svg" mode="aspectFit"></image>
         <text class="meta-text">{{plan.calories}}千卡</text>
       </view>
       <view class="meta-item">
-        <text class="meta-icon">💪</text>
+        <image class="meta-icon" src="/images/icons/muscle.svg" mode="aspectFit"></image>
         <text class="meta-text">{{plan.difficulty}}</text>
       </view>
     </view>
@@ -20,11 +20,11 @@
     <!-- 评分和参与人数 -->
     <view class="plan-stats">
       <view class="rating">
-        <text class="rating-stars">⭐</text>
+        <image class="rating-icon" src="/images/icons/star.svg" mode="aspectFit"></image>
         <text class="rating-value">{{plan.rating}}</text>
       </view>
       <view class="participants">
-        <text class="participants-icon">👥</text>
+        <image class="participants-icon" src="/images/icons/users.svg" mode="aspectFit"></image>
         <text class="participants-value">{{plan.formattedParticipants}}人参与</text>
       </view>
     </view>
@@ -93,7 +93,7 @@
     <view class="section-title">训练提示</view>
     <view class="tips-container">
       <view class="tip-item" wx:for="{{plan.tips}}" wx:key="index">
-        <text class="tip-icon">💡</text>
+        <image class="tip-icon" src="/images/icons/lightbulb.svg" mode="aspectFit"></image>
         <text class="tip-text">{{item}}</text>
       </view>
     </view>

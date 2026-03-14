@@ -20,6 +20,18 @@ page {
   align-items: center;
   margin: 40rpx 0;
   position: relative;
+  animation: timerFadeIn 0.8s ease;
+}
+
+@keyframes timerFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .timer-circle {
@@ -34,6 +46,16 @@ page {
   box-shadow: var(--shadow-lg);
   position: relative;
   overflow: hidden;
+  animation: timerPulse 2s ease-in-out infinite;
+}
+
+@keyframes timerPulse {
+  0%, 100% {
+    box-shadow: 0 8rpx 24rpx rgba(0, 0, 0, 0.1);
+  }
+  50% {
+    box-shadow: 0 12rpx 32rpx rgba(7, 193, 96, 0.2);
+  }
 }
 
 .timer-circle::before {
@@ -94,6 +116,18 @@ page {
   justify-content: center;
   margin-bottom: 60rpx;
   gap: 20rpx;
+  animation: controlsFadeIn 0.6s ease 0.2s both;
+}
+
+@keyframes controlsFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .control-btn {
@@ -107,7 +141,27 @@ page {
   font-weight: bold;
   color: #ffffff;
   box-shadow: var(--shadow);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.control-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.control-btn:active::before {
+  width: 300rpx;
+  height: 300rpx;
 }
 
 .control-btn:active {

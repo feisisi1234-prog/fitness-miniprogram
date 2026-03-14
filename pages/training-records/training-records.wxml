@@ -102,7 +102,7 @@
     </view>
 
     <view wx:else class="empty-state">
-      <view class="empty-icon-emoji">📝</view>
+      <image class="empty-icon" src="/images/icons/edit.svg" mode="aspectFit"></image>
       <text class="empty-text">暂无自定义训练计划</text>
       <text class="empty-tip">去训练页面创建你的第一个计划吧！</text>
     </view>
@@ -155,7 +155,7 @@
     </view>
 
     <view wx:else class="empty-state">
-      <view class="empty-icon-emoji">📋</view>
+      <image class="empty-icon" src="/images/icons/clipboard.svg" mode="aspectFit"></image>
       <text class="empty-text">暂无训练记录</text>
       <text class="empty-tip">开始你的第一次训练吧！</text>
     </view>

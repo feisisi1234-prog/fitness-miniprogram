@@ -5,7 +5,7 @@ Page({
   data: {
     userInfo: {
       name: '健身达人',
-      avatar: '/images/placeholder.png'
+      avatar: '/images/ui/placeholder.png'
     },
     dailyGoal: {
       minutes: 30,
@@ -46,7 +46,7 @@ Page({
     this.setData({
       userInfo: {
         name: userInfo.name || '健身达人',
-        avatar: userInfo.avatar || '/images/placeholder.png'
+        avatar: userInfo.avatar || '/images/ui/placeholder.png'
       },
       dailyGoal,
       reminderEnabled,

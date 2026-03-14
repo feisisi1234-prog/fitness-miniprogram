@@ -6,7 +6,7 @@ Page({
     greeting: '早上好',
     userInfo: {
       name: '健身达人',
-      avatar: '/images/placeholder.png'
+      avatar: '/images/ui/placeholder.png'
     },
     dailyGoal: {
       minutes: 30,
@@ -41,6 +41,28 @@ Page({
     this.calculateTodayProgress();
     this.calculateWeekStats();
     console.log('=== Index页面 onShow 完成 ===');
+  },
+
+  // 选择头像
+  onChooseAvatar(e) {
+    const { avatarUrl } = e.detail;
+    console.log('用户选择的头像:', avatarUrl);
+    
+    // 更新页面显示
+    this.setData({
+      'userInfo.avatar': avatarUrl
+    });
+    
+    // 保存到本地存储
+    const userInfo = wx.getStorageSync('userInfo') || {};
+    userInfo.avatar = avatarUrl;
+    wx.setStorageSync('userInfo', userInfo);
+    
+    wx.showToast({
+      title: '头像更新成功',
+      icon: 'success',
+      duration: 1500
+    });
   },
 
   setGreeting() {
@@ -85,7 +107,7 @@ Page({
     this.setData({
       userInfo: {
         name: userInfo.name || '健身达人',
-        avatar: userInfo.avatar || '/images/placeholder.png'
+        avatar: userInfo.avatar || '/images/ui/placeholder.png'
       }
     });
   },
@@ -98,7 +120,7 @@ Page({
         title: '全身力量训练',
         description: '适合初学者的全身力量训练',
         category: '力量训练',
-        coverImage: '/images/training-strength.svg',
+        coverImage: '/images/training-types/training-strength.svg',
         duration: '30分钟',
         calories: 200,
         difficulty: '初级',
@@ -112,7 +134,7 @@ Page({
         title: 'HIIT燃脂训练',
         description: '高强度间歇训练',
         category: '有氧运动',
-        coverImage: '/images/training-hiit.svg',
+        coverImage: '/images/training-types/training-hiit.svg',
         duration: '20分钟',
         calories: 250,
         difficulty: '中级',
@@ -126,7 +148,7 @@ Page({
         title: '瑜伽拉伸',
         description: '舒缓身心的瑜伽练习',
         category: '柔韧性',
-        coverImage: '/images/training-yoga.svg',
+        coverImage: '/images/training-types/training-yoga.svg',
         duration: '40分钟',
         calories: 120,
         difficulty: '初级',
@@ -140,7 +162,7 @@ Page({
         title: '核心强化',
         description: '打造完美腹肌',
         category: '核心训练',
-        coverImage: '/images/training-core.svg',
+        coverImage: '/images/training-types/training-core.svg',
         duration: '25分钟',
         calories: 180,
         difficulty: '中级',

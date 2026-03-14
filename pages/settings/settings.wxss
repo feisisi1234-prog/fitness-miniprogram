@@ -1,9 +1,144 @@
 /* pages/settings/settings.wxss */
 .page-container {
   min-height: 100vh;
-  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  background: var(--gradient-bg);
   padding: 20rpx;
   padding-bottom: 100rpx;
+}
+
+.page-header {
+  padding: 40rpx 20rpx 20rpx;
+  text-align: center;
+}
+
+.page-title {
+  font-size: 48rpx;
+  font-weight: bold;
+  color: var(--text-primary);
+}
+
+/* 设置区块 */
+.settings-section {
+  margin-bottom: 30rpx;
+}
+
+.section-title {
+  padding: 20rpx 30rpx 10rpx;
+  font-size: 28rpx;
+  color: var(--text-tertiary);
+  font-weight: 500;
+}
+
+.settings-list {
+  background: var(--bg-primary);
+  border-radius: var(--radius-xl);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  border: 1rpx solid var(--border-light);
+}
+
+/* 设置项 */
+.setting-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30rpx;
+  border-bottom: 1rpx solid var(--border-light);
+  transition: background-color 0.2s;
+}
+
+.setting-item:last-child {
+  border-bottom: none;
+}
+
+.setting-item:active {
+  background-color: var(--bg-hover);
+}
+
+.item-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+}
+
+.item-icon {
+  width: 44rpx;
+  height: 44rpx;
+  margin-right: 20rpx;
+  opacity: 0.8;
+}
+
+.item-icon.danger-icon {
+  opacity: 0.6;
+  filter: brightness(0) saturate(100%) invert(44%) sepia(89%) saturate(2453%) hue-rotate(335deg) brightness(98%) contrast(95%);
+}
+
+.item-label {
+  font-size: 32rpx;
+  color: var(--text-primary);
+}
+
+.item-right {
+  display: flex;
+  align-items: center;
+  gap: 10rpx;
+}
+
+.item-value {
+  font-size: 28rpx;
+  color: var(--text-muted);
+  margin-right: 10rpx;
+}
+
+.item-arrow {
+  font-size: 40rpx;
+  color: var(--text-disabled);
+  font-weight: 300;
+}
+
+/* 头像预览 */
+.avatar-preview {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  margin-right: 10rpx;
+}
+
+/* 开关样式 */
+switch {
+  transform: scale(0.9);
+}
+
+/* 退出登录按钮 */
+.logout-section {
+  margin-top: 40rpx;
+  padding: 0 30rpx;
+}
+
+.logout-btn {
+  width: 100%;
+  height: 90rpx;
+  line-height: 90rpx;
+  background: var(--gradient-danger);
+  color: #ffffff;
+  font-size: 32rpx;
+  font-weight: 500;
+  border-radius: var(--radius-lg);
+  border: none;
+  box-shadow: 0 8rpx 16rpx rgba(239, 68, 68, 0.25);
+  transition: all 0.3s;
+}
+
+.logout-btn:active {
+  transform: scale(0.98);
+  box-shadow: 0 4rpx 8rpx rgba(239, 68, 68, 0.25);
+}
+
+/* 测试数据按钮样式 */
+.item-desc {
+  font-size: 24rpx;
+  color: var(--text-muted);
+  margin-right: 10rpx;
 }
 
 .page-header {
@@ -61,8 +196,15 @@
 }
 
 .item-icon {
-  font-size: 44rpx;
+  width: 44rpx;
+  height: 44rpx;
   margin-right: 20rpx;
+  opacity: 0.8;
+}
+
+.item-icon.danger-icon {
+  opacity: 0.6;
+  filter: brightness(0) saturate(100%) invert(44%) sepia(89%) saturate(2453%) hue-rotate(335deg) brightness(98%) contrast(95%);
 }
 
 .item-label {

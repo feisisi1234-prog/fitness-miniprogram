@@ -101,7 +101,7 @@ Page({
       name: '',
       sets: 3,
       restTime: 60,
-      image: '/images/placeholder.png',
+      image: '/images/ui/placeholder.png',
       completed: false
     };
     
@@ -121,7 +121,7 @@ Page({
       name: template.name,
       sets: template.defaultSets,
       restTime: template.defaultRest,
-      image: '/images/placeholder.png',
+      image: '/images/ui/placeholder.png',
       completed: false
     };
     
@@ -218,7 +218,7 @@ Page({
         id: Date.now(),
         title: newPlan.title,
         category: newPlan.category,
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         duration: `${newPlan.exercises.reduce((total, exercise) => total + exercise.sets * (exercise.restTime + 30), 0)}秒`,
         calories: newPlan.exercises.reduce((total, exercise) => total + exercise.sets * 5, 0),
         difficulty: '自定义',
@@ -936,7 +936,7 @@ Page({
       id: Date.now(),
       title: plan.title,
       category: plan.category,
-      icon: '/images/placeholder.png',
+      icon: '/images/ui/placeholder.png',
       duration: `${plan.exercises.reduce((total, exercise) => total + exercise.sets * (exercise.restTime + 30), 0)}秒`,
       calories: plan.exercises.reduce((total, exercise) => total + exercise.sets * 5, 0),
       difficulty: '自定义',

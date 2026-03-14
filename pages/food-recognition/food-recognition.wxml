@@ -4,7 +4,7 @@
 <view class="container">
   <!-- 未选择图片状态 -->
   <view class="upload-area" wx:if="{{!selectedImage}}" bindtap="chooseImage">
-    <view class="upload-icon">📷</view>
+    <image class="upload-icon" src="/images/icons/camera.svg" mode="aspectFit"></image>
     <view class="upload-text">轻触此处拍照</view>
     <view class="upload-hint">也可以从相册选择图片</view>
   </view>
@@ -42,19 +42,19 @@
 
       <view class="result-grid">
         <view class="result-grid-item">
-          <view class="grid-icon">🔥</view>
+          <image class="grid-icon" src="/images/icons/fire.svg" mode="aspectFit"></image>
           <view class="grid-label">热量</view>
           <view class="grid-value">{{recognitionResult.calories}}</view>
         </view>
 
         <view class="result-grid-item">
-          <view class="grid-icon">📊</view>
+          <image class="grid-icon" src="/images/icons/bar-chart.svg" mode="aspectFit"></image>
           <view class="grid-label">升糖指数(GI)</view>
           <view class="grid-value">{{recognitionResult.gi}}</view>
         </view>
 
         <view class="result-grid-item">
-          <view class="grid-icon">📈</view>
+          <image class="grid-icon" src="/images/icons/chart.svg" mode="aspectFit"></image>
           <view class="grid-label">升糖负荷(GL)</view>
           <view class="grid-value">{{recognitionResult.gl}}</view>
         </view>
@@ -64,7 +64,7 @@
 
       <view class="result-item suggestion-item">
         <view class="result-label">
-          <text class="label-icon">💡</text>
+          <image class="label-icon" src="/images/icons/lightbulb.svg" mode="aspectFit"></image>
           <text>食用建议</text>
         </view>
         <view class="result-value suggestion-value">{{recognitionResult.suggestion}}</view>

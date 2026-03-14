@@ -67,7 +67,7 @@ Page({
           sets: exercise.sets || 3,
           reps: exercise.reps || 12,
           rest: exercise.restTime || 60,
-          image: exercise.image || '/images/placeholder.png',
+          image: exercise.image || '/images/ui/placeholder.png',
           description: exercise.description || `完成${exercise.sets}组，每组${exercise.reps}次`,
           caloriesPerSet: 10,
           index: index,
@@ -131,7 +131,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/shendun.jpg',
+            image: '/images/actions/shendun.jpg',
             description: '双脚与肩同宽，脚尖微朝外，下蹲时膝盖不要超过脚尖，保持背部挺直',
             caloriesPerSet: 15
           },
@@ -141,7 +141,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/fuwoc.png',
+            image: '/images/actions/fuwoc.png',
             description: '双手与肩同宽，身体保持一条直线，下降时胸部接近地面，推起时手臂伸直',
             caloriesPerSet: 12
           },
@@ -151,7 +151,7 @@ Page({
             sets: 3,
             reps: 30,
             rest: 45,
-            image: '/images/pingbanzhic.png',
+            image: '/images/actions/pingbanzhic.png',
             description: '前臂和脚尖支撑身体，保持身体呈一条直线，收紧核心肌群',
             caloriesPerSet: 10
           },
@@ -161,7 +161,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/gongbu.png',
+            image: '/images/actions/gongbu.png',
             description: '一脚向前迈出，下蹲至两膝成90度，前膝不超过脚尖，后膝接近地面',
             caloriesPerSet: 13
           }
@@ -177,7 +177,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/kaihet.png',
+            image: '/images/actions/kaihet.png',
             description: '双脚跳开同时双臂举过头顶，然后跳回起始位置，保持节奏稳定',
             caloriesPerSet: 18
           },
@@ -187,7 +187,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/gaotait.png',
+            image: '/images/actions/gaotait.png',
             description: '原地跑步，膝盖尽量抬高至髋部高度，手臂配合摆动',
             caloriesPerSet: 20
           },
@@ -197,7 +197,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 45,
-            image: '/images/bobit.png',
+            image: '/images/actions/bobit.png',
             description: '下蹲-后踢腿成平板支撑-俯卧撑-收腿-跳跃，动作连贯流畅',
             caloriesPerSet: 25
           },
@@ -207,7 +207,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/dengshanp.png',
+            image: '/images/actions/dengshanp.png',
             description: '平板支撑姿势，交替将膝盖拉向胸部，保持核心稳定',
             caloriesPerSet: 22
           }
@@ -223,7 +223,7 @@ Page({
             sets: 1,
             reps: 10,
             rest: 30,
-            image: '/images/maonius.png',
+            image: '/images/actions/maonius.png',
             description: '四肢着地，吸气时背部下沉抬头，呼气时背部拱起低头，缓慢交替',
             caloriesPerSet: 5
           },
@@ -233,7 +233,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 30,
-            image: '/images/xiaquans.png',
+            image: '/images/actions/xiaquans.png',
             description: '手脚着地，臀部向上抬起，形成倒V形，手臂和背部伸直',
             caloriesPerSet: 8
           },
@@ -243,7 +243,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/zhanshiers.png',
+            image: '/images/actions/zhanshiers.png',
             description: '一脚向前迈出，前腿弯曲，后腿伸直，双臂平举，目视前方',
             caloriesPerSet: 7
           },
@@ -253,7 +253,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/shus.png',
+            image: '/images/actions/shus.png',
             description: '单腿站立，另一脚放在支撑腿内侧，双手合十举过头顶',
             caloriesPerSet: 6
           }
@@ -269,7 +269,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/situp.svg',
+            image: '/images/exercises/situp.svg',
             description: '仰卧，双手放于耳侧或胸前，利用腹肌力量坐起，避免颈部用力',
             caloriesPerSet: 14
           },
@@ -279,7 +279,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/russian-twist.svg',
+            image: '/images/exercises/russian-twist.svg',
             description: '坐姿，双腿离地，上身略后倾，双手合十左右转动身体',
             caloriesPerSet: 16
           },
@@ -289,7 +289,7 @@ Page({
             sets: 3,
             reps: 15,
             rest: 30,
-            image: '/images/mountain-climber.svg',
+            image: '/images/exercises/mountain-climber.svg',
             description: '平板支撑姿势，交替抬起腿部，保持核心稳定，避免臀部下沉',
             caloriesPerSet: 15
           },
@@ -299,7 +299,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/crunch.svg',
+            image: '/images/exercises/crunch.svg',
             description: '仰卧，双手放于胸前或耳侧，利用腹肌力量将上身抬起，下背部不离地',
             caloriesPerSet: 13
           }
@@ -315,7 +315,7 @@ Page({
             sets: 1,
             reps: 300,
             rest: 60,
-            image: '/images/dance-warmup.svg',
+            image: '/images/exercises/dance-warmup.svg',
             description: '轻松的舞步动作，逐渐提高心率，活动全身关节',
             caloriesPerSet: 20
           },
@@ -325,7 +325,7 @@ Page({
             sets: 3,
             reps: 120,
             rest: 45,
-            image: '/images/dance.svg',
+            image: '/images/exercises/dance.svg',
             description: '简单的舞蹈动作组合，保持节奏感，享受音乐',
             caloriesPerSet: 25
           },
@@ -335,7 +335,7 @@ Page({
             sets: 2,
             reps: 90,
             rest: 60,
-            image: '/images/dance-cardio.svg',
+            image: '/images/exercises/dance-cardio.svg',
             description: '加快节奏，提高动作幅度，增加心率',
             caloriesPerSet: 30
           },
@@ -345,7 +345,7 @@ Page({
             sets: 1,
             reps: 180,
             rest: 30,
-            image: '/images/dance.svg',
+            image: '/images/exercises/dance.svg',
             description: '缓慢的舞步，逐渐降低心率，放松肌肉',
             caloriesPerSet: 15
           }
@@ -361,7 +361,7 @@ Page({
             sets: 1,
             reps: 100,
             rest: 60,
-            image: '/images/hundred.svg',
+            image: '/images/exercises/hundred.svg',
             description: '仰卧，双腿抬起，手臂上下小幅度摆动，配合呼吸节奏',
             caloriesPerSet: 12
           },
@@ -371,7 +371,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/single-leg-stretch.svg',
+            image: '/images/exercises/single-leg-stretch.svg',
             description: '仰卧，一腿伸直向天花板，另一腿屈膝拉向胸口，交替进行',
             caloriesPerSet: 10
           },
@@ -381,7 +381,7 @@ Page({
             sets: 2,
             reps: 20,
             rest: 30,
-            image: '/images/scissors.svg',
+            image: '/images/exercises/scissors.svg',
             description: '仰卧，双腿伸直向上，交替开合如剪刀，保持下背部贴地',
             caloriesPerSet: 11
           },
@@ -391,7 +391,7 @@ Page({
             sets: 2,
             reps: 15,
             rest: 30,
-            image: '/images/side-leg-lift.svg',
+            image: '/images/exercises/side-leg-lift.svg',
             description: '侧卧，下方腿微屈，上方腿伸直向上抬起，控制缓慢下降',
             caloriesPerSet: 9
           }
@@ -407,7 +407,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/dumbbell-squat.svg',
+            image: '/images/exercises/dumbbell-squat.svg',
             description: '双手持哑铃，双脚与肩同宽，下蹲时保持背部挺直',
             caloriesPerSet: 18
           },
@@ -417,7 +417,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/dumbbell-press.svg',
+            image: '/images/exercises/dumbbell-press.svg',
             description: '双手持哑铃举至肩部，向上推举至手臂伸直',
             caloriesPerSet: 16
           },
@@ -427,7 +427,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/dumbbell-row.svg',
+            image: '/images/exercises/dumbbell-row.svg',
             description: '俯身，双手持哑铃，向上拉至腰部两侧',
             caloriesPerSet: 17
           },
@@ -437,7 +437,7 @@ Page({
             sets: 3,
             reps: 15,
             rest: 45,
-            image: '/images/dumbbell-curl.svg',
+            image: '/images/exercises/dumbbell-curl.svg',
             description: '双手持哑铃，手臂自然下垂，向上弯举至肩部',
             caloriesPerSet: 14
           }
@@ -453,7 +453,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 30,
-            image: '/images/mountain-pose.svg',
+            image: '/images/exercises/mountain-pose.svg',
             description: '站立，双脚并拢，双手自然下垂，保持身体挺直',
             caloriesPerSet: 5
           },
@@ -463,7 +463,7 @@ Page({
             sets: 2,
             reps: 5,
             rest: 30,
-            image: '/images/sun-salutation.svg',
+            image: '/images/exercises/sun-salutation.svg',
             description: '一套连续的瑜伽动作，从站立到俯卧再回到站立',
             caloriesPerSet: 8
           },
@@ -473,7 +473,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 30,
-            image: '/images/childs-pose.svg',
+            image: '/images/exercises/childs-pose.svg',
             description: '跪坐，上身前倾，额头触地，双臂向前伸展',
             caloriesPerSet: 4
           },
@@ -483,7 +483,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/spinal-twist.svg',
+            image: '/images/exercises/spinal-twist.svg',
             description: '坐姿，一腿伸直，另一腿屈膝跨过，身体向后扭转',
             caloriesPerSet: 6
           }

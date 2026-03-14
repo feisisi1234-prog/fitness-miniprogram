@@ -2,15 +2,20 @@
 <view class="container">
   <view class="header">
     <view class="title">编辑个人信息</view>
+    <view class="subtitle">完善你的个人资料</view>
   </view>
   
   <view class="form-section">
     <view class="form-item">
       <view class="form-label">头像</view>
-      <view class="avatar-container" bindtap="changeAvatar">
-        <image class="avatar-img" src="{{userInfo.avatar || '/images/placeholder.png'}}" mode="aspectFill"></image>
-        <view class="edit-icon">📷</view>
-      </view>
+      <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+        <view class="avatar-container">
+          <image class="avatar-img" src="{{userInfo.avatar || '/images/ui/placeholder.png'}}" mode="aspectFill"></image>
+          <view class="avatar-edit-overlay">
+            <image src="/images/icons/edit.svg" class="avatar-edit-icon" mode="aspectFit"></image>
+          </view>
+        </view>
+      </button>
     </view>
     
     <view class="form-item">
@@ -22,16 +27,22 @@
       <view class="form-label">性别</view>
       <view class="gender-options">
         <view class="gender-option {{userInfo.gender === 'male' ? 'active' : ''}}" data-gender="male" bindtap="onGenderChange">
-          <text class="gender-icon">♂</text>
-          <text>男性</text>
+          <view class="gender-icon-wrapper male">
+            <text class="gender-symbol">♂</text>
+          </view>
+          <text class="gender-text">男性</text>
         </view>
         <view class="gender-option {{userInfo.gender === 'female' ? 'active' : ''}}" data-gender="female" bindtap="onGenderChange">
-          <text class="gender-icon">♀</text>
-          <text>女性</text>
+          <view class="gender-icon-wrapper female">
+            <text class="gender-symbol">♀</text>
+          </view>
+          <text class="gender-text">女性</text>
         </view>
         <view class="gender-option {{userInfo.gender === '' ? 'active' : ''}}" data-gender="" bindtap="onGenderChange">
-          <text class="gender-icon">⚥</text>
-          <text>未设置</text>
+          <view class="gender-icon-wrapper other">
+            <text class="gender-symbol">⚥</text>
+          </view>
+          <text class="gender-text">未设置</text>
         </view>
       </view>
     </view>

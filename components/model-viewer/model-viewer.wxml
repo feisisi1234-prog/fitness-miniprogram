@@ -21,15 +21,15 @@
   <!-- 控制按钮 -->
   <view class="controls">
     <view class="control-btn" bindtap="resetView">
-      <text class="control-icon">🔄</text>
+      <image class="control-icon" src="/images/icons/refresh.svg" mode="aspectFit"></image>
       <text class="control-label">重置</text>
     </view>
     <view class="control-btn" bindtap="toggleRotation">
-      <text class="control-icon">{{autoRotate ? '⏸' : '▶️'}}</text>
+      <image class="control-icon" src="/images/icons/{{autoRotate ? 'timer' : 'repeat'}}.svg" mode="aspectFit"></image>
       <text class="control-label">{{autoRotate ? '暂停' : '旋转'}}</text>
     </view>
     <view class="control-btn" bindtap="switchView">
-      <text class="control-icon">👁</text>
+      <image class="control-icon" src="/images/icons/eye.svg" mode="aspectFit"></image>
       <text class="control-label">切换</text>
     </view>
   </view>

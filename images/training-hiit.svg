@@ -1,9 +1,0 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 120" fill="none">
-  <rect width="200" height="120" fill="#f0f2f5"/>
-  <g transform="translate(100, 60)">
-    <!-- 火焰图标 -->
-    <path d="M0,-35 C-8,-30 -15,-20 -15,-8 C-15,8 -8,18 0,22 C8,18 15,8 15,-8 C15,-20 8,-30 0,-35 Z" fill="#f5576c"/>
-    <path d="M0,-28 C-5,-24 -10,-16 -10,-6 C-10,6 -5,14 0,18 C5,14 10,6 10,-6 C10,-16 5,-24 0,-28 Z" fill="#f093fb"/>
-    <ellipse cx="0" cy="10" rx="8" ry="6" fill="#fff" opacity="0.3"/>
-  </g>
-</svg>

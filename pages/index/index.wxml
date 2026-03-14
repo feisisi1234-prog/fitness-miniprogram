@@ -9,12 +9,23 @@
 
   <!-- 欢迎区域 -->
   <view class="welcome-section">
-    <view class="user-info">
-      <view class="user-text">
-        <text class="greeting">{{greeting}}</text>
-        <text class="username">{{userInfo.name || '健身达人'}}</text>
+    <view class="welcome-card">
+      <view class="user-info">
+        <view class="user-text">
+          <text class="greeting">{{greeting}}</text>
+          <text class="username">{{userInfo.name || '健身达人'}}</text>
+          <view class="greeting-decoration"></view>
+        </view>
+        <button class="avatar-btn" open-type="chooseAvatar" bindchooseavatar="onChooseAvatar">
+          <view class="avatar-wrapper">
+            <image src="{{userInfo.avatar || '/images/ui/placeholder.png'}}" class="avatar" mode="aspectFill"></image>
+            <view class="avatar-ring"></view>
+            <view class="avatar-edit-hint">
+              <image src="/images/icons/edit.svg" class="edit-icon" mode="aspectFit"></image>
+            </view>
+          </view>
+        </button>
       </view>
-      <image src="{{userInfo.avatar || '/images/placeholder.png'}}" class="avatar" mode="aspectFill"></image>
     </view>
   </view>
 
@@ -23,8 +34,13 @@
     <view class="goal-card">
       <view class="goal-header">
         <view class="goal-title-box">
-          <image src="/images/icons/target.svg" class="goal-icon" mode="aspectFit"></image>
-          <text class="goal-title">今日目标</text>
+          <view class="goal-icon-wrapper">
+            <image src="/images/icons/target.svg" class="goal-icon" mode="aspectFit"></image>
+          </view>
+          <view class="goal-title-group">
+            <text class="goal-title">今日目标</text>
+            <text class="goal-subtitle">坚持就是胜利</text>
+          </view>
         </view>
         <view class="goal-percentage">
           <text class="percentage-num">{{todayProgress}}</text>
@@ -38,7 +54,7 @@
             <image src="/images/icons/clock.svg" class="stat-icon" mode="aspectFit"></image>
           </view>
           <view class="stat-content">
-            <text class="stat-value">{{todayMinutes}}/{{dailyGoal.minutes}}</text>
+            <text class="stat-value">{{todayMinutes}}<text class="stat-unit">/{{dailyGoal.minutes}}</text></text>
             <text class="stat-label">分钟</text>
           </view>
         </view>
@@ -48,7 +64,7 @@
             <image src="/images/icons/fire.svg" class="stat-icon" mode="aspectFit"></image>
           </view>
           <view class="stat-content">
-            <text class="stat-value">{{todayCalories}}/{{dailyGoal.calories}}</text>
+            <text class="stat-value">{{todayCalories}}<text class="stat-unit">/{{dailyGoal.calories}}</text></text>
             <text class="stat-label">千卡</text>
           </view>
         </view>
@@ -56,9 +72,11 @@
 
       <view class="progress-wrapper">
         <view class="progress-track">
-          <view class="progress-bar" style="width: {{todayProgress}}%">
-            <view class="progress-glow"></view>
-          </view>
+          <view class="progress-bar" style="width: {{todayProgress}}%"></view>
+        </view>
+        <view class="progress-labels">
+          <text class="progress-label-start">0%</text>
+          <text class="progress-label-end">100%</text>
         </view>
       </view>
     </view>
@@ -104,10 +122,13 @@
   <!-- 推荐训练 -->
   <view class="section">
     <view class="section-header">
-      <text class="section-title">推荐训练</text>
+      <view class="section-title-wrapper">
+        <text class="section-title">推荐训练</text>
+        <view class="title-underline"></view>
+      </view>
       <view class="more-btn" bindtap="goToTraining">
         <text class="more-text">查看全部</text>
-        <text class="more-arrow">›</text>
+        <text class="more-arrow">→</text>
       </view>
     </view>
 
@@ -115,24 +136,25 @@
       <view class="plans-list">
         <view class="plan-card" wx:for="{{recommendedPlans}}" wx:key="id" bindtap="goToPlanDetail" data-id="{{item.id}}" hover-class="plan-hover">
           <view class="plan-image-box">
-            <image src="{{item.coverImage}}" class="plan-image" mode="aspectFill"></image>
-            <view class="plan-badge {{item.difficultyLevel}}">{{item.difficulty}}</view>
-            <view class="plan-duration">
-              <image src="/images/icons/timer.svg" class="duration-icon" mode="aspectFit"></image>
-              <text class="duration-text">{{item.duration}}</text>
+            <image src="{{item.coverImage}}" class="plan-image" mode="aspectFit"></image>
+            <view class="plan-overlay"></view>
+            <view class="plan-badge {{item.difficultyLevel}}">
+              <view class="badge-dot"></view>
+              <text>{{item.difficulty}}</text>
             </view>
           </view>
           <view class="plan-info">
             <text class="plan-title">{{item.title}}</text>
             <text class="plan-category">{{item.category}}</text>
-            <view class="plan-footer">
-              <view class="plan-calories">
-                <image src="/images/icons/flame.svg" class="cal-icon" mode="aspectFit"></image>
-                <text class="cal-text">{{item.calories}} 千卡</text>
+            <view class="plan-meta">
+              <view class="meta-item">
+                <image src="/images/icons/timer.svg" class="meta-icon" mode="aspectFit"></image>
+                <text class="meta-text">{{item.duration}}</text>
               </view>
-              <view class="plan-rating">
-                <image src="/images/icons/star.svg" class="star-icon" mode="aspectFit"></image>
-                <text class="rating-num">{{item.rating}}</text>
+              <view class="meta-divider"></view>
+              <view class="meta-item">
+                <image src="/images/icons/flame.svg" class="meta-icon" mode="aspectFit"></image>
+                <text class="meta-text">{{item.calories}}</text>
               </view>
             </view>
           </view>
