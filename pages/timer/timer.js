@@ -23,12 +23,12 @@ Page({
       { name: '45分钟', seconds: 2700 }
     ],
     exerciseTypes: [
-      { type: 'running', name: '跑步', icon: '/images/running.svg', caloriesPerMinute: 10 },
-      { type: 'cycling', name: '骑行', icon: '/images/cycling.svg', caloriesPerMinute: 8 },
-      { type: 'swimming', name: '游泳', icon: '/images/swimming.svg', caloriesPerMinute: 12 },
-      { type: 'yoga', name: '瑜伽', icon: '/images/yoga.svg', caloriesPerMinute: 3 },
-      { type: 'strength', name: '力量', icon: '/images/strength.svg', caloriesPerMinute: 6 },
-      { type: 'other', name: '其他', icon: '/images/placeholder.png', caloriesPerMinute: 5 }
+      { type: 'running', name: '跑步', icon: '/images/exercises/running.svg', caloriesPerMinute: 10 },
+      { type: 'cycling', name: '骑行', icon: '/images/exercises/cycling.svg', caloriesPerMinute: 8 },
+      { type: 'swimming', name: '游泳', icon: '/images/exercises/swimming.svg', caloriesPerMinute: 12 },
+      { type: 'yoga', name: '瑜伽', icon: '/images/exercises/yoga.svg', caloriesPerMinute: 3 },
+      { type: 'strength', name: '力量', icon: '/images/exercises/strength.svg', caloriesPerMinute: 6 },
+      { type: 'other', name: '其他', icon: '/images/ui/placeholder.png', caloriesPerMinute: 5 }
     ]
   },
 

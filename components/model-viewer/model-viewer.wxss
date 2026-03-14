@@ -86,8 +86,10 @@
 }
 
 .control-icon {
-  font-size: 40rpx;
+  width: 40rpx;
+  height: 40rpx;
   margin-bottom: 5rpx;
+  opacity: 0.8;
 }
 
 .control-label {

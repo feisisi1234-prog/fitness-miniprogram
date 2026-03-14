@@ -29,11 +29,11 @@
 
     <view class="exercise-details">
       <view class="detail-item">
-        <text class="detail-icon">🔢</text>
+        <image class="detail-icon" src="/images/icons/hash.svg" mode="aspectFit"></image>
         <text class="detail-text">{{currentExercise.reps}} 次</text>
       </view>
       <view class="detail-item">
-        <text class="detail-icon">⏱️</text>
+        <image class="detail-icon" src="/images/icons/timer.svg" mode="aspectFit"></image>
         <text class="detail-text">休息 {{currentExercise.rest}} 秒</text>
       </view>
     </view>
@@ -74,11 +74,11 @@
   <!-- 底部操作栏 -->
   <view class="bottom-bar">
     <button class="bottom-btn" bindtap="toggleExerciseList" hover-class="button-hover">
-      <text class="btn-icon">📋</text>
+      <image class="btn-icon" src="/images/icons/list.svg" mode="aspectFit"></image>
       <text class="btn-text">动作列表</text>
     </button>
     <button class="bottom-btn exit-btn" bindtap="exitTraining" hover-class="button-hover">
-      <text class="btn-icon">🚪</text>
+      <image class="btn-icon" src="/images/icons/door.svg" mode="aspectFit"></image>
       <text class="btn-text">退出训练</text>
     </button>
   </view>

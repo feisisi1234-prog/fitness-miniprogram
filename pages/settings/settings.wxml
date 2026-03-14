@@ -11,7 +11,7 @@
     <view class="settings-list">
       <view class="setting-item" bindtap="editProfile">
         <view class="item-left">
-          <text class="item-icon">👤</text>
+          <image class="item-icon" src="/images/icons/user.svg" mode="aspectFit"></image>
           <text class="item-label">编辑资料</text>
         </view>
         <view class="item-right">
@@ -22,11 +22,11 @@
       
       <view class="setting-item" bindtap="editAvatar">
         <view class="item-left">
-          <text class="item-icon">📷</text>
+          <image class="item-icon" src="/images/icons/camera.svg" mode="aspectFit"></image>
           <text class="item-label">头像</text>
         </view>
         <view class="item-right">
-          <image class="avatar-preview" src="{{userInfo.avatar || '/images/placeholder.png'}}"></image>
+          <image class="avatar-preview" src="{{userInfo.avatar || '/images/ui/placeholder.png'}}"></image>
           <text class="item-arrow">›</text>
         </view>
       </view>
@@ -39,7 +39,7 @@
     <view class="settings-list">
       <view class="setting-item" bindtap="setDailyGoal">
         <view class="item-left">
-          <text class="item-icon">🎯</text>
+          <image class="item-icon" src="/images/icons/target.svg" mode="aspectFit"></image>
           <text class="item-label">每日目标</text>
         </view>
         <view class="item-right">
@@ -50,7 +50,7 @@
       
       <view class="setting-item">
         <view class="item-left">
-          <text class="item-icon">🔔</text>
+          <image class="item-icon" src="/images/icons/bell.svg" mode="aspectFit"></image>
           <text class="item-label">训练提醒</text>
         </view>
         <view class="item-right">
@@ -60,7 +60,7 @@
       
       <view class="setting-item" wx:if="{{reminderEnabled}}" bindtap="setReminderTime">
         <view class="item-left">
-          <text class="item-icon">⏰</text>
+          <image class="item-icon" src="/images/icons/clock.svg" mode="aspectFit"></image>
           <text class="item-label">提醒时间</text>
         </view>
         <view class="item-right">
@@ -71,7 +71,7 @@
       
       <view class="setting-item">
         <view class="item-left">
-          <text class="item-icon">🔊</text>
+          <image class="item-icon" src="/images/icons/volume.svg" mode="aspectFit"></image>
           <text class="item-label">语音提示</text>
         </view>
         <view class="item-right">
@@ -81,7 +81,7 @@
       
       <view class="setting-item" wx:if="{{voiceEnabled}}" bindtap="setVoiceInterval">
         <view class="item-left">
-          <text class="item-icon">⏱️</text>
+          <image class="item-icon" src="/images/icons/timer.svg" mode="aspectFit"></image>
           <text class="item-label">语音间隔</text>
         </view>
         <view class="item-right">
@@ -98,7 +98,7 @@
     <view class="settings-list">
       <view class="setting-item" bindtap="selectUnit">
         <view class="item-left">
-          <text class="item-icon">📏</text>
+          <image class="item-icon" src="/images/icons/ruler.svg" mode="aspectFit"></image>
           <text class="item-label">单位制式</text>
         </view>
         <view class="item-right">
@@ -109,7 +109,7 @@
       
       <view class="setting-item">
         <view class="item-left">
-          <text class="item-icon">🌙</text>
+          <image class="item-icon" src="/images/icons/moon.svg" mode="aspectFit"></image>
           <text class="item-label">深色模式</text>
         </view>
         <view class="item-right">
@@ -125,7 +125,7 @@
     <view class="settings-list">
       <view class="setting-item" bindtap="generateTestData">
         <view class="item-left">
-          <text class="item-icon">🧪</text>
+          <image class="item-icon" src="/images/icons/flask.svg" mode="aspectFit"></image>
           <text class="item-label">生成测试数据</text>
         </view>
         <view class="item-right">
@@ -136,7 +136,7 @@
       
       <view class="setting-item" bindtap="viewAllRecords">
         <view class="item-left">
-          <text class="item-icon">📊</text>
+          <image class="item-icon" src="/images/icons/bar-chart.svg" mode="aspectFit"></image>
           <text class="item-label">查看所有记录</text>
         </view>
         <view class="item-right">
@@ -146,7 +146,7 @@
       
       <view class="setting-item" bindtap="exportData">
         <view class="item-left">
-          <text class="item-icon">📤</text>
+          <image class="item-icon" src="/images/icons/upload.svg" mode="aspectFit"></image>
           <text class="item-label">导出数据</text>
         </view>
         <view class="item-right">
@@ -156,7 +156,7 @@
       
       <view class="setting-item" bindtap="clearCache">
         <view class="item-left">
-          <text class="item-icon">🗑️</text>
+          <image class="item-icon" src="/images/icons/trash.svg" mode="aspectFit"></image>
           <text class="item-label">清除缓存</text>
         </view>
         <view class="item-right">
@@ -167,7 +167,7 @@
       
       <view class="setting-item" bindtap="clearAllRecords">
         <view class="item-left">
-          <text class="item-icon">🗑️</text>
+          <image class="item-icon danger-icon" src="/images/icons/trash.svg" mode="aspectFit"></image>
           <text class="item-label">清除所有记录</text>
         </view>
         <view class="item-right">
@@ -177,7 +177,7 @@
       
       <view class="setting-item" bindtap="resetData">
         <view class="item-left">
-          <text class="item-icon">⚠️</text>
+          <image class="item-icon danger-icon" src="/images/icons/refresh.svg" mode="aspectFit"></image>
           <text class="item-label">重置数据</text>
         </view>
         <view class="item-right">
@@ -193,7 +193,7 @@
     <view class="settings-list">
       <view class="setting-item" bindtap="checkUpdate">
         <view class="item-left">
-          <text class="item-icon">🔄</text>
+          <image class="item-icon" src="/images/icons/refresh.svg" mode="aspectFit"></image>
           <text class="item-label">检查更新</text>
         </view>
         <view class="item-right">
@@ -204,7 +204,7 @@
       
       <view class="setting-item" bindtap="showAbout">
         <view class="item-left">
-          <text class="item-icon">ℹ️</text>
+          <image class="item-icon" src="/images/icons/info.svg" mode="aspectFit"></image>
           <text class="item-label">关于我们</text>
         </view>
         <view class="item-right">
@@ -214,7 +214,7 @@
       
       <view class="setting-item" bindtap="showPrivacy">
         <view class="item-left">
-          <text class="item-icon">🔒</text>
+          <image class="item-icon" src="/images/icons/lock.svg" mode="aspectFit"></image>
           <text class="item-label">隐私政策</text>
         </view>
         <view class="item-right">
@@ -224,7 +224,7 @@
       
       <view class="setting-item" bindtap="showTerms">
         <view class="item-left">
-          <text class="item-icon">📄</text>
+          <image class="item-icon" src="/images/icons/file.svg" mode="aspectFit"></image>
           <text class="item-label">用户协议</text>
         </view>
         <view class="item-right">

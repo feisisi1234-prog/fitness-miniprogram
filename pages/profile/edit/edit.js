@@ -39,6 +39,22 @@ Page({
     wx.setStorageSync('userInfo', this.data.userInfo);
   },
 
+  // 选择头像 - 使用微信最新 API
+  onChooseAvatar(e) {
+    const { avatarUrl } = e.detail;
+    console.log('用户选择的头像:', avatarUrl);
+    
+    this.setData({
+      'userInfo.avatar': avatarUrl
+    });
+    
+    wx.showToast({
+      title: '头像已更新',
+      icon: 'success',
+      duration: 1500
+    });
+  },
+
   changeAvatar() {
     wx.chooseImage({
       count: 1,

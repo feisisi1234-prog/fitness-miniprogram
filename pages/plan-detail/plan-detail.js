@@ -1,4 +1,4 @@
-﻿// 训练计划详情页面
+// 训练计划详情页面
 const app = getApp()
 
 Page({
@@ -27,7 +27,7 @@ Page({
         calories: 200,
         difficulty: '初级',
         category: '力量训练',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.5,
         participants: 1280,
         tags: ['全身', '基础', '复合动作'],
@@ -41,7 +41,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/shendun.jpg',
+            image: '/images/actions/shendun.jpg',
             description: '双脚与肩同宽，脚尖微朝外，下蹲时膝盖不要超过脚尖，保持背部挺直'
           },
           {
@@ -50,7 +50,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/fuwoc.png',
+            image: '/images/actions/fuwoc.png',
             description: '双手与肩同宽，身体保持一条直线，下降时胸部接近地面，推起时手臂伸直'
           },
           {
@@ -59,7 +59,7 @@ Page({
             sets: 3,
             reps: 30,
             rest: 45,
-            image: '/images/pingbanzhic.png',
+            image: '/images/actions/pingbanzhic.png',
             description: '前臂和脚尖支撑身体，保持身体呈一条直线，收紧核心肌群'
           },
           {
@@ -68,7 +68,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/gongbu.png',
+            image: '/images/actions/gongbu.png',
             description: '一脚向前迈出，下蹲至两膝成90度，前膝不超过脚尖，后膝接近地面'
           }
         ],
@@ -87,7 +87,7 @@ Page({
         calories: 250,
         difficulty: '中级',
         category: '有氧运动',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.7,
         participants: 2560,
         tags: ['燃脂', '间歇训练', '心肺功能'],
@@ -101,7 +101,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/kaihet.png',
+            image: '/images/actions/kaihet.png',
             description: '双脚跳开同时双臂举过头顶，然后跳回起始位置，保持节奏稳定'
           },
           {
@@ -110,7 +110,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/gaotait.png',
+            image: '/images/actions/gaotait.png',
             description: '原地跑步，膝盖尽量抬高至髋部高度，手臂配合摆动'
           },
           {
@@ -119,7 +119,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 45,
-            image: '/images/bobit.png',
+            image: '/images/actions/bobit.png',
             description: '下蹲-后踢腿成平板支撑-俯卧撑-收腿-跳跃，动作连贯流畅'
           },
           {
@@ -128,7 +128,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/dengshanp.png',
+            image: '/images/actions/dengshanp.png',
             description: '平板支撑姿势，交替将膝盖拉向胸部，保持核心稳定'
           }
         ],
@@ -147,7 +147,7 @@ Page({
         calories: 120,
         difficulty: '初级',
         category: '柔韧性',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.3,
         participants: 890,
         tags: ['放松', '柔韧性', '平衡'],
@@ -161,7 +161,7 @@ Page({
             sets: 1,
             reps: 10,
             rest: 30,
-            image: '/images/maonius.png',
+            image: '/images/actions/maonius.png',
             description: '四肢着地，吸气时背部下沉抬头，呼气时背部拱起低头，缓慢交替'
           },
           {
@@ -170,7 +170,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 30,
-            image: '/images/xiaquans.png',
+            image: '/images/actions/xiaquans.png',
             description: '手脚着地，臀部向上抬起，形成倒V形，手臂和背部伸直'
           },
           {
@@ -179,7 +179,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/zhanshiers.png',
+            image: '/images/actions/zhanshiers.png',
             description: '一脚向前迈出，前腿弯曲，后腿伸直，双臂平举，目视前方'
           },
           {
@@ -188,7 +188,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/shus.png',
+            image: '/images/actions/shus.png',
             description: '单腿站立，另一脚放在支撑腿内侧，双手合十举过头顶'
           }
         ],
@@ -207,7 +207,7 @@ Page({
         calories: 150,
         difficulty: '高级',
         category: '力量训练',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.6,
         participants: 1680,
         tags: ['核心', '腹肌', '高级'],
@@ -221,7 +221,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/situp.svg',
+            image: '/images/exercises/situp.svg',
             description: '仰卧，双手放于耳侧或胸前，利用腹肌力量坐起，避免颈部用力'
           },
           {
@@ -230,7 +230,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/eluosizhuanti.webp',
+            image: '/images/actions/eluosizhuanti.webp',
             description: '坐姿，双腿离地，上身略后倾，双手合十左右转动身体'
           },
           {
@@ -239,7 +239,7 @@ Page({
             sets: 3,
             reps: 15,
             rest: 30,
-            image: '/images/pingbanzhichengtaitui.png',
+            image: '/images/actions/pingbanzhichengtaitui.png',
             description: '平板支撑姿势，交替抬起腿部，保持核心稳定，避免臀部下沉'
           },
           {
@@ -248,7 +248,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/juanfu.png',
+            image: '/images/actions/juanfu.png',
             description: '仰卧，双手放于胸前或耳侧，利用腹肌力量将上身抬起，下背部不离地'
           }
         ],
@@ -267,7 +267,7 @@ Page({
         calories: 300,
         difficulty: '中级',
         category: '有氧运动',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.8,
         participants: 3200,
         tags: ['舞蹈', '音乐', '燃脂'],
@@ -281,7 +281,7 @@ Page({
             sets: 1,
             reps: 300,
             rest: 30,
-            image: '/images/dance-warmup.svg',
+            image: '/images/exercises/dance-warmup.svg',
             description: '跟随音乐节奏，进行简单的舞步热身，活动全身关节'
           },
           {
@@ -290,7 +290,7 @@ Page({
             sets: 3,
             reps: 480,
             rest: 60,
-            image: '/images/dance.svg',
+            image: '/images/exercises/dance.svg',
             description: '结合多种舞蹈动作，保持动作连贯流畅，跟随音乐节奏'
           },
           {
@@ -299,7 +299,7 @@ Page({
             sets: 2,
             reps: 300,
             rest: 60,
-            image: '/images/dance-cardio.svg',
+            image: '/images/exercises/dance-cardio.svg',
             description: '加快节奏，增加动作幅度，提高心率，燃烧更多卡路里'
           },
           {
@@ -308,7 +308,7 @@ Page({
             sets: 1,
             reps: 180,
             rest: 0,
-            image: '/images/dance.svg',
+            image: '/images/exercises/dance.svg',
             description: '缓慢的舞步，逐渐降低心率，放松身体'
           }
         ],
@@ -327,7 +327,7 @@ Page({
         calories: 180,
         difficulty: '中级',
         category: '柔韧性',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.4,
         participants: 1100,
         tags: ['核心', '体态', '稳定性'],
@@ -341,7 +341,7 @@ Page({
             sets: 1,
             reps: 100,
             rest: 30,
-            image: '/images/baicihuxi.png',
+            image: '/images/actions/baicihuxi.png',
             description: '仰卧，双腿抬起，上身微抬，双臂上下摆动，配合呼吸'
           },
           {
@@ -350,7 +350,7 @@ Page({
             sets: 2,
             reps: 10,
             rest: 30,
-            image: '/images/leg-circle.svg',
+            image: '/images/exercises/leg-circle.svg',
             description: '仰卧，一腿抬起画圈，保持骨盆稳定，核心收紧'
           },
           {
@@ -359,7 +359,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 30,
-            image: '/images/roll-like-ball.svg',
+            image: '/images/exercises/roll-like-ball.svg',
             description: '坐姿抱膝，向后滚动至肩部，再滚回坐姿，保持平衡'
           },
           {
@@ -368,7 +368,7 @@ Page({
             sets: 2,
             reps: 15,
             rest: 30,
-            image: '/images/placeholder.png',
+            image: '/images/ui/placeholder.png',
             description: '侧卧，上腿抬起放下，保持身体稳定，感受侧腹发力'
           }
         ],
@@ -387,7 +387,7 @@ Page({
         calories: 220,
         difficulty: '中级',
         category: '力量训练',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.6,
         participants: 1890,
         tags: ['哑铃', '器械', '塑形'],
@@ -401,7 +401,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/yalingshendun.png',
+            image: '/images/actions/yalingshendun.png',
             description: '双手持哑铃于身体两侧，进行深蹲动作，增加负重强度'
           },
           {
@@ -410,7 +410,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/yalingwotui.png',
+            image: '/images/actions/yalingwotui.png',
             description: '仰卧，双手持哑铃推举，感受胸肌发力'
           },
           {
@@ -419,7 +419,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/yalinghuachuan.png',
+            image: '/images/actions/yalinghuachuan.png',
             description: '俯身，单手持哑铃向上拉，锻炼背部肌肉'
           },
           {
@@ -428,7 +428,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/yalingjiantui.png',
+            image: '/images/actions/yalingjiantui.png',
             description: '站姿或坐姿，双手持哑铃向上推举，锻炼肩部'
           }
         ],
@@ -447,7 +447,7 @@ Page({
         calories: 80,
         difficulty: '初级',
         category: '柔韧性',
-        icon: '/images/placeholder.png',
+        icon: '/images/ui/placeholder.png',
         rating: 4.5,
         participants: 2100,
         tags: ['早晨', '唤醒', '温和'],
@@ -461,7 +461,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 0,
-            image: '/images/yingershi.png',
+            image: '/images/actions/yingershi.png',
             description: '跪坐，上身前倾，额头触地，双臂前伸，放松全身'
           },
           {
@@ -470,7 +470,7 @@ Page({
             sets: 1,
             reps: 10,
             rest: 0,
-            image: '/images/maonius.png',
+            image: '/images/actions/maonius.png',
             description: '四肢着地，吸气时背部下沉抬头，呼气时背部拱起低头'
           },
           {
@@ -479,7 +479,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 0,
-            image: '/images/xiaquans.png',
+            image: '/images/actions/xiaquans.png',
             description: '手脚着地，臀部向上抬起，形成倒V形，伸展全身'
           },
           {
@@ -488,7 +488,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 0,
-            image: '/images/shanshi.png',
+            image: '/images/actions/shanshi.png',
             description: '站立，双脚并拢，身体挺直，双手合十于胸前，深呼吸'
           }
         ],

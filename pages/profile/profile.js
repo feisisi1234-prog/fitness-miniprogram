@@ -5,7 +5,7 @@ Page({
   data: {
     userInfo: {
       name: '健身达人',
-      avatar: '/images/placeholder.png',
+      avatar: '/images/ui/placeholder.png',
       level: 'Lv.1 新手'
     },
     userStats: {
@@ -35,11 +35,34 @@ Page({
 
   onShow() {
     console.log('Profile页面显示');
+    this.loadUserData(); // 重新加载用户数据
     this.loadTrainingRecords();
     this.loadCustomPlans();
     this.calculateUserStats(); // 计算用户统计数据
     this.generateCalendar();
     this.calculateWeeklyData();
+  },
+
+  // 选择头像
+  onChooseAvatar(e) {
+    const { avatarUrl } = e.detail;
+    console.log('用户选择的头像:', avatarUrl);
+    
+    // 更新页面显示
+    this.setData({
+      'userInfo.avatar': avatarUrl
+    });
+    
+    // 保存到本地存储
+    const userInfo = wx.getStorageSync('userInfo') || {};
+    userInfo.avatar = avatarUrl;
+    wx.setStorageSync('userInfo', userInfo);
+    
+    wx.showToast({
+      title: '头像更新成功',
+      icon: 'success',
+      duration: 1500
+    });
   },
 
   // 加载用户数据
@@ -55,7 +78,7 @@ Page({
     this.setData({
       userInfo: {
         name: userInfo.name || '健身达人',
-        avatar: userInfo.avatar || '/images/placeholder.png',
+        avatar: userInfo.avatar || '/images/ui/placeholder.png',
         level: userInfo.level || 'Lv.1 新手'
       },
       userStats

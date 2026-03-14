@@ -53,49 +53,29 @@ page {
 }
 
 .meta-icon {
-  font-size: 36rpx;
+  width: 36rpx;
+  height: 36rpx;
   margin-bottom: 10rpx;
+  opacity: 0.8;
 }
 
-.meta-text {
-  font-size: 26rpx;
-  color: var(--text-secondary);
-  font-weight: 500;
-}
-
-/* 评分和参与人数 */
-.plan-stats {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 20rpx;
-  padding-top: 20rpx;
-  border-top: 1px solid rgba(0, 0, 0, 0.05);
-}
-
-.rating {
-  display: flex;
-  align-items: center;
-}
-
-.rating-stars {
-  font-size: 28rpx;
+.rating-icon {
+  width: 28rpx;
+  height: 28rpx;
   margin-right: 8rpx;
-}
-
-.rating-value {
-  font-size: 28rpx;
-  font-weight: 600;
-  color: var(--text-primary);
-}
-
-.participants {
-  display: flex;
-  align-items: center;
 }
 
 .participants-icon {
-  font-size: 28rpx;
+  width: 28rpx;
+  height: 28rpx;
   margin-right: 8rpx;
+}
+
+.tip-icon {
+  width: 32rpx;
+  height: 32rpx;
+  margin-right: 16rpx;
+  flex-shrink: 0;
 }
 
 .participants-value {
@@ -277,6 +257,18 @@ page {
   margin-bottom: 30rpx;
   box-shadow: var(--shadow);
   position: relative;
+  animation: stepsSlideIn 0.6s ease;
+}
+
+@keyframes stepsSlideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 .plan-steps::before {
@@ -301,11 +293,23 @@ page {
   background: rgba(255, 255, 255, 0.5);
   border-radius: 16rpx;
   box-shadow: var(--shadow-sm);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  animation: stepFadeIn 0.5s ease;
+}
+
+@keyframes stepFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .step-item:active {
-  transform: scale(0.98);
+  transform: scale(0.98) translateX(8rpx);
   box-shadow: var(--shadow);
 }
 
@@ -441,6 +445,18 @@ page {
 .action-container {
   margin-top: 40rpx;
   margin-bottom: 40rpx;
+  animation: buttonSlideUp 0.6s ease 0.3s both;
+}
+
+@keyframes buttonSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .start-btn {
@@ -455,7 +471,27 @@ page {
   align-items: center;
   justify-content: center;
   box-shadow: var(--shadow-lg);
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.start-btn::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.start-btn:active::before {
+  width: 500rpx;
+  height: 500rpx;
 }
 
 .start-btn:active {

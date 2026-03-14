@@ -17,6 +17,40 @@ page {
   margin-bottom: 30rpx;
   box-shadow: 0 8rpx 30rpx rgba(7, 193, 96, 0.3);
   color: white;
+  position: relative;
+  overflow: hidden;
+  animation: statsSlideIn 0.6s ease;
+}
+
+@keyframes statsSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-30rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.stats-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: rotate 20s linear infinite;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .stats-header {
@@ -290,11 +324,47 @@ page {
   gap: 20rpx;
 }
 
+/* 记录卡片 */
 .record-card {
   background: #f8f8f8;
   border-radius: 20rpx;
   padding: 30rpx;
-  transition: all 0.3s ease;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  animation: recordFadeIn 0.5s ease;
+}
+
+@keyframes recordFadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20rpx);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.record-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 4rpx;
+  background: linear-gradient(180deg, #07c160, #06a552);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.record-card:active::before {
+  transform: scaleY(1);
+}
+
+.record-card:active {
+  transform: translateX(8rpx);
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.1);
 }
 
 .record-header {
@@ -375,12 +445,6 @@ page {
 .empty-icon {
   width: 200rpx;
   height: 200rpx;
-  margin-bottom: 30rpx;
-  opacity: 0.5;
-}
-
-.empty-icon-emoji {
-  font-size: 120rpx;
   margin-bottom: 30rpx;
   opacity: 0.5;
 }

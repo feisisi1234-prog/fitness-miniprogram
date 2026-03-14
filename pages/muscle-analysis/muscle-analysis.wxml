@@ -42,14 +42,16 @@
         </view>
         
         <view class="video-info" wx:if="{{!videoLoadError}}">
-          <text class="info-text">💡 人体肌肉分布视频</text>
+          <image class="info-icon" src="/images/icons/lightbulb.svg" mode="aspectFit"></image>
+          <text class="info-text">人体肌肉分布视频</text>
           <text class="info-text">点击播放观看详细讲解</text>
         </view>
       </view>
       
       <!-- 配置说明 -->
       <view class="config-notice">
-        <text class="notice-title">📌 视频配置说明</text>
+        <image class="notice-icon" src="/images/icons/pin.svg" mode="aspectFit"></image>
+        <text class="notice-title">视频配置说明</text>
         <text class="notice-text">如需在小程序中播放视频，请在微信公众平台配置以下域名：</text>
         <view class="domain-box">
           <text class="domain-text">jrchbzzwgqndaxsckvub.supabase.co</text>
@@ -144,7 +146,7 @@
     <!-- 肌肉张力知识点 -->
     <view class="knowledge-section">
       <view class="knowledge-header">
-        <text class="knowledge-icon">📚</text>
+        <image class="knowledge-icon" src="/images/icons/book.svg" mode="aspectFit"></image>
         <text class="knowledge-title">肌肉张力基础知识</text>
       </view>
       
@@ -158,19 +160,19 @@
           <text class="knowledge-subtitle">影响因素</text>
           <view class="factor-list">
             <view class="factor-item">
-              <text class="factor-icon">💪</text>
+              <image class="factor-icon" src="/images/icons/muscle.svg" mode="aspectFit"></image>
               <text class="factor-text">肌纤维类型：快肌纤维产生更大张力</text>
             </view>
             <view class="factor-item">
-              <text class="factor-icon">📏</text>
+              <image class="factor-icon" src="/images/icons/ruler.svg" mode="aspectFit"></image>
               <text class="factor-text">肌肉长度：最佳长度时张力最大</text>
             </view>
             <view class="factor-item">
-              <text class="factor-icon">⚡</text>
+              <image class="factor-icon" src="/images/icons/lightning.svg" mode="aspectFit"></image>
               <text class="factor-text">收缩速度：速度越快张力越小</text>
             </view>
             <view class="factor-item">
-              <text class="factor-icon">🔄</text>
+              <image class="factor-icon" src="/images/icons/repeat.svg" mode="aspectFit"></image>
               <text class="factor-text">杠杆效应：力臂长度影响实际张力</text>
             </view>
           </view>
