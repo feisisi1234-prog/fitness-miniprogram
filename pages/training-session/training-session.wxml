@@ -1,5 +1,21 @@
 <!--pages/training-session/training-session.wxml-->
 <view class="training-session-container">
+  <!-- 庆祝动画 -->
+  <view wx:if="{{showCelebration}}" class="celebration-overlay">
+    <view class="celebration-content">
+      <view class="celebration-icon">🎉</view>
+      <text class="celebration-text">训练完成！</text>
+      <text class="celebration-subtext">太棒了！</text>
+    </view>
+    
+    <!-- 五彩纸屑 -->
+    <view 
+      wx:for="{{confetti}}" 
+      wx:key="id" 
+      class="confetti"
+      style="left: {{item.left}}%; background: {{item.color}}; animation-delay: {{item.delay}}s; animation-duration: {{item.duration}}s; transform: rotate({{item.rotation}}deg);"
+    ></view>
+  </view>
   <!-- 顶部信息栏 -->
   <view class="header-bar">
     <view class="header-left">

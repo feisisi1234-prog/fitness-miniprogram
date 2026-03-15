@@ -932,7 +932,7 @@ Page({
   goToTensionCalculator: function(e) {
     const exercise = e.currentTarget.dataset.exercise;
     wx.navigateTo({
-      url: `/pages/tension-calculator/tension-calculator?exerciseIndex=${exercise.index}`
+      url: `/subpages/analysis/tension-calculator/tension-calculator?exerciseIndex=${exercise.index}`
     });
   },
 
@@ -970,7 +970,7 @@ Page({
   goToActionDetail: function(e) {
     const action = e.currentTarget.dataset.action;
     wx.navigateTo({
-      url: `/pages/action-detail/action-detail?id=${action.id}&name=${action.name}&muscleGroup=${action.muscleGroup}&fiberDirection=${encodeURIComponent(action.fiberDirection)}&description=${encodeURIComponent(action.description)}&tips=${encodeURIComponent(action.tips)}`
+      url: `/subpages/analysis/action-detail/action-detail?id=${action.id}&name=${action.name}&muscleGroup=${action.muscleGroup}&fiberDirection=${encodeURIComponent(action.fiberDirection)}&description=${encodeURIComponent(action.description)}&tips=${encodeURIComponent(action.tips)}`
     });
   },
 

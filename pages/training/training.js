@@ -258,7 +258,7 @@ Page({
 
   goToMuscleAnalysis() {
     wx.navigateTo({
-      url: '/pages/muscle-analysis/muscle-analysis'
+      url: '/subpages/analysis/muscle-analysis/muscle-analysis'
     });
   },
 

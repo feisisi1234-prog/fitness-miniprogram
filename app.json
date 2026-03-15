@@ -4,25 +4,58 @@
     "pages/training/training",
     "pages/custom-plans/custom-plans",
     "pages/profile/profile",
-    "pages/food-recognition/food-recognition",
     "pages/profile/edit/edit",
-    "pages/muscle-analysis/muscle-analysis",
-    "pages/action-detail/action-detail",
-    "pages/tension-calculator/tension-calculator",
     "pages/plan-detail/plan-detail",
-    "pages/training-records/training-records",
-    "pages/settings/settings",
     "pages/training-session/training-session",
     "pages/timer/timer",
-    "pages/achievements/achievements",
-    "pages/body-tracking/body-tracking"
+    "pages/ai-recommendation/ai-recommendation"
+  ],
+  "subPackages": [
+    {
+      "root": "subpages/analysis",
+      "name": "analysis",
+      "pages": [
+        "muscle-analysis/muscle-analysis",
+        "action-detail/action-detail",
+        "tension-calculator/tension-calculator"
+      ]
+    },
+    {
+      "root": "subpages/user",
+      "name": "user",
+      "pages": [
+        "achievements/achievements",
+        "body-tracking/body-tracking",
+        "training-records/training-records",
+        "settings/settings",
+        "food-recognition/food-recognition"
+      ]
+    },
+    {
+      "root": "subpages/social",
+      "name": "social",
+      "pages": [
+        "friends/friends",
+        "dynamics/dynamics",
+        "ranking/ranking"
+      ]
+    }
   ],
   "window": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "健身助手",
     "navigationBarBackgroundColor": "#ffffff",
-    "backgroundColor": "#f8f8f8"
+    "backgroundColor": "#f8f8f8",
+    "enablePullDownRefresh": false,
+    "backgroundTextStyle": "dark",
+    "pageOrientation": "portrait",
+    "restartStrategy": "homePage"
   },
+  "animation": {
+    "duration": 300,
+    "timingFunc": "easeInOut"
+  },
+  "lazyCodeLoading": "requiredComponents",
   "tabBar": {
     "color": "#94a3b8",
     "selectedColor": "#10b981",

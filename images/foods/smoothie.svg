@@ -1,0 +1,19 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 杯子 -->
+  <path d="M 100 100 L 80 240 Q 80 260 150 260 Q 220 260 220 240 L 200 100 Z" fill="#e3f2fd" stroke="#90caf9" stroke-width="3"/>
+  
+  <!-- 奶昔 -->
+  <path d="M 105 110 L 85 230 Q 85 250 150 250 Q 215 250 215 230 L 195 110 Z" fill="#ce93d8"/>
+  
+  <!-- 水果层 -->
+  <ellipse cx="150" cy="200" rx="60" ry="15" fill="#ba68c8" opacity="0.6"/>
+  <ellipse cx="150" cy="170" rx="65" ry="15" fill="#ab47bc" opacity="0.6"/>
+  
+  <!-- 吸管 -->
+  <rect x="170" y="60" width="8" height="100" fill="#ef5350" rx="4"/>
+  <rect x="170" y="60" width="8" height="20" fill="#f44336" rx="4"/>
+  
+  <!-- 装饰 -->
+  <circle cx="130" cy="140" r="8" fill="#ffeb3b" opacity="0.8"/>
+  <circle cx="165" cy="180" r="6" fill="#ff9800" opacity="0.8"/>
+</svg>

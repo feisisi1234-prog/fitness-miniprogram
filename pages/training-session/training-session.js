@@ -3,6 +3,7 @@ const app = getApp();
 const StorageManager = require('../../utils/storage.js');
 const AchievementManager = require('../../utils/achievement.js');
 const StatsCalculator = require('../../utils/stats.js');
+const SocialManager = require('../../utils/social.js');
 
 Page({
   data: {
@@ -25,7 +26,9 @@ Page({
     caloriesPerMinute: 8,
     sessionStartTime: 0,
     isPaused: false,
-    showExerciseList: false
+    showExerciseList: false,
+    showCelebration: false,
+    confetti: []
   },
 
   onLoad(options) {
@@ -707,25 +710,67 @@ Page({
     const completedCount = this.data.exercises.filter(e => e.completed).length;
     const totalCount = this.data.exercises.length;
     
-    wx.showModal({
-      title: '训练完成',
-      content: `完成动作：${completedCount}/${totalCount}\n训练时长：${totalMinutes}分${totalSeconds}秒\n消耗卡路里：${this.data.totalCalories}千卡`,
-      confirmText: '保存',
-      cancelText: '放弃',
-      success: (res) => {
-        if (res.confirm) {
-          this.saveTrainingRecord();
-          
-          // 返回训练页面
-          setTimeout(() => {
+    // 显示庆祝动画
+    this.showCelebrationAnimation();
+    
+    // 延迟显示完成对话框
+    setTimeout(() => {
+      wx.showModal({
+        title: '🎉 训练完成',
+        content: `完成动作：${completedCount}/${totalCount}\n训练时长：${totalMinutes}分${totalSeconds}秒\n消耗卡路里：${this.data.totalCalories}千卡`,
+        confirmText: '保存',
+        cancelText: '放弃',
+        success: (res) => {
+          if (res.confirm) {
+            this.saveTrainingRecord();
+            
+            // 返回训练页面
+            setTimeout(() => {
+              wx.navigateBack();
+            }, 1500);
+          } else {
+            // 用户选择放弃，直接返回
             wx.navigateBack();
-          }, 1500);
-        } else {
-          // 用户选择放弃，直接返回
-          wx.navigateBack();
+          }
         }
-      }
+      });
+    }, 1500);
+  },
+
+  // 显示庆祝动画
+  showCelebrationAnimation() {
+    // 生成五彩纸屑
+    const confetti = [];
+    const colors = ['#10b981', '#3b82f6', '#f59e0b', '#ef4444', '#8b5cf6', '#ec4899'];
+    
+    for (let i = 0; i < 50; i++) {
+      confetti.push({
+        id: i,
+        left: Math.random() * 100,
+        color: colors[Math.floor(Math.random() * colors.length)],
+        delay: Math.random() * 0.5,
+        duration: 2 + Math.random() * 1,
+        rotation: Math.random() * 360
+      });
+    }
+    
+    this.setData({
+      showCelebration: true,
+      confetti: confetti
     });
+    
+    // 震动反馈
+    wx.vibrateShort({
+      type: 'medium'
+    });
+    
+    // 3秒后隐藏动画
+    setTimeout(() => {
+      this.setData({
+        showCelebration: false,
+        confetti: []
+      });
+    }, 3000);
   },
 
   // 保存训练记录
@@ -760,6 +805,9 @@ Page({
     
     console.log('训练记录已保存到本地存储');
     
+    // 发布动态到社交广场
+    this.publishDynamic(newRecord);
+    
     // 检查并解锁成就
     this.checkAchievements();
     
@@ -779,6 +827,20 @@ Page({
     // 触发我的页面数据更新
     console.log('触发我的页面数据更新');
     this.updateProfilePage();
+  },
+
+  // 发布动态
+  publishDynamic(record) {
+    const minutes = Math.floor(record.duration / 60);
+    if (minutes > 0) {
+      SocialManager.publishDynamic({
+        type: 'training',
+        content: `完成了${record.typeName}`,
+        duration: minutes,
+        calories: record.calories
+      });
+      console.log('动态已发布到社交广场');
+    }
   },
 
   // 更新首页数据

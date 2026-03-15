@@ -44,6 +44,13 @@ Page({
     this.loadCustomPlans();
   },
 
+  // 跳转到AI推荐页面
+  goToAIRecommendation() {
+    wx.navigateTo({
+      url: '/pages/ai-recommendation/ai-recommendation'
+    });
+  },
+
   // 加载自定义训练计划
   loadCustomPlans() {
     const customPlans = wx.getStorageSync('customPlans') || [];

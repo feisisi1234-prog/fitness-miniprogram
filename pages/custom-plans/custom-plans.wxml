@@ -3,6 +3,11 @@
 <view class="container">
   <!-- 添加计划按钮组 -->
   <view class="add-plan-buttons">
+    <view class="add-plan-btn ai-btn" bindtap="goToAIRecommendation">
+      <text class="btn-icon">✨</text>
+      <text class="btn-text">AI推荐</text>
+    </view>
+    
     <view class="add-plan-btn" bindtap="showAddPlanForm">
       <text class="btn-icon">+</text>
       <text class="btn-text">手动创建</text>

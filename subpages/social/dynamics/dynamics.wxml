@@ -1,0 +1,239 @@
+<!-- subpages/social/dynamics/dynamics.wxml -->
+<view class="dynamics-container">
+  <!-- 发布动态按钮 -->
+  <view class="publish-btn-container">
+    <view class="publish-btn" bindtap="publishDynamic">
+      <image class="publish-icon" src="/images/icons/edit.svg" mode="aspectFit"></image>
+      <text class="publish-text">发布动态</text>
+    </view>
+  </view>
+
+  <!-- 动态列表 -->
+  <view class="dynamics-list">
+    <view 
+      wx:for="{{dynamics}}" 
+      wx:key="id" 
+      class="dynamic-card"
+    >
+      <view class="dynamic-header" bindtap="viewUserDetail" data-userid="{{item.userId}}">
+        <image class="user-avatar" src="{{item.userAvatar}}" mode="aspectFit"></image>
+        <view class="user-info">
+          <text class="user-name">{{item.userName}}</text>
+          <text class="dynamic-time">{{item.timeText}}</text>
+        </view>
+      </view>
+
+      <view class="dynamic-body">
+        <text class="dynamic-content">{{item.content}}</text>
+        
+        <!-- 训练信息 -->
+        <view wx:if="{{item.type === 'training'}}" class="training-info">
+          <view class="training-stat">
+            <image class="stat-icon" src="/images/icons/timer.svg" mode="aspectFit"></image>
+            <text class="stat-text">{{item.duration}}分钟</text>
+          </view>
+          <view class="training-stat">
+            <image class="stat-icon" src="/images/icons/flame.svg" mode="aspectFit"></image>
+            <text class="stat-text">{{item.calories}}千卡</text>
+          </view>
+        </view>
+
+        <!-- 图片内容 -->
+        <view wx:if="{{item.image}}" class="dynamic-image-box single">
+          <image class="dynamic-image" src="{{item.image}}" mode="aspectFill"></image>
+        </view>
+
+        <!-- 多图内容 -->
+        <view wx:if="{{item.images && item.images.length > 0}}" class="dynamic-images-grid">
+          <image 
+            wx:for="{{item.images}}" 
+            wx:key="index" 
+            wx:for-item="img"
+            class="grid-image {{item.images.length === 1 ? 'single' : ''}}"
+            src="{{img}}" 
+            mode="aspectFill"
+          ></image>
+        </view>
+
+        <!-- 标签 -->
+        <view wx:if="{{item.tags && item.tags.length > 0}}" class="dynamic-tags">
+          <view wx:for="{{item.tags}}" wx:key="index" wx:for-item="tag" class="tag-item">
+            #{{tag}}
+          </view>
+        </view>
+
+        <!-- 成就徽章 -->
+        <view wx:if="{{item.icon}}" class="achievement-badge">
+          <text class="achievement-icon">{{item.icon}}</text>
+        </view>
+
+        <!-- 打卡时间 -->
+        <view wx:if="{{item.time}}" class="checkin-time">
+          <image class="time-icon" src="/images/icons/clock.svg" mode="aspectFit"></image>
+          <text class="time-text">{{item.time}}</text>
+        </view>
+      </view>
+
+      <view class="dynamic-footer">
+        <view 
+          class="action-btn {{item.isLiked ? 'liked' : ''}}" 
+          bindtap="toggleLike" 
+          data-id="{{item.id}}"
+        >
+          <image 
+            class="action-icon" 
+            src="/images/icons/star.svg" 
+            mode="aspectFit"
+          ></image>
+          <text class="action-text">{{item.likes > 0 ? item.likes : '点赞'}}</text>
+        </view>
+
+        <view 
+          class="action-btn" 
+          bindtap="toggleComments" 
+          data-index="{{index}}"
+        >
+          <image 
+            class="action-icon" 
+            src="/images/icons/list.svg" 
+            mode="aspectFit"
+          ></image>
+          <text class="action-text">{{item.commentCount > 0 ? item.commentCount : '评论'}}</text>
+        </view>
+
+        <view 
+          class="action-btn" 
+          bindtap="openCommentInput" 
+          data-dynamic="{{item}}"
+        >
+          <image 
+            class="action-icon" 
+            src="/images/icons/edit.svg" 
+            mode="aspectFit"
+          ></image>
+          <text class="action-text">写评论</text>
+        </view>
+      </view>
+
+      <!-- 评论列表 -->
+      <view wx:if="{{item.showComments && item.comments && item.comments.length > 0}}" class="comments-section">
+        <view class="comments-header">
+          <text class="comments-title">评论 ({{item.commentCount}})</text>
+        </view>
+        <view class="comments-list">
+          <view wx:for="{{item.comments}}" wx:key="id" wx:for-item="comment" class="comment-item">
+            <image class="comment-avatar" src="{{comment.userAvatar}}" mode="aspectFit"></image>
+            <view class="comment-content">
+              <text class="comment-user">{{comment.userName}}</text>
+              <text class="comment-text">{{comment.content}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 空状态 -->
+  <view wx:if="{{dynamics.length === 0}}" class="empty-state">
+    <image class="empty-icon" src="/images/icons/empty.svg" mode="aspectFit"></image>
+    <text class="empty-text">还没有动态</text>
+    <text class="empty-hint">完成训练后会自动发布动态</text>
+  </view>
+</view>
+
+<!-- 评论输入弹窗 -->
+<view wx:if="{{showCommentModal}}" class="comment-modal" catchtap="closeCommentModal">
+  <view class="comment-modal-content" catchtap="{{null}}">
+    <view class="modal-header">
+      <text class="modal-title">写评论</text>
+      <view class="close-btn" bindtap="closeCommentModal">✕</view>
+    </view>
+    <view class="modal-body">
+      <textarea 
+        class="comment-textarea" 
+        placeholder="说点什么..."
+        value="{{commentInput}}"
+        bindinput="onCommentInput"
+        maxlength="200"
+        auto-focus
+      ></textarea>
+      <view class="char-count">{{commentInput.length}}/200</view>
+    </view>
+    <view class="modal-footer">
+      <view class="cancel-btn" bindtap="closeCommentModal">取消</view>
+      <view class="submit-btn" bindtap="submitComment">发送</view>
+    </view>
+  </view>
+</view>
+
+<!-- 发布动态弹窗 -->
+<view wx:if="{{showPublishModal}}" class="publish-modal">
+  <view class="modal-mask" catchtap="closePublishModal"></view>
+  <view class="publish-modal-content" catchtap="{{null}}">
+    <view class="modal-header">
+      <text class="modal-title">发布动态</text>
+      <view class="close-btn" catchtap="closePublishModal">✕</view>
+    </view>
+    
+    <view class="modal-body">
+      <!-- 文字输入 -->
+      <view class="textarea-wrapper" catchtap="{{null}}">
+        <textarea 
+          class="publish-textarea" 
+          placeholder="分享你的健身心得、饮食计划或训练成果..."
+          value="{{publishContent}}"
+          bindinput="onPublishInput"
+          maxlength="500"
+          cursor-spacing="20"
+          show-confirm-bar="{{false}}"
+          adjust-position="{{true}}"
+          auto-height
+        ></textarea>
+        <view class="char-count">{{publishContent.length}}/500</view>
+      </view>
+
+      <!-- 图片选择 -->
+      <view class="image-section" catchtap="{{null}}">
+        <view class="section-title">添加图片（最多{{maxImages}}张）</view>
+        <view class="image-grid">
+          <!-- 已选图片 -->
+          <view 
+            wx:for="{{publishImages}}" 
+            wx:key="index" 
+            class="image-item"
+          >
+            <image 
+              class="preview-image" 
+              src="{{item}}" 
+              mode="aspectFill"
+              catchtap="previewImage"
+              data-index="{{index}}"
+            ></image>
+            <view 
+              class="delete-image-btn" 
+              catchtap="deleteImage" 
+              data-index="{{index}}"
+            >
+              ✕
+            </view>
+          </view>
+
+          <!-- 添加图片按钮 -->
+          <view 
+            wx:if="{{publishImages.length < maxImages}}" 
+            class="add-image-btn"
+            catchtap="chooseImage"
+          >
+            <image class="add-icon" src="/images/icons/camera.svg" mode="aspectFit"></image>
+            <text class="add-text">添加图片</text>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <view class="modal-footer" catchtap="{{null}}">
+      <view class="cancel-btn" catchtap="closePublishModal">取消</view>
+      <view class="submit-btn" catchtap="submitPublish">发布</view>
+    </view>
+  </view>
+</view>

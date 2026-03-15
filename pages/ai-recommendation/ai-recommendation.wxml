@@ -1,0 +1,141 @@
+<!-- pages/ai-recommendation/ai-recommendation.wxml -->
+<navigation-bar title="AI智能推荐" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+
+<view class="container">
+  <!-- 进度指示器 -->
+  <view class="progress-bar">
+    <view class="progress-step {{currentStep >= 1 ? 'active' : ''}}" wx:for="{{totalSteps}}" wx:key="*this">
+      <view class="step-dot"></view>
+      <view class="step-line" wx:if="{{index < totalSteps - 1}}"></view>
+    </view>
+  </view>
+
+  <!-- 步骤1: 选择体能等级 -->
+  <view class="step-content" wx:if="{{currentStep === 1}}">
+    <view class="step-header">
+      <text class="step-title">您的体能水平？</text>
+      <text class="step-desc">帮助AI为您匹配合适的训练强度</text>
+    </view>
+
+    <view class="options-list">
+      <view 
+        class="option-card {{fitnessLevel === item.id ? 'selected' : ''}}"
+        wx:for="{{fitnessLevels}}"
+        wx:key="id"
+        bindtap="selectFitnessLevel"
+        data-level="{{item.id}}"
+      >
+        <text class="option-icon">{{item.icon}}</text>
+        <view class="option-content">
+          <text class="option-name">{{item.name}}</text>
+          <text class="option-desc">{{item.desc}}</text>
+        </view>
+        <view class="option-check" wx:if="{{fitnessLevel === item.id}}">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤2: 选择训练目标 -->
+  <view class="step-content" wx:if="{{currentStep === 2}}">
+    <view class="step-header">
+      <text class="step-title">您的训练目标？</text>
+      <text class="step-desc">AI将根据目标定制训练内容</text>
+    </view>
+
+    <view class="options-grid">
+      <view 
+        class="goal-card {{goal === item.id ? 'selected' : ''}}"
+        wx:for="{{goals}}"
+        wx:key="id"
+        bindtap="selectGoal"
+        data-goal="{{item.id}}"
+        style="border-color: {{goal === item.id ? item.color : '#e5e7eb'}}"
+      >
+        <text class="goal-icon">{{item.icon}}</text>
+        <text class="goal-name">{{item.name}}</text>
+        <text class="goal-desc">{{item.desc}}</text>
+        <view class="goal-check" wx:if="{{goal === item.id}}" style="background: {{item.color}}">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤3: 选择训练时长 -->
+  <view class="step-content" wx:if="{{currentStep === 3}}">
+    <view class="step-header">
+      <text class="step-title">期望训练时长？</text>
+      <text class="step-desc">AI将控制动作数量和强度</text>
+    </view>
+
+    <view class="duration-selector">
+      <text class="duration-label">训练时长</text>
+      <view class="duration-value">{{duration}} 分钟</view>
+      <slider 
+        class="duration-slider"
+        min="15"
+        max="60"
+        step="5"
+        value="{{duration}}"
+        activeColor="#10b981"
+        backgroundColor="#e5e7eb"
+        block-size="24"
+        bindchange="onDurationChange"
+      />
+      <view class="duration-marks">
+        <text class="mark">15分钟</text>
+        <text class="mark">30分钟</text>
+        <text class="mark">60分钟</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 步骤4: 选择可用器材 -->
+  <view class="step-content" wx:if="{{currentStep === 4}}">
+    <view class="step-header">
+      <text class="step-title">可用训练器材？</text>
+      <text class="step-desc">可多选，AI将推荐相应动作</text>
+    </view>
+
+    <view class="equipment-grid">
+      <view 
+        class="equipment-card {{equipment.indexOf(item.id) > -1 ? 'selected' : ''}}"
+        wx:for="{{equipmentOptions}}"
+        wx:key="id"
+        bindtap="toggleEquipment"
+        data-equipment="{{item.id}}"
+        hover-class="equipment-card-hover"
+      >
+        <text class="equipment-icon">{{item.icon}}</text>
+        <text class="equipment-name">{{item.name}}</text>
+        <view class="equipment-check" wx:if="{{equipment.indexOf(item.id) > -1}}">✓</view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 底部按钮 -->
+  <view class="bottom-actions">
+    <button 
+      class="action-btn secondary-btn" 
+      wx:if="{{currentStep > 1}}"
+      bindtap="prevStep"
+    >
+      上一步
+    </button>
+    
+    <button 
+      class="action-btn primary-btn" 
+      wx:if="{{currentStep < totalSteps}}"
+      bindtap="nextStep"
+    >
+      下一步
+    </button>
+    
+    <button 
+      class="action-btn generate-btn" 
+      wx:if="{{currentStep === totalSteps}}"
+      bindtap="generatePlan"
+      disabled="{{generating}}"
+    >
+      {{generating ? '生成中...' : '✨ 生成计划'}}
+    </button>
+  </view>
+</view>

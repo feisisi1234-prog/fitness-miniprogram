@@ -3,6 +3,7 @@ const app = getApp();
 const StorageManager = require('../../utils/storage.js');
 const StatsCalculator = require('../../utils/stats.js');
 const AchievementManager = require('../../utils/achievement.js');
+const SocialManager = require('../../utils/social.js');
 
 Page({
   data: {
@@ -24,16 +25,26 @@ Page({
       totalMinutes: 0,
       totalCalories: 0,
       continuousDays: 0
+    },
+    // 社交相关
+    friendsCount: 0,
+    recentDynamics: [],
+    myRanking: {
+      weekRank: 0,
+      weekMinutes: 0
     }
   },
 
   onLoad() {
     console.log('=== Index页面加载 ===');
+    // 强制更新社交数据以使用新头像
+    SocialManager.initMockData(true);
     this.setGreeting();
     this.loadUserInfo();
     this.loadRecommendedPlans();
     this.calculateTodayProgress();
     this.calculateWeekStats();
+    this.loadSocialData();
     console.log('=== Index页面加载完成 ===');
   },
 
@@ -43,6 +54,7 @@ Page({
     this.setGreeting();
     this.calculateTodayProgress();
     this.calculateWeekStats();
+    this.loadSocialData();
     console.log('=== Index页面 onShow 完成 ===');
   },
 
@@ -299,21 +311,21 @@ Page({
   // 跳转到肌肉分析页面
   goToMuscleAnalysis() {
     wx.navigateTo({
-      url: '/pages/muscle-analysis/muscle-analysis'
+      url: '/subpages/analysis/muscle-analysis/muscle-analysis'
     });
   },
 
   // 跳转到训练记录页面
   goToRecords() {
     wx.navigateTo({
-      url: '/pages/training-records/training-records'
+      url: '/subpages/user/training-records/training-records'
     });
   },
 
   // 跳转到食物识别页面
   goToFoodRecognition() {
     wx.navigateTo({
-      url: '/pages/food-recognition/food-recognition'
+      url: '/subpages/user/food-recognition/food-recognition'
     });
   },
 
@@ -322,6 +334,65 @@ Page({
     const id = e.currentTarget.dataset.id;
     wx.navigateTo({
       url: `/pages/plan-detail/plan-detail?id=${id}`
+    });
+  },
+
+  // 加载社交数据
+  loadSocialData() {
+    // 加载好友数量
+    const friends = SocialManager.getFriends();
+    const friendsCount = friends.length;
+
+    // 加载最近动态（前3条）
+    const dynamics = SocialManager.getDynamics();
+    const recentDynamics = dynamics.slice(0, 3).map(d => ({
+      ...d,
+      timeText: SocialManager.formatTime(d.timestamp)
+    }));
+
+    // 加载我的排名
+    const rankingList = SocialManager.getRankingList('week', 'minutes');
+    const myRanking = rankingList.find(r => r.isMe) || { rank: 0, weekMinutes: 0 };
+
+    this.setData({
+      friendsCount,
+      recentDynamics,
+      myRanking: {
+        weekRank: myRanking.rank,
+        weekMinutes: myRanking.weekMinutes
+      }
+    });
+  },
+
+  // 跳转到好友列表
+  goToFriends() {
+    wx.navigateTo({
+      url: '/subpages/social/friends/friends'
+    });
+  },
+
+  // 跳转到动态广场
+  goToDynamics() {
+    wx.navigateTo({
+      url: '/subpages/social/dynamics/dynamics'
+    });
+  },
+
+  // 跳转到排行榜
+  goToRanking() {
+    wx.navigateTo({
+      url: '/subpages/social/ranking/ranking'
+    });
+  },
+
+  // 点赞动态
+  toggleLike(e) {
+    const dynamicId = e.currentTarget.dataset.id;
+    SocialManager.toggleLike(dynamicId);
+    this.loadSocialData();
+    
+    wx.vibrateShort({
+      type: 'light'
     });
   }
 })

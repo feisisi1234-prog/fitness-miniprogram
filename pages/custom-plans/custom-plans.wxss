@@ -7,21 +7,21 @@
 
 /* 添加计划按钮组 */
 .add-plan-buttons {
-  display: flex;
-  gap: 16rpx;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12rpx;
   margin-bottom: 32rpx;
 }
 
 /* 添加计划按钮 */
 .add-plan-btn {
-  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   background: linear-gradient(135deg, #10b981 0%, #059669 100%);
-  border-radius: 24rpx;
-  padding: 32rpx 24rpx;
+  border-radius: 20rpx;
+  padding: 28rpx 16rpx;
   box-shadow: 0 4rpx 16rpx rgba(16, 185, 129, 0.2);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
@@ -39,6 +39,15 @@
   border-radius: 50%;
 }
 
+.ai-btn {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  box-shadow: 0 4rpx 16rpx rgba(139, 92, 246, 0.2);
+}
+
+.ai-btn:active {
+  box-shadow: 0 6rpx 20rpx rgba(139, 92, 246, 0.3);
+}
+
 .scan-btn {
   background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
   box-shadow: 0 4rpx 16rpx rgba(59, 130, 246, 0.2);
@@ -54,7 +63,7 @@
 }
 
 .btn-icon {
-  font-size: 48rpx;
+  font-size: 40rpx;
   margin-bottom: 8rpx;
   color: #ffffff;
   font-weight: 300;
@@ -62,7 +71,7 @@
 }
 
 .btn-text {
-  font-size: 28rpx;
+  font-size: 24rpx;
   font-weight: 600;
   color: #ffffff;
   letter-spacing: 0.5rpx;

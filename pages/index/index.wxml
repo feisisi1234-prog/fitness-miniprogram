@@ -193,5 +193,79 @@
     </view>
   </view>
 
+  <!-- 社交模块 -->
+  <view class="section">
+    <view class="section-header">
+      <text class="section-title">好友动态</text>
+      <view class="more-btn" bindtap="goToDynamics">
+        <text class="more-text">查看全部</text>
+        <text class="more-arrow">→</text>
+      </view>
+    </view>
+
+    <!-- 社交快捷入口 -->
+    <view class="social-shortcuts">
+      <view class="shortcut-item" bindtap="goToFriends" hover-class="shortcut-hover">
+        <view class="shortcut-icon-box friends-bg">
+          <image src="/images/icons/users.svg" class="shortcut-icon" mode="aspectFit"></image>
+          <view wx:if="{{friendsCount > 0}}" class="shortcut-badge">{{friendsCount}}</view>
+        </view>
+        <text class="shortcut-text">我的好友</text>
+      </view>
+
+      <view class="shortcut-item" bindtap="goToRanking" hover-class="shortcut-hover">
+        <view class="shortcut-icon-box ranking-bg">
+          <image src="/images/icons/bar-chart.svg" class="shortcut-icon" mode="aspectFit"></image>
+          <view wx:if="{{myRanking.weekRank > 0}}" class="shortcut-badge rank">{{myRanking.weekRank}}</view>
+        </view>
+        <text class="shortcut-text">排行榜</text>
+      </view>
+
+      <view class="shortcut-item" bindtap="goToDynamics" hover-class="shortcut-hover">
+        <view class="shortcut-icon-box dynamics-bg">
+          <image src="/images/icons/bell.svg" class="shortcut-icon" mode="aspectFit"></image>
+        </view>
+        <text class="shortcut-text">动态广场</text>
+      </view>
+    </view>
+
+    <!-- 最近动态 -->
+    <view wx:if="{{recentDynamics.length > 0}}" class="dynamics-preview">
+      <view 
+        wx:for="{{recentDynamics}}" 
+        wx:key="id" 
+        class="dynamic-item"
+        hover-class="dynamic-hover"
+      >
+        <image class="dynamic-avatar" src="{{item.userAvatar}}" mode="aspectFit"></image>
+        <view class="dynamic-content">
+          <view class="dynamic-header">
+            <text class="dynamic-username">{{item.userName}}</text>
+            <text class="dynamic-time">{{item.timeText}}</text>
+          </view>
+          <text class="dynamic-text">{{item.content}}</text>
+          <view wx:if="{{item.type === 'training'}}" class="dynamic-stats">
+            <text class="dynamic-stat">⏱️ {{item.duration}}分钟</text>
+            <text class="dynamic-stat">🔥 {{item.calories}}千卡</text>
+          </view>
+        </view>
+        <view class="dynamic-like" bindtap="toggleLike" data-id="{{item.id}}" catchtap="toggleLike">
+          <image 
+            class="like-icon {{item.isLiked ? 'liked' : ''}}" 
+            src="{{item.isLiked ? '/images/icons/star.svg' : '/images/icons/star.svg'}}" 
+            mode="aspectFit"
+          ></image>
+          <text class="like-count {{item.isLiked ? 'liked' : ''}}">{{item.likes}}</text>
+        </view>
+      </view>
+    </view>
+
+    <view wx:else class="empty-dynamics">
+      <image class="empty-icon" src="/images/icons/empty.svg" mode="aspectFit"></image>
+      <text class="empty-text">还没有好友动态</text>
+      <text class="empty-hint" bindtap="goToFriends">添加好友，查看他们的训练动态</text>
+    </view>
+  </view>
+
   <view class="bottom-safe"></view>
 </view>

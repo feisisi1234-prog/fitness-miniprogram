@@ -1,0 +1,27 @@
+<svg width="300" height="300" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+  <!-- 人物拉伸 -->
+  <circle cx="150" cy="80" r="25" fill="#ffa726"/>
+  
+  <!-- 身体 -->
+  <ellipse cx="150" cy="140" rx="35" ry="50" fill="#42a5f5"/>
+  
+  <!-- 左臂伸展 -->
+  <line x1="115" y1="120" x2="60" y2="100" stroke="#42a5f5" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="60" cy="100" r="10" fill="#ffa726"/>
+  
+  <!-- 右臂伸展 -->
+  <line x1="185" y1="120" x2="240" y2="100" stroke="#42a5f5" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="240" cy="100" r="10" fill="#ffa726"/>
+  
+  <!-- 左腿 -->
+  <line x1="135" y1="190" x2="120" y2="250" stroke="#42a5f5" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="120" cy="250" r="10" fill="#ffa726"/>
+  
+  <!-- 右腿 -->
+  <line x1="165" y1="190" x2="180" y2="250" stroke="#42a5f5" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="180" cy="250" r="10" fill="#ffa726"/>
+  
+  <!-- 拉伸线条 -->
+  <path d="M 50 90 Q 30 90 30 110" stroke="#66bb6a" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+  <path d="M 250 90 Q 270 90 270 110" stroke="#66bb6a" stroke-width="3" fill="none" stroke-dasharray="5,5"/>
+</svg>

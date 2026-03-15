@@ -1,0 +1,104 @@
+<!-- subpages/social/ranking/ranking.wxml -->
+<view class="ranking-container">
+  <!-- 顶部切换 -->
+  <view class="tabs-container">
+    <view class="tabs">
+      <view 
+        class="tab-item {{currentType === 'week' ? 'active' : ''}}"
+        bindtap="switchType"
+        data-type="week"
+      >
+        <text class="tab-text">本周</text>
+      </view>
+      <view 
+        class="tab-item {{currentType === 'month' ? 'active' : ''}}"
+        bindtap="switchType"
+        data-type="month"
+      >
+        <text class="tab-text">本月</text>
+      </view>
+    </view>
+
+    <view class="metric-tabs">
+      <view 
+        class="metric-item {{currentMetric === 'minutes' ? 'active' : ''}}"
+        bindtap="switchMetric"
+        data-metric="minutes"
+      >
+        <image class="metric-icon" src="/images/icons/timer.svg" mode="aspectFit"></image>
+        <text class="metric-text">时长</text>
+      </view>
+      <view 
+        class="metric-item {{currentMetric === 'calories' ? 'active' : ''}}"
+        bindtap="switchMetric"
+        data-metric="calories"
+      >
+        <image class="metric-icon" src="/images/icons/flame.svg" mode="aspectFit"></image>
+        <text class="metric-text">卡路里</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 我的排名 -->
+  <view wx:if="{{myRanking}}" class="my-ranking">
+    <view class="my-rank-badge">
+      <text class="rank-number">{{myRanking.rank}}</text>
+      <text class="rank-label">我的排名</text>
+    </view>
+    <view class="my-rank-stats">
+      <view class="rank-stat">
+        <text class="stat-value">{{currentMetric === 'minutes' ? (currentType === 'week' ? myRanking.weekMinutes : myRanking.monthMinutes) : (currentType === 'week' ? myRanking.weekCalories : myRanking.monthCalories)}}</text>
+        <text class="stat-unit">{{currentMetric === 'minutes' ? '分钟' : '千卡'}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 排行榜列表 -->
+  <view class="ranking-list">
+    <!-- 前三名 -->
+    <view class="top-three">
+      <view wx:if="{{rankingList[1]}}" class="top-item second" bindtap="viewUserDetail" data-userid="{{rankingList[1].id}}">
+        <view class="medal-badge silver">2</view>
+        <image class="top-avatar" src="{{rankingList[1].avatar}}" mode="aspectFit"></image>
+        <text class="top-name">{{rankingList[1].name}}</text>
+        <text class="top-value">{{currentMetric === 'minutes' ? (currentType === 'week' ? rankingList[1].weekMinutes : rankingList[1].monthMinutes) : (currentType === 'week' ? rankingList[1].weekCalories : rankingList[1].monthCalories)}}</text>
+      </view>
+
+      <view wx:if="{{rankingList[0]}}" class="top-item first" bindtap="viewUserDetail" data-userid="{{rankingList[0].id}}">
+        <view class="crown">👑</view>
+        <view class="medal-badge gold">1</view>
+        <image class="top-avatar" src="{{rankingList[0].avatar}}" mode="aspectFit"></image>
+        <text class="top-name">{{rankingList[0].name}}</text>
+        <text class="top-value">{{currentMetric === 'minutes' ? (currentType === 'week' ? rankingList[0].weekMinutes : rankingList[0].monthMinutes) : (currentType === 'week' ? rankingList[0].weekCalories : rankingList[0].monthCalories)}}</text>
+      </view>
+
+      <view wx:if="{{rankingList[2]}}" class="top-item third" bindtap="viewUserDetail" data-userid="{{rankingList[2].id}}">
+        <view class="medal-badge bronze">3</view>
+        <image class="top-avatar" src="{{rankingList[2].avatar}}" mode="aspectFit"></image>
+        <text class="top-name">{{rankingList[2].name}}</text>
+        <text class="top-value">{{currentMetric === 'minutes' ? (currentType === 'week' ? rankingList[2].weekMinutes : rankingList[2].monthMinutes) : (currentType === 'week' ? rankingList[2].weekCalories : rankingList[2].monthCalories)}}</text>
+      </view>
+    </view>
+
+    <!-- 其他排名 -->
+    <view class="other-ranks">
+      <view 
+        wx:for="{{rankingList}}" 
+        wx:key="id" 
+        wx:if="{{item.rank > 3}}"
+        class="rank-item {{item.isMe ? 'is-me' : ''}}"
+        bindtap="viewUserDetail"
+        data-userid="{{item.id}}"
+      >
+        <view class="rank-number">{{item.rank}}</view>
+        <image class="rank-avatar" src="{{item.avatar}}" mode="aspectFit"></image>
+        <view class="rank-info">
+          <text class="rank-name">{{item.name}}{{item.isMe ? ' (我)' : ''}}</text>
+          <text class="rank-id">ID: {{item.userId}}</text>
+          <text class="rank-level">{{item.level}}</text>
+        </view>
+        <text class="rank-value">{{currentMetric === 'minutes' ? (currentType === 'week' ? item.weekMinutes : item.monthMinutes) : (currentType === 'week' ? item.weekCalories : item.monthCalories)}} {{currentMetric === 'minutes' ? '分钟' : '千卡'}}</text>
+      </view>
+    </view>
+  </view>
+</view>

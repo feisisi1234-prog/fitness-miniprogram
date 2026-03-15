@@ -1,12 +1,14 @@
 // profile.js
-const app = getApp()
+const app = getApp();
+const SocialManager = require('../../utils/social.js');
 
 Page({
   data: {
     userInfo: {
       name: '健身达人',
       avatar: '/images/ui/placeholder.png',
-      level: 'Lv.1 新手'
+      level: 'Lv.1 新手',
+      userId: ''
     },
     userStats: {
       totalDays: 0,
@@ -75,11 +77,15 @@ Page({
       continuousDays: 0
     };
 
+    // 获取用户ID
+    const userId = SocialManager.getMyUserId();
+
     this.setData({
       userInfo: {
         name: userInfo.name || '健身达人',
         avatar: userInfo.avatar || '/images/ui/placeholder.png',
-        level: userInfo.level || 'Lv.1 新手'
+        level: userInfo.level || 'Lv.1 新手',
+        userId: userId
       },
       userStats
     });
@@ -395,28 +401,28 @@ Page({
   // 跳转到训练记录页面
   goToRecords() {
     wx.navigateTo({
-      url: '/pages/training-records/training-records'
+      url: '/subpages/user/training-records/training-records'
     });
   },
 
   // 跳转到成就中心
   goToAchievements() {
     wx.navigateTo({
-      url: '/pages/achievements/achievements'
+      url: '/subpages/user/achievements/achievements'
     });
   },
 
   // 跳转到身体数据追踪
   goToBodyTracking() {
     wx.navigateTo({
-      url: '/pages/body-tracking/body-tracking'
+      url: '/subpages/user/body-tracking/body-tracking'
     });
   },
 
   // 跳转到设置页面
   goToSettings() {
     wx.navigateTo({
-      url: '/pages/settings/settings'
+      url: '/subpages/user/settings/settings'
     });
   },
 

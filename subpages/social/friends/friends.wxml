@@ -1,0 +1,90 @@
+<!-- subpages/social/friends/friends.wxml -->
+<view class="friends-container">
+  <!-- 搜索栏 -->
+  <view class="search-bar">
+    <view class="search-input-wrapper">
+      <image class="search-icon" src="/images/icons/search.svg" />
+      <input 
+        class="search-input" 
+        placeholder="搜索用户ID或昵称"
+        value="{{searchKeyword}}"
+        bindinput="onSearchInput"
+      />
+      <view wx:if="{{searchKeyword}}" class="clear-btn" bindtap="cancelSearch">✕</view>
+    </view>
+  </view>
+
+  <!-- 搜索结果 -->
+  <view wx:if="{{showSearchResult}}" class="search-results">
+    <view class="result-header">搜索结果</view>
+    <view wx:if="{{searchResults.length === 0}}" class="empty-result">
+      <image class="empty-icon" src="/images/icons/empty.svg" />
+      <text class="empty-text">未找到相关用户</text>
+    </view>
+    <view wx:else class="result-list">
+      <view 
+        wx:for="{{searchResults}}" 
+        wx:key="id" 
+        class="result-item"
+      >
+        <image class="user-avatar" src="{{item.avatar}}" mode="aspectFit" />
+        <view class="user-info">
+          <view class="user-name">{{item.name}}</view>
+          <view class="user-id">ID: {{item.userId}}</view>
+          <view class="user-level">{{item.level}}</view>
+        </view>
+        <view class="add-btn" bindtap="addFriend" data-user="{{item}}">
+          添加
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!-- 好友列表 -->
+  <view wx:else class="friends-content">
+    <view class="friends-header">
+      <text class="friends-count">好友 ({{friends.length}})</text>
+    </view>
+
+    <view wx:if="{{friends.length === 0}}" class="empty-friends">
+      <image class="empty-icon" src="/images/icons/empty.svg" />
+      <text class="empty-text">还没有好友</text>
+      <text class="empty-hint">搜索添加好友，一起健身吧</text>
+    </view>
+
+    <view wx:else class="friends-list">
+      <view 
+        wx:for="{{friends}}" 
+        wx:key="id" 
+        class="friend-item"
+        bindtap="viewFriendDetail"
+        data-friend="{{item}}"
+      >
+        <image class="friend-avatar" src="{{item.avatar}}" mode="aspectFit" />
+        <view class="friend-info">
+          <view class="friend-name">{{item.name}}</view>
+          <view class="friend-id">ID: {{item.userId}}</view>
+          <view class="friend-stats">
+            <text class="stat-item">本周 {{item.weekMinutes}}分钟</text>
+            <text class="stat-divider">·</text>
+            <text class="stat-item">{{item.weekCalories}}千卡</text>
+          </view>
+        </view>
+        <view class="friend-actions">
+          <view class="continuous-days">
+            <text class="days-number">{{item.continuousDays}}</text>
+            <text class="days-label">天</text>
+          </view>
+          <view 
+            class="delete-btn" 
+            catchtap="deleteFriend" 
+            data-id="{{item.id}}"
+            data-name="{{item.name}}"
+          >
+            删除
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
