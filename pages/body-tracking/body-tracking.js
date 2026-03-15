@@ -63,12 +63,25 @@ Page({
   },
 
   loadRecords() {
-    const records = StorageManager.getBodyRecords();
-    this.setData({
-      records: records.reverse()
-    });
-    this.updateChartData(this.data.currentTab);
-    this.calculateStats(this.data.currentTab);
+    try {
+      console.log('=== 加载身体数据记录 ===');
+      const records = StorageManager.getBodyRecords();
+      console.log('记录数量:', records.length);
+      
+      this.setData({
+        records: records.reverse()
+      });
+      
+      this.updateChartData(this.data.currentTab);
+      this.calculateStats(this.data.currentTab);
+      
+      console.log('=== 加载完成 ===');
+    } catch (error) {
+      console.error('加载记录失败:', error);
+      this.setData({
+        records: []
+      });
+    }
   },
 
   updateChartData(type) {
@@ -163,7 +176,9 @@ Page({
   },
 
   saveRecord() {
+    console.log('=== 开始保存身体数据 ===');
     const { formData } = this.data;
+    console.log('表单数据:', formData);
     
     // 验证至少填写一项
     if (!formData.weight && !formData.bodyFat && !formData.chest && 
@@ -175,40 +190,53 @@ Page({
       return;
     }
     
-    // 保存记录
-    const record = {
-      date: formData.date,
-      weight: formData.weight || null,
-      bodyFat: formData.bodyFat || null,
-      chest: formData.chest || null,
-      waist: formData.waist || null,
-      hips: formData.hips || null,
-      arm: formData.arm || null,
-      thigh: formData.thigh || null
-    };
-    
-    StorageManager.saveBodyRecord(record);
-    
-    // 重置表单
-    this.initDate();
-    this.setData({
-      'formData.weight': '',
-      'formData.bodyFat': '',
-      'formData.chest': '',
-      'formData.waist': '',
-      'formData.hips': '',
-      'formData.arm': '',
-      'formData.thigh': '',
-      showAddModal: false
-    });
-    
-    // 重新加载数据
-    this.loadRecords();
-    
-    wx.showToast({
-      title: '记录已保存',
-      icon: 'success'
-    });
+    try {
+      // 保存记录
+      const record = {
+        date: formData.date,
+        weight: formData.weight || null,
+        bodyFat: formData.bodyFat || null,
+        chest: formData.chest || null,
+        waist: formData.waist || null,
+        hips: formData.hips || null,
+        arm: formData.arm || null,
+        thigh: formData.thigh || null
+      };
+      
+      console.log('准备保存的记录:', record);
+      StorageManager.saveBodyRecord(record);
+      console.log('记录保存成功');
+      
+      // 重置表单
+      this.initDate();
+      this.setData({
+        'formData.weight': '',
+        'formData.bodyFat': '',
+        'formData.chest': '',
+        'formData.waist': '',
+        'formData.hips': '',
+        'formData.arm': '',
+        'formData.thigh': '',
+        showAddModal: false
+      });
+      
+      // 重新加载数据
+      this.loadRecords();
+      
+      wx.showToast({
+        title: '记录已保存',
+        icon: 'success'
+      });
+      
+      console.log('=== 保存身体数据完成 ===');
+    } catch (error) {
+      console.error('保存记录失败:', error);
+      wx.showModal({
+        title: '保存失败',
+        content: error.message || '请稍后重试',
+        showCancel: false
+      });
+    }
   },
 
   deleteRecord(e) {
