@@ -1,32 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
-  <!-- 登山跑动作 -->
-  <circle cx="100" cy="100" r="95" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
-  
-  <!-- 人物 - 登山跑姿势 -->
-  <circle cx="80" cy="75" r="10" fill="#10b981"/>
-  
-  <!-- 身体 - 倾斜 -->
-  <path d="M 90 75 L 125 85" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
-  
-  <!-- 左臂 - 支撑 -->
-  <path d="M 95 75 L 80 100" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
-  <path d="M 80 100 L 75 110" stroke="#059669" stroke-width="6" stroke-linecap="round"/>
-  
-  <!-- 右臂 - 支撑 -->
-  <path d="M 115 80 L 130 105" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
-  <path d="M 130 105 L 135 115" stroke="#059669" stroke-width="6" stroke-linecap="round"/>
-  
-  <!-- 左腿 - 收起 -->
-  <path d="M 125 85 Q 120 95 115 100" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
-  <circle cx="120" cy="92" r="3" fill="#ef4444"/>
-  
-  <!-- 右腿 - 伸展 -->
-  <path d="M 125 85 L 145 95" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
-  
-  <!-- 运动箭头 -->
-  <path d="M 115 105 Q 110 100 105 105" stroke="#fbbf24" stroke-width="2" fill="none"/>
-  <path d="M 145 100 Q 150 95 155 100" stroke="#fbbf24" stroke-width="2" fill="none"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <linearGradient id="climber-body" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#14b8a6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0d9488;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="climber-accent" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2dd4bf;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#14b8a6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
   
   <!-- 地面 -->
-  <line x1="60" y1="120" x2="160" y2="120" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5"/>
+  <line x1="20" y1="145" x2="180" y2="145" stroke="#e5e7eb" stroke-width="3" stroke-linecap="round"/>
+  
+  <!-- 手臂（左） -->
+  <path d="M 70 100 L 50 130" stroke="url(#climber-accent)" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <circle cx="50" cy="135" r="7" fill="#0d9488"/>
+  
+  <!-- 手臂（右） -->
+  <path d="M 130 100 L 150 130" stroke="url(#climber-accent)" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <circle cx="150" cy="135" r="7" fill="#0d9488"/>
+  
+  <!-- 身体 -->
+  <rect x="75" y="85" width="50" height="28" rx="14" fill="url(#climber-body)"/>
+  
+  <!-- 后腿（伸直） -->
+  <rect x="115" y="100" width="45" height="13" rx="6" fill="url(#climber-body)"/>
+  <ellipse cx="162" cy="106" rx="5" ry="8" fill="#0d9488"/>
+  
+  <!-- 前腿（收膝） -->
+  <path d="M 85 110 Q 75 95 70 80" stroke="url(#climber-body)" stroke-width="11" stroke-linecap="round" fill="none"/>
+  <circle cx="70" cy="77" r="6" fill="#0d9488"/>
+  
+  <!-- 头部 -->
+  <circle cx="65" cy="80" r="16" fill="url(#climber-body)"/>
+  
+  <!-- 面部 -->
+  <circle cx="60" cy="77" r="2" fill="#fff"/>
+  <circle cx="70" cy="77" r="2" fill="#fff"/>
+  <path d="M 60 84 Q 65 86 70 84" stroke="#fff" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+  
+  <!-- 速度线 -->
+  <path d="M 65 90 L 50 90" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  <path d="M 70 95 L 55 95" stroke="#f59e0b" stroke-width="2.5" stroke-linecap="round" opacity="0.7"/>
+  
+  <!-- 运动轨迹 -->
+  <path d="M 75 85 Q 80 100 85 115" stroke="#3b82f6" stroke-width="2" stroke-dasharray="4,3" fill="none" opacity="0.5">
+    <animate attributeName="stroke-dashoffset" from="0" to="14" dur="0.5s" repeatCount="indefinite"/>
+  </path>
+  
+  <!-- 心率指示 -->
+  <path d="M 165 100 L 168 95 L 171 100 L 174 90 L 177 100" stroke="#ef4444" stroke-width="2" stroke-linecap="round" fill="none" opacity="0.8"/>
 </svg>
