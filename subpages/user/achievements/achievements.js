@@ -1,6 +1,6 @@
 // pages/achievements/achievements.js
-const AchievementManager = require('../../utils/achievement.js');
-const StatsCalculator = require('../../utils/stats.js');
+const AchievementManager = require('/utils/achievement.js');
+const StatsCalculator = require('/utils/stats.js');
 
 Page({
   data: {
