@@ -162,6 +162,16 @@ Page({
     });
   },
 
+  // 阻止滚动穿透
+  preventTouchMove() {
+    return false;
+  },
+
+  // 阻止事件冒泡
+  stopPropagation() {
+    return false;
+  },
+
   onDateChange(e) {
     this.setData({
       'formData.date': e.detail.value
