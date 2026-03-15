@@ -464,8 +464,8 @@ page {
 
 /* 快速开始按钮 */
 .action-grid {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
   gap: 12rpx;
 }
 
@@ -479,11 +479,6 @@ page {
   gap: 12rpx;
   box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
   transition: all 0.2s ease;
-  flex: 0 0 calc(50% - 6rpx);
-}
-
-.action-btn:nth-child(n+3) {
-  flex: 0 0 calc(33.333% - 8rpx);
 }
 
 .action-btn::before {

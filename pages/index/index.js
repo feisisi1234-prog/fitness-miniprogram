@@ -314,13 +314,6 @@ Page({
     });
   },
 
-  // 跳转到食物识别V2页面（DeepSeek版本）
-  goToFoodRecognitionV2() {
-    wx.navigateTo({
-      url: '/pages/food-recognition-v2/food-recognition-v2'
-    });
-  },
-
   // 跳转到计划详情页面
   goToPlanDetail(e) {
     const id = e.currentTarget.dataset.id;

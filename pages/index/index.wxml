@@ -103,13 +103,6 @@
         <text class="action-text">食物识别</text>
       </view>
 
-      <view class="action-btn" bindtap="goToFoodRecognitionV2" hover-class="action-hover">
-        <view class="action-icon-box">
-          <image src="/images/icons/apple.svg" class="action-icon" mode="aspectFit"></image>
-        </view>
-        <text class="action-text">食物识别2</text>
-      </view>
-
       <view class="action-btn" bindtap="goToCustomPlans" hover-class="action-hover">
         <view class="action-icon-box">
           <image src="/images/icons/clipboard.svg" class="action-icon" mode="aspectFit"></image>
