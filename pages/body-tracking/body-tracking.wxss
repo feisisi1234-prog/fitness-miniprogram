@@ -315,6 +315,11 @@
   box-sizing: border-box;
 }
 
+.input-placeholder {
+  color: #cbd5e1;
+  font-size: 28rpx;
+}
+
 .picker-value {
   display: block;
   line-height: 1.5;
