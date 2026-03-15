@@ -101,7 +101,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/jumping-jack.svg',
             description: '双脚跳开同时双臂举过头顶，然后跳回起始位置，保持节奏稳定'
           },
           {
@@ -110,7 +110,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/high-knee.svg',
             description: '原地跑步，膝盖尽量抬高至髋部高度，手臂配合摆动'
           },
           {
@@ -119,7 +119,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 45,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/burpee.svg',
             description: '下蹲-后踢腿成平板支撑-俯卧撑-收腿-跳跃，动作连贯流畅'
           },
           {
@@ -128,7 +128,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/mountain-climber.svg',
             description: '平板支撑姿势，交替将膝盖拉向胸部，保持核心稳定'
           }
         ],

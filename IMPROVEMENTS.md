@@ -291,5 +291,23 @@ utils/
 - ✅ 统一的工具库架构
 - ✅ 优秀的用户体验
 - ✅ 可扩展的代码结构
+- ✅ 专属动作SVG图标系统
+
+### 动作图标优化
+已创建8个专属SVG图标并完成替换：
+- `squat.svg` - 深蹲
+- `pushup.svg` - 俯卧撑
+- `plank.svg` - 平板支撑
+- `lunge.svg` - 弓步蹲
+- `jumping-jack.svg` - 开合跳
+- `high-knee.svg` - 高抬腿
+- `burpee.svg` - 波比跳
+- `mountain-climber.svg` - 登山跑
+
+已在以下训练计划中应用：
+- 全身力量训练（深蹲、俯卧撑、平板支撑、弓步蹲）
+- HIIT燃脂训练（开合跳、高抬腿、波比跳、登山跑）
+
+其他训练计划（瑜伽、普拉提、舞蹈等）已使用`/images/exercises/`目录下的专属SVG图标。
 
 所有功能已提交到 GitHub，可以立即使用！
