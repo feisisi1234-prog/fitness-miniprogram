@@ -21,24 +21,38 @@
           class="muscle-video"
           src="https://jrchbzzwgqndaxsckvub.supabase.co/storage/v1/object/public/video/muscle.mp4"
           controls
+          muted="{{isMuted}}"
           show-center-play-btn="{{true}}"
           show-play-btn="{{true}}"
           show-fullscreen-btn="{{true}}"
+          enable-progress-gesture="{{true}}"
           object-fit="contain"
+          direction="0"
           bindplay="onVideoPlay"
           bindpause="onVideoPause"
           bindended="onVideoEnded"
           binderror="onVideoError"
           bindwaiting="onVideoWaiting"
           bindloadedmetadata="onVideoLoaded"
+          bindfullscreenchange="onFullscreenChange"
         ></video>
+        
+        <!-- 静音控制按钮 -->
+        <view class="mute-btn" bindtap="toggleMute" wx:if="{{!isFullscreen}}">
+          <image class="mute-icon" src="/images/icons/volume.svg" mode="aspectFit" wx:if="{{!isMuted}}"></image>
+          <text class="mute-icon-text" wx:if="{{isMuted}}">🔇</text>
+        </view>
+        
+        <!-- 全屏按钮（备用） -->
+        <view class="fullscreen-btn" bindtap="requestFullscreen" wx:if="{{!isFullscreen}}">
+          <text class="fullscreen-icon">⛶</text>
+        </view>
         
         <!-- 视频加载失败提示 -->
         <view class="video-error-tip" wx:if="{{videoLoadError}}">
           <view class="error-icon">⚠️</view>
           <text class="error-title">视频暂时无法播放</text>
-          <text class="error-desc">请在真机上测试或配置域名白名单</text>
-          <button class="config-btn" bindtap="showVideoConfig">查看配置说明</button>
+          <text class="error-desc">请稍后重试</text>
         </view>
         
         <view class="video-info" wx:if="{{!videoLoadError}}">
@@ -47,56 +61,150 @@
           <text class="info-text">点击播放观看详细讲解</text>
         </view>
       </view>
-      
-      <!-- 配置说明 -->
-      <view class="config-notice">
-        <image class="notice-icon" src="/images/icons/pin.svg" mode="aspectFit"></image>
-        <text class="notice-title">视频配置说明</text>
-        <text class="notice-text">如需在小程序中播放视频，请在微信公众平台配置以下域名：</text>
-        <view class="domain-box">
-          <text class="domain-text">jrchbzzwgqndaxsckvub.supabase.co</text>
-        </view>
-        <text class="notice-step">配置路径：开发 > 开发管理 > 开发设置 > 服务器域名 > request合法域名</text>
-      </view>
     </view>
 
-    <!-- 肌肉动作选择 -->
-    <view class="action-list">
-      <view class="action-item {{selectedAction === index ? 'active' : ''}}" 
-            wx:for="{{muscleActions}}" 
-            wx:key="id"
-            bindtap="selectAction" 
-            data-index="{{index}}">
-        <text class="action-name">{{item.name}}</text>
-        <text class="muscle-group">{{item.muscleGroup}}</text>
+    <!-- 肌肉动作分类列表 -->
+    <view class="muscle-groups">
+      <!-- 胸部 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">💪</text>
+          <text class="group-title">胸部</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{chestActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
+          </view>
+        </view>
       </view>
-    </view>
 
-    <!-- 动作详情 -->
-    <view class="action-detail" wx:if="{{selectedAction !== null}}">
-      <view class="detail-header">
-        <text class="detail-title">{{muscleActions[selectedAction].name}}</text>
-        <text class="detail-subtitle">目标肌群: {{muscleActions[selectedAction].muscleGroup}}</text>
+      <!-- 背部 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">🦾</text>
+          <text class="group-title">背部</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{backActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
+          </view>
+        </view>
       </view>
-      
-      <view class="detail-content">
-        <view class="detail-section">
-          <text class="section-title">肌纤维走向</text>
-          <text class="section-content">{{muscleActions[selectedAction].fiberDirection}}</text>
+
+      <!-- 肩部 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">🏋️</text>
+          <text class="group-title">肩部</text>
         </view>
-        
-        <view class="detail-section">
-          <text class="section-title">动作描述</text>
-          <text class="section-content">{{muscleActions[selectedAction].description}}</text>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{shoulderActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
+          </view>
         </view>
-        
-        <view class="detail-image">
-          <view class="image-placeholder">
-            <text class="placeholder-icon">💪</text>
-            <text class="placeholder-title">肌纤维走向示意图</text>
-            <text class="placeholder-note">当前动作：{{muscleActions[selectedAction].name}}</text>
-            <text class="placeholder-note">目标肌群：{{muscleActions[selectedAction].muscleGroup}}</text>
-            <text class="placeholder-desc">{{muscleActions[selectedAction].fiberDirection}}</text>
+      </view>
+
+      <!-- 手臂 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">💪</text>
+          <text class="group-title">手臂</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{armActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 核心 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">🔥</text>
+          <text class="group-title">核心</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{coreActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 臀部 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">🍑</text>
+          <text class="group-title">臀部</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{gluteActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 大腿 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">🦵</text>
+          <text class="group-title">大腿</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{legActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
+          </view>
+        </view>
+      </view>
+
+      <!-- 小腿 -->
+      <view class="muscle-group-section">
+        <view class="group-header">
+          <text class="group-icon">🦿</text>
+          <text class="group-title">小腿</text>
+        </view>
+        <view class="action-grid">
+          <view class="action-card" 
+                wx:for="{{calfActions}}" 
+                wx:key="id"
+                bindtap="goToActionDetail" 
+                data-action="{{item}}">
+            <text class="action-name">{{item.name}}</text>
+            <text class="action-muscle">{{item.muscleGroup}}</text>
           </view>
         </view>
       </view>
@@ -151,135 +259,230 @@
       </view>
       
       <view class="knowledge-content">
-        <view class="knowledge-item">
-          <text class="knowledge-subtitle">什么是肌肉张力？</text>
-          <text class="knowledge-text">肌肉张力是指肌肉在静止或收缩状态下产生的内部张力。它由主动收缩力和被动弹性力组成，是评估肌肉功能的重要指标。</text>
-        </view>
-        
-        <view class="knowledge-item">
-          <text class="knowledge-subtitle">影响因素</text>
-          <view class="factor-list">
-            <view class="factor-item">
-              <image class="factor-icon" src="/images/icons/muscle.svg" mode="aspectFit"></image>
-              <text class="factor-text">肌纤维类型：快肌纤维产生更大张力</text>
-            </view>
-            <view class="factor-item">
-              <image class="factor-icon" src="/images/icons/ruler.svg" mode="aspectFit"></image>
-              <text class="factor-text">肌肉长度：最佳长度时张力最大</text>
-            </view>
-            <view class="factor-item">
-              <image class="factor-icon" src="/images/icons/lightning.svg" mode="aspectFit"></image>
-              <text class="factor-text">收缩速度：速度越快张力越小</text>
-            </view>
-            <view class="factor-item">
-              <image class="factor-icon" src="/images/icons/repeat.svg" mode="aspectFit"></image>
-              <text class="factor-text">杠杆效应：力臂长度影响实际张力</text>
+        <!-- 什么是肌肉张力 -->
+        <view class="knowledge-card">
+          <view class="card-header">
+            <text class="card-icon">💪</text>
+            <text class="card-title">什么是肌肉张力？</text>
+          </view>
+          <view class="card-body">
+            <text class="card-text">肌肉张力（Muscle Tension）是指肌肉在静止或收缩状态下产生的内部张力。它由主动收缩力和被动弹性力组成，是评估肌肉功能和训练效果的重要指标。</text>
+            <view class="card-highlight">
+              <text class="highlight-label">组成部分：</text>
+              <text class="highlight-text">• 主动张力：肌肉主动收缩产生</text>
+              <text class="highlight-text">• 被动张力：肌肉被拉伸时的弹性反应</text>
             </view>
           </view>
         </view>
-        
-        <view class="knowledge-item">
-          <text class="knowledge-subtitle">计算原理</text>
-          <text class="knowledge-text">根据力矩平衡原理：肌肉张力 × 肌肉力臂 = 负重 × 负重力臂。通过测量负重和力臂距离，可以估算肌肉承受的张力。</text>
+
+        <!-- 力矩与杠杆原理 -->
+        <view class="knowledge-card">
+          <view class="card-header">
+            <text class="card-icon">⚖️</text>
+            <text class="card-title">力矩与杠杆原理</text>
+          </view>
+          <view class="card-body">
+            <text class="card-text">人体关节系统是一个复杂的杠杆系统。力矩（Torque）是力与力臂的乘积，决定了肌肉需要产生多大的张力来克服外部负荷。</text>
+            <view class="card-formula">
+              <text class="formula-label">核心公式：</text>
+              <text class="formula-text">力矩 (M) = 力 (F) × 力臂 (d)</text>
+              <text class="formula-note">力臂是从关节到力作用线的垂直距离</text>
+            </view>
+            <view class="card-highlight">
+              <text class="highlight-text">• 力臂越长，产生的力矩越大</text>
+              <text class="highlight-text">• 肌肉需要更大的张力来平衡外部力矩</text>
+            </view>
+          </view>
         </view>
-        
-        <view class="knowledge-item">
-          <text class="knowledge-subtitle">训练意义</text>
-          <text class="knowledge-text">了解肌肉张力有助于：1) 选择合适的训练重量；2) 避免肌肉过度疲劳；3) 优化训练效果；4) 预防运动损伤。</text>
+
+        <!-- 影响因素 -->
+        <view class="knowledge-card">
+          <view class="card-header">
+            <text class="card-icon">🔬</text>
+            <text class="card-title">影响肌肉张力的因素</text>
+          </view>
+          <view class="card-body">
+            <view class="factor-grid">
+              <view class="factor-item">
+                <image class="factor-icon" src="/images/icons/muscle.svg" mode="aspectFit"></image>
+                <view class="factor-content">
+                  <text class="factor-title">肌纤维类型</text>
+                  <text class="factor-desc">快肌纤维（Type II）产生更大张力，适合爆发力训练</text>
+                </view>
+              </view>
+              <view class="factor-item">
+                <image class="factor-icon" src="/images/icons/ruler.svg" mode="aspectFit"></image>
+                <view class="factor-content">
+                  <text class="factor-title">肌肉长度</text>
+                  <text class="factor-desc">最佳长度时张力最大，过长或过短都会降低张力</text>
+                </view>
+              </view>
+              <view class="factor-item">
+                <image class="factor-icon" src="/images/icons/lightning.svg" mode="aspectFit"></image>
+                <view class="factor-content">
+                  <text class="factor-title">收缩速度</text>
+                  <text class="factor-desc">速度越快张力越小，慢速训练能产生更大张力</text>
+                </view>
+              </view>
+              <view class="factor-item">
+                <image class="factor-icon" src="/images/icons/repeat.svg" mode="aspectFit"></image>
+                <view class="factor-content">
+                  <text class="factor-title">杠杆效应</text>
+                  <text class="factor-desc">力臂长度影响实际张力，不同动作杠杆效率不同</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 收缩类型 -->
+        <view class="knowledge-card">
+          <view class="card-header">
+            <text class="card-icon">🏋️</text>
+            <text class="card-title">肌肉收缩类型</text>
+          </view>
+          <view class="card-body">
+            <view class="contraction-types">
+              <view class="contraction-item">
+                <text class="contraction-name">等张收缩（Isotonic）</text>
+                <text class="contraction-desc">肌肉长度改变，张力保持相对恒定</text>
+                <view class="contraction-subtypes">
+                  <text class="subtype">• 向心收缩：肌肉缩短（举起重量）</text>
+                  <text class="subtype">• 离心收缩：肌肉拉长（放下重量）</text>
+                </view>
+              </view>
+              <view class="contraction-item">
+                <text class="contraction-name">等长收缩（Isometric）</text>
+                <text class="contraction-desc">肌肉长度不变，产生静态张力</text>
+                <text class="contraction-example">例如：平板支撑、靠墙静蹲</text>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 训练意义 -->
+        <view class="knowledge-card">
+          <view class="card-header">
+            <text class="card-icon">🎯</text>
+            <text class="card-title">了解肌肉张力的训练意义</text>
+          </view>
+          <view class="card-body">
+            <view class="benefit-list">
+              <view class="benefit-item">
+                <text class="benefit-number">1</text>
+                <view class="benefit-content">
+                  <text class="benefit-title">选择合适训练重量</text>
+                  <text class="benefit-desc">根据目标肌肉的张力承受能力，选择最优负荷</text>
+                </view>
+              </view>
+              <view class="benefit-item">
+                <text class="benefit-number">2</text>
+                <view class="benefit-content">
+                  <text class="benefit-title">避免肌肉过度疲劳</text>
+                  <text class="benefit-desc">了解张力极限，防止过度训练导致损伤</text>
+                </view>
+              </view>
+              <view class="benefit-item">
+                <text class="benefit-number">3</text>
+                <view class="benefit-content">
+                  <text class="benefit-title">优化训练效果</text>
+                  <text class="benefit-desc">在最佳张力范围内训练，促进肌肉生长</text>
+                </view>
+              </view>
+              <view class="benefit-item">
+                <text class="benefit-number">4</text>
+                <view class="benefit-content">
+                  <text class="benefit-title">预防运动损伤</text>
+                  <text class="benefit-desc">避免超出肌肉张力承受范围的动作</text>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+
+        <!-- 计算原理 -->
+        <view class="knowledge-card">
+          <view class="card-header">
+            <text class="card-icon">🧮</text>
+            <text class="card-title">肌肉张力计算原理</text>
+          </view>
+          <view class="card-body">
+            <text class="card-text">基于力矩平衡原理，当关节处于平衡状态时：</text>
+            <view class="card-formula">
+              <text class="formula-text">肌肉张力 × 肌肉力臂 = 负重 × 负重力臂</text>
+            </view>
+            <text class="card-text">通过测量负重和力臂距离，可以估算肌肉承受的张力。不同动作的杠杆效率不同，因此需要使用特定的系数进行修正。</text>
+            <view class="card-highlight">
+              <text class="highlight-label">注意事项：</text>
+              <text class="highlight-text">• 计算结果为估算值，实际张力受多种因素影响</text>
+              <text class="highlight-text">• 不同个体的肌肉力臂长度存在差异</text>
+              <text class="highlight-text">• 动作技术和姿势会影响实际张力分布</text>
+            </view>
+          </view>
         </view>
       </view>
     </view>
 
-    <!-- 练习选择列表 -->
-    <view class="exercise-list">
-      <text class="section-title">选择训练动作</text>
-      <view class="exercise-item {{selectedExercise === index ? 'active' : ''}}" 
-            wx:for="{{dumbbellData}}" 
-            wx:key="index"
-            bindtap="selectExercise" 
-            data-index="{{index}}">
-        <text class="exercise-name">{{item.exercise}}</text>
-        <text class="target-muscle">目标: {{item.muscle}}</text>
-      </view>
-    </view>
-
-    <!-- 计算器内容 -->
-    <view class="tension-calculator">
-      <view class="formula-section">
-        <text class="formula-title">肌肉张力计算公式</text>
-        <view class="formula-box">
-          <text class="formula-main">弯矩(M) = 力(F) × 力臂(L)</text>
-          <text class="formula-detail">其中：力(F) = 重量(kg) × 9.8 N/kg</text>
-          <text class="formula-detail">力臂(L) = 从重量质心到关节的垂直距离(m)</text>
-        </view>
-        <view class="formula-simplified">
-          <text class="formula-label">简化公式：</text>
-          <text class="formula-content">{{dumbbellData[selectedExercise].tensionFormula}}</text>
-          <text class="formula-note">{{dumbbellData[selectedExercise].formulaNote}}</text>
-        </view>
+    <!-- 按肌群分类的训练动作选择 -->
+    <view class="exercise-selection">
+      <view class="selection-header">
+        <image class="selection-icon" src="/images/icons/dumbbell.svg" mode="aspectFit"></image>
+        <text class="selection-title">选择训练动作</text>
       </view>
 
-      <view class="data-section">
-        <text class="data-title">参考数据表</text>
-        <view class="data-table">
-          <view class="table-header">
-            <text class="header-cell">哑铃重量(kg)</text>
-            <text class="header-cell">弯矩(N·m)</text>
-            <text class="header-cell">肌肉张力(kg)</text>
-          </view>
-          <view class="table-row" wx:for="{{dumbbellData[selectedExercise].data}}" wx:key="index" wx:for-item="dataItem">
-            <text class="table-cell">{{dataItem.weight}}</text>
-            <text class="table-cell">{{dataItem.moment}}</text>
-            <text class="table-cell">{{dataItem.tension}}</text>
+      <!-- 上肢训练 -->
+      <view class="muscle-category">
+        <view class="category-header">
+          <text class="category-icon">💪</text>
+          <text class="category-title">上肢训练</text>
+        </view>
+        <view class="exercise-grid">
+          <view class="exercise-card" 
+                wx:for="{{upperBodyExercises}}" 
+                wx:key="index"
+                bindtap="goToTensionCalculator" 
+                data-exercise="{{item}}">
+            <text class="exercise-icon">{{item.icon}}</text>
+            <text class="exercise-name">{{item.exercise}}</text>
+            <text class="exercise-muscle">{{item.muscle}}</text>
           </view>
         </view>
       </view>
 
-      <view class="custom-calculation">
-        <text class="calc-title">自定义计算</text>
-        <view class="calc-form">
-          <view class="input-group">
-            <text class="input-label">哑铃重量 (kg)</text>
-            <input class="weight-input" 
-                   type="digit" 
-                   placeholder="请输入重量" 
-                   value="{{customWeight}}"
-                   bindinput="onWeightInput" />
-          </view>
-          
-          <view class="input-group" wx:if="{{showAdvanced}}">
-            <text class="input-label">力臂长度 (m，可选)</text>
-            <input class="weight-input" 
-                   type="digit" 
-                   placeholder="默认使用标准力臂" 
-                   value="{{customLeverArm}}"
-                   bindinput="onLeverArmInput" />
-          </view>
-          
-          <view class="toggle-advanced">
-            <text class="toggle-text" bindtap="toggleAdvanced">{{showAdvanced ? '隐藏' : '显示'}}高级选项</text>
-          </view>
-          
-          <button class="calculate-btn" bindtap="calculateTension">计算肌肉张力</button>
+      <!-- 下肢训练 -->
+      <view class="muscle-category">
+        <view class="category-header">
+          <text class="category-icon">🦵</text>
+          <text class="category-title">下肢训练</text>
         </view>
-        
-        <view class="result-section" wx:if="{{calculatedTension > 0}}">
-          <view class="result-header">
-            <text class="result-title">计算结果</text>
+        <view class="exercise-grid">
+          <view class="exercise-card" 
+                wx:for="{{lowerBodyExercises}}" 
+                wx:key="index"
+                bindtap="goToTensionCalculator" 
+                data-exercise="{{item}}">
+            <text class="exercise-icon">{{item.icon}}</text>
+            <text class="exercise-name">{{item.exercise}}</text>
+            <text class="exercise-muscle">{{item.muscle}}</text>
           </view>
-          <view class="result-content">
-            <view class="result-item">
-              <text class="result-label">弯矩 (N·m)</text>
-              <text class="result-value-large">{{calculatedMoment}}</text>
-            </view>
-            <view class="result-item">
-              <text class="result-label">肌肉张力 (kg)</text>
-              <text class="result-value-large">{{calculatedTension}}</text>
-            </view>
-            <view class="result-note-box">
-              <text class="result-note">这是{{dumbbellData[selectedExercise].muscle}}所受的张力</text>
-              <text class="result-tip">{{dumbbellData[selectedExercise].trainingTip}}</text>
-            </view>
+        </view>
+      </view>
+
+      <!-- 躯干训练 -->
+      <view class="muscle-category">
+        <view class="category-header">
+          <text class="category-icon">🏋️</text>
+          <text class="category-title">躯干训练</text>
+        </view>
+        <view class="exercise-grid">
+          <view class="exercise-card" 
+                wx:for="{{torsoExercises}}" 
+                wx:key="index"
+                bindtap="goToTensionCalculator" 
+                data-exercise="{{item}}">
+            <text class="exercise-icon">{{item.icon}}</text>
+            <text class="exercise-name">{{item.exercise}}</text>
+            <text class="exercise-muscle">{{item.muscle}}</text>
           </view>
         </view>
       </view>

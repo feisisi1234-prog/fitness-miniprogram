@@ -11,7 +11,228 @@ Page({
     touchStartX: 0,
     touchStartY: 0,
     showSwipeHint: true,
-    // 肌肉动作数据 - 完整的健身肌肉群
+    // 视频静音状态
+    isMuted: true,
+    // 视频上下文
+    videoContext: null,
+    // 全屏状态
+    isFullscreen: false,
+    
+    // 按肌群分类的训练动作
+    upperBodyExercises: [],
+    lowerBodyExercises: [],
+    torsoExercises: [],
+    
+    // 按肌群分类的动作数据
+    chestActions: [
+      {
+        id: 1,
+        name: '胸部推举',
+        muscleGroup: '胸大肌',
+        fiberDirection: '从锁骨内侧、胸骨和肋软骨呈扇形向外延伸至肱骨大结节嵴',
+        description: '胸大肌是胸部最大的肌肉，分为上束、中束、下束，肌纤维呈扇形分布，负责肩关节内收、内旋和前屈',
+        tips: '保持肩胛骨稳定，推举时胸部发力，避免耸肩'
+      },
+      {
+        id: 2,
+        name: '胸部夹胸',
+        muscleGroup: '胸小肌',
+        fiberDirection: '从第3-5肋骨向外上方延伸至肩胛骨喙突',
+        description: '胸小肌位于胸大肌深层，肌纤维从肋骨向外上方延伸，协助肩胛骨前伸和下回旋',
+        tips: '动作顶峰时充分挤压胸部，感受肌肉收缩'
+      }
+    ],
+    
+    backActions: [
+      {
+        id: 3,
+        name: '背部拉伸',
+        muscleGroup: '背阔肌',
+        fiberDirection: '从下胸椎、腰椎、骶骨和髂嵴呈扇形向上外侧延伸至肱骨小结节嵴',
+        description: '背阔肌是背部最宽大的肌肉，肌纤维从脊柱向外上方呈扇形分布，负责肩关节内收、后伸和内旋',
+        tips: '拉伸时肩胛骨后缩，感受背部发力'
+      },
+      {
+        id: 4,
+        name: '耸肩动作',
+        muscleGroup: '斜方肌',
+        fiberDirection: '上束：从枕骨和颈椎向外下方延伸至锁骨外1/3；中束：水平纤维；下束：向外上方延伸',
+        description: '斜方肌分为上、中、下三束，肌纤维方向各异，负责肩胛骨的上提、内收和下回旋',
+        tips: '耸肩时垂直向上，避免前后晃动'
+      },
+      {
+        id: 5,
+        name: '肩胛内收',
+        muscleGroup: '菱形肌',
+        fiberDirection: '从第7颈椎至第5胸椎棘突向外下方延伸至肩胛骨内侧缘',
+        description: '菱形肌位于斜方肌深层，肌纤维从脊柱向外下方延伸，负责肩胛骨内收和下回旋',
+        tips: '肩胛骨向脊柱靠拢，保持胸部挺直'
+      },
+      {
+        id: 6,
+        name: '脊柱伸展',
+        muscleGroup: '竖脊肌',
+        fiberDirection: '从骶骨和髂嵴垂直向上延伸至枕骨，分为棘肌、最长肌、髂肋肌',
+        description: '竖脊肌是脊柱两侧的长肌群，肌纤维垂直分布，负责脊柱伸展和维持躯干直立',
+        tips: '保持脊柱中立位，避免过度伸展'
+      }
+    ],
+    
+    shoulderActions: [
+      {
+        id: 7,
+        name: '肩外展',
+        muscleGroup: '三角肌',
+        fiberDirection: '前束：从锁骨外1/3向下；中束：从肩峰向下；后束：从肩胛冈向下，汇聚至肱骨三角肌粗隆',
+        description: '三角肌分为前、中、后三束，肌纤维从不同起点向下汇聚，是上肢最大的肌肉，负责肩关节各方向运动',
+        tips: '外展时肘部略低于肩，避免耸肩'
+      },
+      {
+        id: 8,
+        name: '肩外旋',
+        muscleGroup: '冈上肌',
+        fiberDirection: '从肩胛骨冈上窝水平向外延伸至肱骨大结节上部',
+        description: '冈上肌是旋转肌袖的一部分，肌纤维水平分布，负责肩关节外展的启动和稳定',
+        tips: '小重量多次数，保护肩关节'
+      }
+    ],
+    
+    armActions: [
+      {
+        id: 9,
+        name: '肘屈曲',
+        muscleGroup: '肱二头肌',
+        fiberDirection: '长头：从肩胛骨盂上结节；短头：从喙突，向下汇聚至桡骨粗隆',
+        description: '肱二头肌有长短两头，肌纤维从肩胛骨向下延伸，负责肘关节屈曲和前臂旋后',
+        tips: '大臂固定，前臂发力弯举'
+      },
+      {
+        id: 10,
+        name: '肘伸展',
+        muscleGroup: '肱三头肌',
+        fiberDirection: '长头：从肩胛骨盂下结节；外侧头和内侧头：从肱骨后面，向下汇聚至尺骨鹰嘴',
+        description: '肱三头肌有三个头，是上肢最大的肌肉，肌纤维向下汇聚，负责肘关节伸展',
+        tips: '伸展时充分锁定肘关节，感受三头肌收缩'
+      },
+      {
+        id: 11,
+        name: '腕屈曲',
+        muscleGroup: '前臂屈肌群',
+        fiberDirection: '从肱骨内上髁向下延伸至手掌，包括桡侧腕屈肌、尺侧腕屈肌等',
+        description: '前臂屈肌群位于前臂前面，肌纤维纵向分布，负责腕关节和手指的屈曲运动',
+        tips: '前臂固定在支撑面上，只动腕关节'
+      }
+    ],
+    
+    coreActions: [
+      {
+        id: 12,
+        name: '躯干屈曲',
+        muscleGroup: '腹直肌',
+        fiberDirection: '从耻骨联合和耻骨嵴垂直向上延伸至第5-7肋软骨和剑突',
+        description: '腹直肌位于腹部正中，肌纤维垂直分布，被腱划分为多个肌腹，负责躯干屈曲',
+        tips: '卷腹时下背部贴地，用腹部发力'
+      },
+      {
+        id: 13,
+        name: '躯干旋转',
+        muscleGroup: '腹外斜肌',
+        fiberDirection: '从下8个肋骨向内下方斜行延伸至髂嵴、腹股沟韧带和腹白线',
+        description: '腹外斜肌位于腹部两侧，肌纤维向内下方斜行，负责躯干屈曲和同侧侧屈、对侧旋转',
+        tips: '旋转时保持骨盆稳定，转动上半身'
+      },
+      {
+        id: 14,
+        name: '深层稳定',
+        muscleGroup: '腹内斜肌',
+        fiberDirection: '从髂嵴、腹股沟韧带向内上方延伸至下3个肋骨和腹白线',
+        description: '腹内斜肌位于腹外斜肌深层，肌纤维向内上方延伸，与腹外斜肌纤维方向垂直',
+        tips: '侧屈时感受侧腹部收缩'
+      },
+      {
+        id: 15,
+        name: '核心稳定',
+        muscleGroup: '腹横肌',
+        fiberDirection: '从下6个肋软骨、腰筋膜和髂嵴水平环绕至腹白线',
+        description: '腹横肌是最深层的腹肌，肌纤维水平环绕，如天然腰带，负责腹内压调节和脊柱稳定',
+        tips: '平板支撑时收紧核心，保持身体一条直线'
+      }
+    ],
+    
+    gluteActions: [
+      {
+        id: 16,
+        name: '髋伸展',
+        muscleGroup: '臀大肌',
+        fiberDirection: '从髂骨翼后部、骶骨和尾骨向外下方延伸至股骨臀肌粗隆和髂胫束',
+        description: '臀大肌是人体最大最强的肌肉，肌纤维向外下方延伸，负责髋关节伸展和外旋',
+        tips: '臀桥时顶峰收缩，充分挤压臀部'
+      },
+      {
+        id: 17,
+        name: '髋外展',
+        muscleGroup: '臀中肌',
+        fiberDirection: '从髂骨翼外面呈扇形向下延伸至股骨大转子',
+        description: '臀中肌位于臀大肌深层，肌纤维呈扇形分布，负责髋关节外展和稳定骨盆',
+        tips: '侧卧抬腿时保持身体稳定，臀部发力'
+      }
+    ],
+    
+    legActions: [
+      {
+        id: 18,
+        name: '膝伸展',
+        muscleGroup: '股四头肌',
+        fiberDirection: '股直肌：从髂前下棘；股外侧肌、股内侧肌、股中间肌：从股骨，向下汇聚至胫骨粗隆',
+        description: '股四头肌由四个头组成，是大腿前面最大的肌群，肌纤维向下汇聚，负责膝关节伸展',
+        tips: '深蹲时膝盖与脚尖方向一致，不要内扣'
+      },
+      {
+        id: 19,
+        name: '膝屈曲',
+        muscleGroup: '腘绳肌',
+        fiberDirection: '股二头肌、半腱肌、半膜肌从坐骨结节和股骨向下延伸至胫骨和腓骨',
+        description: '腘绳肌位于大腿后面，包括三块肌肉，肌纤维纵向分布，负责膝关节屈曲和髋关节伸展',
+        tips: '腿弯举时大腿固定，小腿发力'
+      },
+      {
+        id: 20,
+        name: '大腿内收',
+        muscleGroup: '内收肌群',
+        fiberDirection: '从耻骨和坐骨向外侧延伸至股骨内侧，包括大收肌、长收肌、短收肌等',
+        description: '内收肌群位于大腿内侧，肌纤维从骨盆向外侧延伸，负责髋关节内收和稳定',
+        tips: '内收时保持骨盆稳定，避免代偿'
+      }
+    ],
+    
+    calfActions: [
+      {
+        id: 21,
+        name: '踝跖屈',
+        muscleGroup: '腓肠肌',
+        fiberDirection: '内外侧头从股骨内外侧髁向下汇聚，与比目鱼肌共同形成跟腱止于跟骨',
+        description: '腓肠肌是小腿后面浅层的大肌肉，有内外两头，肌纤维向下汇聚，负责踝关节跖屈',
+        tips: '提踵时充分抬高，顶峰停顿1秒'
+      },
+      {
+        id: 22,
+        name: '深层跖屈',
+        muscleGroup: '比目鱼肌',
+        fiberDirection: '从胫骨后面和腓骨向下延伸，与腓肠肌汇合形成跟腱',
+        description: '比目鱼肌位于腓肠肌深层，肌纤维向下延伸，是持久性抗重力肌，负责维持站立姿势',
+        tips: '坐姿提踵更能刺激比目鱼肌'
+      },
+      {
+        id: 23,
+        name: '踝背屈',
+        muscleGroup: '胫骨前肌',
+        fiberDirection: '从胫骨外侧面向下内侧延伸至第一跖骨和内侧楔骨',
+        description: '胫骨前肌位于小腿前面，肌纤维向下内侧延伸，负责踝关节背屈和足内翻',
+        tips: '勾脚尖时充分收缩小腿前侧'
+      }
+    ],
+    
+    // 肌肉动作数据 - 完整的健身肌肉群（保留用于其他功能）
     muscleActions: [
       // 胸部肌群
       {
@@ -651,6 +872,106 @@ Page({
       currentTab: this.data.currentTab || 0,
       selectedExercise: this.data.selectedExercise || 0
     });
+    
+    // 创建视频上下文
+    this.videoContext = wx.createVideoContext('muscleVideo', this);
+    
+    // 按肌群分类训练动作
+    this.classifyExercises();
+  },
+
+  // 按肌群分类训练动作
+  classifyExercises: function() {
+    const upperBody = [];
+    const lowerBody = [];
+    const torso = [];
+    
+    this.data.dumbbellData.forEach((exercise, index) => {
+      const exerciseWithIcon = {
+        ...exercise,
+        index: index,
+        icon: this.getExerciseIcon(exercise.exercise)
+      };
+      
+      if (exercise.exercise.includes('弯举') || exercise.exercise.includes('肩推') || 
+          exercise.exercise.includes('侧平举') || exercise.exercise.includes('臂屈伸')) {
+        upperBody.push(exerciseWithIcon);
+      } else if (exercise.exercise.includes('深蹲') || exercise.exercise.includes('硬拉') || 
+                 exercise.exercise.includes('弓步蹲') || exercise.exercise.includes('提踵')) {
+        lowerBody.push(exerciseWithIcon);
+      } else {
+        torso.push(exerciseWithIcon);
+      }
+    });
+    
+    this.setData({
+      upperBodyExercises: upperBody,
+      lowerBodyExercises: lowerBody,
+      torsoExercises: torso
+    });
+  },
+
+  // 获取动作图标
+  getExerciseIcon: function(exerciseName) {
+    const iconMap = {
+      '哑铃弯举': '💪',
+      '哑铃肩推': '🏋️',
+      '哑铃深蹲': '🦵',
+      '哑铃硬拉': '🏋️‍♂️',
+      '哑铃卧推': '🤸',
+      '哑铃划船': '🚣',
+      '哑铃侧平举': '🙆',
+      '哑铃臂屈伸': '💪',
+      '哑铃弓步蹲': '🤾',
+      '哑铃提踵': '🦿'
+    };
+    return iconMap[exerciseName] || '🏋️';
+  },
+
+  // 跳转到张力计算器页面
+  goToTensionCalculator: function(e) {
+    const exercise = e.currentTarget.dataset.exercise;
+    wx.navigateTo({
+      url: `/pages/tension-calculator/tension-calculator?exerciseIndex=${exercise.index}`
+    });
+  },
+
+  // 切换静音状态
+  toggleMute: function() {
+    const newMuteState = !this.data.isMuted;
+    this.setData({
+      isMuted: newMuteState
+    });
+    
+    wx.showToast({
+      title: newMuteState ? '已静音' : '已开启声音',
+      icon: 'none',
+      duration: 1500
+    });
+  },
+
+  // 手动请求全屏
+  requestFullscreen: function() {
+    if (this.videoContext) {
+      this.videoContext.requestFullScreen({
+        direction: 0 // 0: 正常竖向, 90: 屏幕逆时针90度, -90: 屏幕顺时针90度
+      });
+    }
+  },
+
+  // 退出全屏
+  exitFullscreen: function() {
+    if (this.videoContext) {
+      this.videoContext.exitFullScreen();
+    }
+  },
+
+  // 跳转到动作详情页面
+  goToActionDetail: function(e) {
+    const action = e.currentTarget.dataset.action;
+    wx.navigateTo({
+      url: `/pages/action-detail/action-detail?id=${action.id}&name=${action.name}&muscleGroup=${action.muscleGroup}&fiberDirection=${encodeURIComponent(action.fiberDirection)}&description=${encodeURIComponent(action.description)}&tips=${encodeURIComponent(action.tips)}`
+    });
   },
 
   // 切换标签页
@@ -838,6 +1159,21 @@ Page({
 
   onVideoLoaded(e) {
     console.log('✅ 视频元数据加载完成', e.detail);
+  },
+
+  // 全屏状态变化
+  onFullscreenChange(e) {
+    console.log('全屏状态变化:', e.detail);
+    this.setData({
+      isFullscreen: e.detail.fullScreen
+    });
+    
+    // 全屏时自动取消静音
+    if (e.detail.fullScreen && this.data.isMuted) {
+      this.setData({
+        isMuted: false
+      });
+    }
   },
 
   onVideoError(e) {

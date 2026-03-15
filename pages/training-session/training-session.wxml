@@ -60,12 +60,22 @@
 
   <!-- 控制按钮 -->
   <view class="control-buttons">
-    <button class="control-btn secondary-btn" bindtap="togglePause">
-      {{isPaused ? '继续' : '暂停'}}
-    </button>
+    <!-- 第一行：暂停和跳过休息 -->
+    <view class="button-row">
+      <button class="control-btn secondary-btn half-btn" bindtap="togglePause">
+        {{isPaused ? '继续' : '暂停'}}
+      </button>
+      <button class="control-btn skip-rest-btn half-btn" bindtap="skipRest" wx:if="{{isResting}}">
+        跳过休息
+      </button>
+    </view>
+    
+    <!-- 第二行：完成本组 -->
     <button class="control-btn primary-btn" bindtap="completeSet" disabled="{{isResting}}">
       完成本组
     </button>
+    
+    <!-- 第三行：跳过动作 -->
     <button class="control-btn skip-btn" bindtap="skipExercise">
       跳过
     </button>

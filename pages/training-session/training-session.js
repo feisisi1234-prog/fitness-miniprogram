@@ -499,6 +499,7 @@ Page({
     }
     
     const timer = setInterval(() => {
+      // 只有在未暂停且未休息时才计时动作时间
       if (!this.data.isPaused && !this.data.isResting) {
         const exerciseTimeElapsed = this.data.exerciseTimeElapsed + 1;
         const totalTimeElapsed = this.data.totalTimeElapsed + 1;
@@ -513,8 +514,8 @@ Page({
         });
       }
       
-      // 处理休息倒计时
-      if (this.data.isResting && this.data.restTimeLeft > 0) {
+      // 处理休息倒计时 - 修复：只有在未暂停时才倒计时
+      if (!this.data.isPaused && this.data.isResting && this.data.restTimeLeft > 0) {
         const restTimeLeft = this.data.restTimeLeft - 1;
         this.setData({
           restTimeLeft
@@ -550,6 +551,24 @@ Page({
     wx.showToast({
       title: this.data.isPaused ? '训练已暂停' : '继续训练',
       icon: 'none',
+      duration: 1500
+    });
+  },
+
+  // 跳过休息
+  skipRest() {
+    if (!this.data.isResting) {
+      return;
+    }
+    
+    this.setData({
+      isResting: false,
+      restTimeLeft: 0
+    });
+    
+    wx.showToast({
+      title: '已跳过休息，继续训练',
+      icon: 'success',
       duration: 1500
     });
   },

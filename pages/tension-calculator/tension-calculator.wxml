@@ -1,0 +1,116 @@
+<view class="container">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="float-ball ball-1"></view>
+    <view class="float-ball ball-2"></view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+    <text class="back-icon">←</text>
+  </view>
+
+  <!-- 动作标题 -->
+  <view class="exercise-header">
+    <text class="exercise-title">{{exercise.exercise}}</text>
+    <text class="muscle-tag">{{exercise.muscle}}</text>
+  </view>
+
+  <!-- 计算公式 -->
+  <view class="formula-section">
+    <view class="section-header">
+      <image class="section-icon" src="/images/icons/flask.svg" mode="aspectFit"></image>
+      <text class="section-title">计算公式</text>
+    </view>
+    <view class="formula-box">
+      <text class="formula-main">弯矩(M) = 力(F) × 力臂(L)</text>
+      <text class="formula-detail">力(F) = 重量(kg) × 9.8 N/kg</text>
+      <text class="formula-detail">力臂(L) = {{exercise.leverArm}}m</text>
+    </view>
+    <view class="formula-simplified">
+      <text class="formula-label">简化公式：</text>
+      <text class="formula-content">{{exercise.tensionFormula}}</text>
+      <text class="formula-note">{{exercise.formulaNote}}</text>
+    </view>
+  </view>
+
+  <!-- 参考数据表 -->
+  <view class="data-section">
+    <view class="section-header">
+      <image class="section-icon" src="/images/icons/chart.svg" mode="aspectFit"></image>
+      <text class="section-title">参考数据表</text>
+    </view>
+    <view class="data-table">
+      <view class="table-header">
+        <text class="header-cell">重量(kg)</text>
+        <text class="header-cell">弯矩(N·m)</text>
+        <text class="header-cell">张力(kg)</text>
+      </view>
+      <view class="table-row" wx:for="{{exercise.data}}" wx:key="index">
+        <text class="table-cell">{{item.weight}}</text>
+        <text class="table-cell">{{item.moment}}</text>
+        <text class="table-cell highlight">{{item.tension}}</text>
+      </view>
+    </view>
+    <view class="training-tip">
+      <image class="tip-icon" src="/images/icons/lightbulb.svg" mode="aspectFit"></image>
+      <text class="tip-text">{{exercise.trainingTip}}</text>
+    </view>
+  </view>
+
+  <!-- 自定义计算 -->
+  <view class="custom-calculation">
+    <view class="section-header">
+      <image class="section-icon" src="/images/icons/edit.svg" mode="aspectFit"></image>
+      <text class="section-title">自定义计算</text>
+    </view>
+    <view class="calc-form">
+      <view class="input-group">
+        <text class="input-label">哑铃重量 (kg)</text>
+        <input class="weight-input" 
+               type="digit" 
+               placeholder="请输入重量" 
+               value="{{customWeight}}"
+               bindinput="onWeightInput" />
+      </view>
+      
+      <view class="input-group" wx:if="{{showAdvanced}}">
+        <text class="input-label">力臂长度 (m，可选)</text>
+        <input class="weight-input" 
+               type="digit" 
+               placeholder="默认{{exercise.leverArm}}m" 
+               value="{{customLeverArm}}"
+               bindinput="onLeverArmInput" />
+      </view>
+      
+      <view class="toggle-advanced" bindtap="toggleAdvanced">
+        <text class="toggle-text">{{showAdvanced ? '隐藏' : '显示'}}高级选项</text>
+      </view>
+      
+      <button class="calculate-btn" bindtap="calculateTension">
+        <text class="btn-text">计算肌肉张力</text>
+      </button>
+    </view>
+    
+    <view class="result-section" wx:if="{{calculatedTension > 0}}">
+      <view class="result-header">
+        <text class="result-title">计算结果</text>
+      </view>
+      <view class="result-content">
+        <view class="result-item">
+          <text class="result-label">弯矩</text>
+          <text class="result-value">{{calculatedMoment}}</text>
+          <text class="result-unit">N·m</text>
+        </view>
+        <view class="result-item primary">
+          <text class="result-label">肌肉张力</text>
+          <text class="result-value">{{calculatedTension}}</text>
+          <text class="result-unit">kg</text>
+        </view>
+      </view>
+      <view class="result-note">
+        <text class="note-text">这是{{exercise.muscle}}所受的张力</text>
+      </view>
+    </view>
+  </view>
+</view>

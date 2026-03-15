@@ -1,0 +1,67 @@
+<view class="container">
+  <!-- 背景装饰 -->
+  <view class="bg-decoration">
+    <view class="float-ball ball-1"></view>
+    <view class="float-ball ball-2"></view>
+  </view>
+
+  <!-- 返回按钮 -->
+  <view class="back-btn" bindtap="goBack">
+    <text class="back-icon">←</text>
+  </view>
+
+  <!-- 动作标题 -->
+  <view class="action-header">
+    <text class="action-icon">💪</text>
+    <text class="action-title">{{actionName}}</text>
+    <text class="muscle-tag">{{muscleGroup}}</text>
+  </view>
+
+  <!-- 动作示意图 -->
+  <view class="action-image-section">
+    <view class="image-placeholder">
+      <text class="placeholder-icon">🏋️</text>
+      <text class="placeholder-text">动作示意图</text>
+    </view>
+  </view>
+
+  <!-- 肌纤维走向 -->
+  <view class="detail-section">
+    <view class="section-header">
+      <image class="section-icon" src="/images/icons/muscle.svg" mode="aspectFit"></image>
+      <text class="section-title">肌纤维走向</text>
+    </view>
+    <view class="section-content">
+      <text class="content-text">{{fiberDirection}}</text>
+    </view>
+  </view>
+
+  <!-- 动作描述 -->
+  <view class="detail-section">
+    <view class="section-header">
+      <image class="section-icon" src="/images/icons/book.svg" mode="aspectFit"></image>
+      <text class="section-title">动作描述</text>
+    </view>
+    <view class="section-content">
+      <text class="content-text">{{description}}</text>
+    </view>
+  </view>
+
+  <!-- 训练要领 -->
+  <view class="detail-section">
+    <view class="section-header">
+      <image class="section-icon" src="/images/icons/lightbulb.svg" mode="aspectFit"></image>
+      <text class="section-title">训练要领</text>
+    </view>
+    <view class="section-content tips-content">
+      <text class="tips-text">{{tips}}</text>
+    </view>
+  </view>
+
+  <!-- 开始训练按钮 -->
+  <view class="action-buttons">
+    <button class="start-btn" bindtap="startTraining">
+      <text class="btn-text">开始训练</text>
+    </button>
+  </view>
+</view>

@@ -1,26 +1,85 @@
-/* pages/training-session/training-session.wxss */
+/* pages/training-session/training-session.wxss - 清新活力风格 */
 page {
-  background: var(--gradient-bg);
+  background: linear-gradient(180deg, #f0f9ff 0%, #fef3f2 100%);
   min-height: 100vh;
 }
 
 .training-session-container {
   min-height: 100vh;
   padding: 20rpx;
-  padding-bottom: 180rpx;
+  padding-bottom: 200rpx;
+  position: relative;
+}
+
+/* 背景装饰 */
+.bg-decoration {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(80rpx);
+  opacity: 0.3;
+  animation: float 20s ease-in-out infinite;
+}
+
+.orb-1 {
+  width: 400rpx;
+  height: 400rpx;
+  background: linear-gradient(135deg, #a7f3d0, #6ee7b7);
+  top: -100rpx;
+  right: -80rpx;
+}
+
+.orb-2 {
+  width: 350rpx;
+  height: 350rpx;
+  background: linear-gradient(135deg, #fbbf24, #fb923c);
+  bottom: 30%;
+  left: -80rpx;
+  animation-delay: -5s;
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(20rpx, -20rpx) scale(1.05);
+  }
 }
 
 /* 顶部信息栏 */
 .header-bar {
-  background: var(--bg-primary);
-  border-radius: var(--radius-xl);
+  background: #ffffff;
+  border-radius: 24rpx;
   padding: 30rpx;
-  margin-bottom: 20rpx;
-  box-shadow: var(--shadow-sm);
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border: 1rpx solid var(--border-light);
+  position: relative;
+  z-index: 1;
+}
+
+.header-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4rpx;
+  background: linear-gradient(90deg, #10b981, #059669);
+  border-radius: 24rpx 24rpx 0 0;
 }
 
 .header-left {
@@ -29,16 +88,16 @@ page {
 
 .plan-title {
   font-size: 36rpx;
-  font-weight: bold;
-  color: var(--text-primary);
+  font-weight: 700;
+  color: #0f172a;
   display: block;
   margin-bottom: 10rpx;
 }
 
 .progress-text {
   font-size: 28rpx;
-  color: var(--primary-600);
-  font-weight: 500;
+  color: #10b981;
+  font-weight: 600;
 }
 
 .header-right {
@@ -53,35 +112,37 @@ page {
 }
 
 .stat-label {
-  font-size: 24rpx;
-  color: var(--text-muted);
-  margin-bottom: 8rpx;
+  font-size: 22rpx;
+  color: #64748b;
+  margin-bottom: 6rpx;
 }
 
 .stat-value {
   font-size: 32rpx;
-  font-weight: bold;
-  color: var(--primary-600);
+  font-weight: 700;
+  color: #10b981;
 }
 
 /* 当前动作信息 */
 .current-exercise {
   background: #ffffff;
   border-radius: 24rpx;
-  padding: 30rpx;
-  margin-bottom: 20rpx;
-  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.08);
+  padding: 36rpx;
+  margin-bottom: 24rpx;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.06);
   animation: slideIn 0.5s ease;
+  position: relative;
+  z-index: 1;
 }
 
 @keyframes slideIn {
   from {
     opacity: 0;
-    transform: translateX(-30rpx);
+    transform: translateY(20rpx);
   }
   to {
     opacity: 1;
-    transform: translateX(0);
+    transform: translateY(0);
   }
 }
 
@@ -89,67 +150,311 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20rpx;
+  margin-bottom: 24rpx;
 }
 
 .exercise-name {
   font-size: 40rpx;
-  font-weight: bold;
-  color: #333333;
+  font-weight: 700;
+  color: #0f172a;
+  flex: 1;
 }
 
 .set-info {
-  background: linear-gradient(135deg, #07c160 0%, #06a552 100%);
-  padding: 10rpx 20rpx;
+  background: linear-gradient(135deg, #10b981, #059669);
+  padding: 12rpx 24rpx;
   border-radius: 20rpx;
+  box-shadow: 0 4rpx 12rpx rgba(16, 185, 129, 0.3);
 }
 
 .set-text {
   font-size: 26rpx;
   color: #ffffff;
-  font-weight: 500;
-}
-
-.exercise-image {
-  width: 100%;
-  height: 400rpx;
-  border-radius: 20rpx;
-  margin-bottom: 20rpx;
-  background: #f5f5f5;
+  font-weight: 600;
 }
 
 .exercise-details {
   display: flex;
-  gap: 30rpx;
-  margin-top: 40rpx;
-  margin-bottom: 20rpx;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
 }
 
 .detail-item {
   flex: 1;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  background: #f8fafc;
   padding: 20rpx;
   border-radius: 16rpx;
   display: flex;
   align-items: center;
-  gap: 10rpx;
+  gap: 12rpx;
 }
 
 .detail-icon {
-  width: 32rpx;
-  height: 32rpx;
+  width: 28rpx;
+  height: 28rpx;
   opacity: 0.7;
 }
 
+.detail-text {
+  font-size: 26rpx;
+  color: #334155;
+  font-weight: 500;
+}
+
+.exercise-description {
+  background: rgba(16, 185, 129, 0.05);
+  padding: 24rpx;
+  border-radius: 16rpx;
+  border-left: 4rpx solid #10b981;
+  margin-bottom: 24rpx;
+}
+
+.description-title {
+  font-size: 26rpx;
+  color: #10b981;
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12rpx;
+}
+
+.description-text {
+  font-size: 26rpx;
+  color: #64748b;
+  line-height: 1.6;
+}
+
+/* 休息倒计时 */
+.rest-timer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40rpx 0;
+}
+
+.rest-circle {
+  width: 200rpx;
+  height: 200rpx;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8rpx 24rpx rgba(245, 158, 11, 0.3);
+  margin-bottom: 20rpx;
+  animation: pulse 1s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.rest-time {
+  font-size: 72rpx;
+  font-weight: 700;
+  color: #ffffff;
+  line-height: 1;
+}
+
+.rest-label {
+  font-size: 24rpx;
+  color: #ffffff;
+  margin-top: 8rpx;
+}
+
+.rest-text {
+  font-size: 28rpx;
+  color: #f59e0b;
+  font-weight: 600;
+}
+
+/* 动作计时器 */
+.exercise-timer {
+  text-align: center;
+  padding: 30rpx 0;
+}
+
+.timer-text {
+  font-size: 64rpx;
+  font-weight: 700;
+  color: #10b981;
+  font-family: 'Courier New', monospace;
+}
+
+/* 控制按钮 - 重新设计 */
+.control-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+  margin-bottom: 24rpx;
+  position: relative;
+  z-index: 1;
+}
+
+/* 按钮行 - 用于并排显示 */
+.button-row {
+  display: flex;
+  gap: 16rpx;
+}
+
+.control-btn {
+  height: 88rpx;
+  border-radius: 44rpx;
+  font-size: 30rpx;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4rpx 16rpx rgba(0, 0, 0, 0.08);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  line-height: 88rpx;
+}
+
+/* 全宽按钮 */
+.control-btn {
+  width: 100%;
+}
+
+/* 半宽按钮 */
+.half-btn {
+  flex: 1;
+  width: auto;
+  min-width: 0;
+}
+
+.control-btn::after {
+  border: none;
+}
+
+.control-btn:active {
+  transform: scale(0.98);
+}
+
+/* 主要按钮 - 完成本组 */
+.primary-btn {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(16, 185, 129, 0.3);
+}
+
+.primary-btn:active {
+  box-shadow: 0 4rpx 16rpx rgba(16, 185, 129, 0.3);
+}
+
+.primary-btn[disabled] {
+  background: #e5e7eb;
+  color: #9ca3af;
+  box-shadow: none;
+  opacity: 0.6;
+}
+
+/* 次要按钮 - 暂停/继续 */
+.secondary-btn {
+  background: #ffffff;
+  color: #334155;
+  border: 2rpx solid #e5e7eb;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.secondary-btn:active {
+  background: #f8fafc;
+}
+
+/* 跳过休息按钮 */
+.skip-rest-btn {
+  background: linear-gradient(135deg, #f59e0b, #ea580c);
+  color: #ffffff;
+  box-shadow: 0 8rpx 24rpx rgba(245, 158, 11, 0.3);
+}
+
+.skip-rest-btn:active {
+  box-shadow: 0 4rpx 16rpx rgba(245, 158, 11, 0.3);
+}
+
+/* 跳过按钮 */
+.skip-btn {
+  background: #ffffff;
+  color: #64748b;
+  border: 2rpx solid #e5e7eb;
+  box-shadow: 0 4rpx 12rpx rgba(0, 0, 0, 0.06);
+}
+
+.skip-btn:active {
+  background: #f8fafc;
+}
+
+/* 底部操作栏 */
+.bottom-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #ffffff;
+  padding: 20rpx 24rpx;
+  padding-bottom: calc(20rpx + env(safe-area-inset-bottom));
+  box-shadow: 0 -4rpx 16rpx rgba(0, 0, 0, 0.08);
+  display: flex;
+  gap: 16rpx;
+  z-index: 100;
+}
+
+.bottom-btn {
+  flex: 1;
+  height: 88rpx;
+  background: #f8fafc;
+  border-radius: 44rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12rpx;
+  border: 2rpx solid #e5e7eb;
+  transition: all 0.3s ease;
+}
+
+.bottom-btn::after {
+  border: none;
+}
+
+.bottom-btn:active {
+  transform: scale(0.98);
+  background: #f1f5f9;
+}
+
+.exit-btn {
+  background: #fef2f2;
+  border-color: #fecaca;
+}
+
+.exit-btn:active {
+  background: #fee2e2;
+}
+
+.exit-btn .btn-text {
+  color: #ef4444;
+}
+
 .btn-icon {
-  width: 36rpx;
-  height: 36rpx;
+  width: 32rpx;
+  height: 32rpx;
 }
 
 .btn-text {
   font-size: 28rpx;
-  color: #333333;
-  font-weight: 500;
+  color: #334155;
+  font-weight: 600;
+}
+
+.button-hover {
+  opacity: 0.8;
 }
 
 /* 动作列表弹窗 */
@@ -159,11 +464,21 @@ page {
   left: 0;
   right: 0;
   bottom: 0;
-  background: rgba(0, 0, 0, 0.5);
+  background: rgba(0, 0, 0, 0.6);
   display: flex;
   align-items: center;
   justify-content: center;
   z-index: 1000;
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 .modal-content {
@@ -172,30 +487,51 @@ page {
   background: #ffffff;
   border-radius: 24rpx;
   overflow: hidden;
+  animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(50rpx);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .modal-header {
   padding: 30rpx;
-  border-bottom: 1rpx solid #f0f0f0;
+  border-bottom: 1rpx solid #f1f5f9;
   display: flex;
   justify-content: space-between;
   align-items: center;
+  background: linear-gradient(135deg, #f8fafc, #ffffff);
 }
 
 .modal-title {
-  font-size: 36rpx;
-  font-weight: bold;
-  color: #333333;
+  font-size: 32rpx;
+  font-weight: 700;
+  color: #0f172a;
 }
 
 .modal-close {
-  font-size: 40rpx;
-  color: #999999;
-  width: 60rpx;
-  height: 60rpx;
+  font-size: 36rpx;
+  color: #64748b;
+  width: 56rpx;
+  height: 56rpx;
   display: flex;
   align-items: center;
   justify-content: center;
+  border-radius: 50%;
+  background: #f8fafc;
+  transition: all 0.3s ease;
+}
+
+.modal-close:active {
+  background: #e5e7eb;
+  transform: scale(0.9);
 }
 
 .exercise-list {
@@ -207,11 +543,12 @@ page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 30rpx;
-  margin-bottom: 15rpx;
-  background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+  padding: 24rpx;
+  margin-bottom: 12rpx;
+  background: #f8fafc;
   border-radius: 20rpx;
-  transition: all 0.3s;
+  transition: all 0.3s ease;
+  border: 2rpx solid transparent;
 }
 
 .exercise-item:active {
@@ -219,79 +556,83 @@ page {
 }
 
 .exercise-item.completed {
-  background: linear-gradient(135deg, #e8f5e9 0%, #c8e6c9 100%);
-  border: 2rpx solid #07c160;
+  background: linear-gradient(135deg, #ecfdf5, #d1fae5);
+  border-color: #10b981;
 }
 
 .exercise-item.current {
-  background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-  border: 2rpx solid #007aff;
+  background: linear-gradient(135deg, #eff6ff, #dbeafe);
+  border-color: #3b82f6;
 }
 
 .item-left {
   display: flex;
   align-items: center;
-  gap: 20rpx;
+  gap: 16rpx;
+  flex: 1;
 }
 
 .item-number {
-  width: 60rpx;
-  height: 60rpx;
+  width: 56rpx;
+  height: 56rpx;
   border-radius: 50%;
-  background: linear-gradient(135deg, #07c160 0%, #06a552 100%);
+  background: linear-gradient(135deg, #10b981, #059669);
   color: #ffffff;
-  font-size: 28rpx;
-  font-weight: bold;
+  font-size: 26rpx;
+  font-weight: 700;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
 }
 
 .exercise-item.completed .item-number {
-  background: linear-gradient(135deg, #4caf50 0%, #388e3c 100%);
+  background: linear-gradient(135deg, #059669, #047857);
 }
 
 .exercise-item.current .item-number {
-  background: linear-gradient(135deg, #007aff 0%, #0066cc 100%);
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
 .item-info {
   display: flex;
   flex-direction: column;
-  gap: 8rpx;
+  gap: 6rpx;
 }
 
 .item-name {
-  font-size: 32rpx;
-  font-weight: 500;
-  color: #333333;
+  font-size: 30rpx;
+  font-weight: 600;
+  color: #0f172a;
 }
 
 .item-detail {
   font-size: 24rpx;
-  color: #999999;
+  color: #64748b;
 }
 
 .item-right {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .item-status {
-  font-size: 40rpx;
-  color: #07c160;
+  font-size: 36rpx;
+  color: #10b981;
 }
 
 .current-tag {
-  font-size: 24rpx;
-  color: #007aff;
-  background: rgba(0, 122, 255, 0.1);
-  padding: 8rpx 16rpx;
+  font-size: 22rpx;
+  color: #3b82f6;
+  background: rgba(59, 130, 246, 0.1);
+  padding: 6rpx 14rpx;
   border-radius: 12rpx;
+  font-weight: 600;
 }
 
 .item-progress {
-  font-size: 28rpx;
-  color: #999999;
-  font-weight: 500;
+  font-size: 26rpx;
+  color: #64748b;
+  font-weight: 600;
 }

@@ -7,6 +7,8 @@
     "pages/food-recognition/food-recognition",
     "pages/profile/edit/edit",
     "pages/muscle-analysis/muscle-analysis",
+    "pages/action-detail/action-detail",
+    "pages/tension-calculator/tension-calculator",
     "pages/plan-detail/plan-detail",
     "pages/training-records/training-records",
     "pages/settings/settings",
