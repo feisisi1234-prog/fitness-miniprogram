@@ -1,5 +1,5 @@
 // subpages/social/ranking/ranking.js
-const SocialManager = require('/utils/social.js');
+const SocialManager = require('../../../utils/social.js');
 
 Page({
   data: {

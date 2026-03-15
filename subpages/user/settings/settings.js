@@ -22,7 +22,7 @@ Page({
 
   onLoad() {
     // 引入测试数据工具
-    this.testDataUtils = require('/utils/generate-test-data.js');
+    this.testDataUtils = require('../../../utils/generate-test-data.js');
     
     this.loadSettings();
     this.calculateCacheSize();
