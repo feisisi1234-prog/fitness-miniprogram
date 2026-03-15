@@ -392,10 +392,24 @@ Page({
     });
   },
 
-  // 跳转到训练记录
+  // 跳转到训练记录页面
   goToRecords() {
     wx.navigateTo({
       url: '/pages/training-records/training-records'
+    });
+  },
+
+  // 跳转到成就中心
+  goToAchievements() {
+    wx.navigateTo({
+      url: '/pages/achievements/achievements'
+    });
+  },
+
+  // 跳转到身体数据追踪
+  goToBodyTracking() {
+    wx.navigateTo({
+      url: '/pages/body-tracking/body-tracking'
     });
   },
 

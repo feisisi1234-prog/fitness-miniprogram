@@ -93,6 +93,28 @@
 
   <!-- 功能菜单 -->
   <view class="menu-section">
+    <view class="menu-item" bindtap="goToAchievements">
+      <view class="menu-icon-wrapper achievements">
+        <image src="/images/icons/star.svg" class="menu-icon-img" mode="aspectFit"></image>
+      </view>
+      <view class="menu-content">
+        <text class="menu-title">成就中心</text>
+        <text class="menu-desc">查看你的训练成就</text>
+      </view>
+      <image src="/images/icons/arrow-right.svg" class="menu-arrow-img" mode="aspectFit"></image>
+    </view>
+    
+    <view class="menu-item" bindtap="goToBodyTracking">
+      <view class="menu-icon-wrapper body">
+        <image src="/images/icons/ruler.svg" class="menu-icon-img" mode="aspectFit"></image>
+      </view>
+      <view class="menu-content">
+        <text class="menu-title">身体数据</text>
+        <text class="menu-desc">追踪体重和围度变化</text>
+      </view>
+      <image src="/images/icons/arrow-right.svg" class="menu-arrow-img" mode="aspectFit"></image>
+    </view>
+    
     <view class="menu-item" bindtap="goToRecords">
       <view class="menu-icon-wrapper">
         <image src="/images/icons/chart.svg" class="menu-icon-img" mode="aspectFit"></image>

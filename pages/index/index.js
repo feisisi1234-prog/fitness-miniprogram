@@ -1,5 +1,8 @@
 // index.js
-const app = getApp()
+const app = getApp();
+const StorageManager = require('../../utils/storage.js');
+const StatsCalculator = require('../../utils/stats.js');
+const AchievementManager = require('../../utils/achievement.js');
 
 Page({
   data: {

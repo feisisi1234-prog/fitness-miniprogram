@@ -1,0 +1,233 @@
+/* pages/achievements/achievements.wxss */
+.page-container {
+  min-height: 100vh;
+  background: linear-gradient(180deg, #f0f9ff 0%, #fef3f2 100%);
+  padding: 20rpx;
+  padding-bottom: 120rpx;
+}
+
+.page-header {
+  text-align: center;
+  padding: 40rpx 0 30rpx;
+}
+
+.page-title {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #1e293b;
+  margin-bottom: 12rpx;
+}
+
+.page-subtitle {
+  display: block;
+  font-size: 28rpx;
+  color: #64748b;
+}
+
+/* 进度卡片 */
+.progress-card {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  border-radius: 24rpx;
+  padding: 32rpx;
+  margin-bottom: 32rpx;
+  box-shadow: 0 8rpx 24rpx rgba(16, 185, 129, 0.25);
+}
+
+.progress-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20rpx;
+}
+
+.progress-info {
+  flex: 1;
+}
+
+.progress-title {
+  display: block;
+  font-size: 28rpx;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 8rpx;
+}
+
+.progress-count {
+  display: block;
+  font-size: 48rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.progress-percentage {
+  font-size: 56rpx;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.progress-bar {
+  height: 12rpx;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 6rpx;
+  overflow: hidden;
+}
+
+.progress-fill {
+  height: 100%;
+  background: #ffffff;
+  border-radius: 6rpx;
+  transition: width 0.5s ease;
+}
+
+/* 分类标签 */
+.category-tabs {
+  display: flex;
+  gap: 12rpx;
+  margin-bottom: 32rpx;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0 4rpx;
+}
+
+.tab-item {
+  flex-shrink: 0;
+  padding: 16rpx 32rpx;
+  background: #ffffff;
+  border-radius: 20rpx;
+  font-size: 28rpx;
+  color: #64748b;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 8rpx rgba(0, 0, 0, 0.04);
+}
+
+.tab-item.active {
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* 成就列表 */
+.achievements-container {
+  margin-bottom: 32rpx;
+}
+
+.category-section {
+  margin-bottom: 40rpx;
+}
+
+.category-title {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1e293b;
+  margin-bottom: 20rpx;
+  padding-left: 8rpx;
+}
+
+.achievements-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 16rpx;
+}
+
+.achievement-item {
+  display: flex;
+  align-items: center;
+  background: #ffffff;
+  border-radius: 20rpx;
+  padding: 24rpx;
+  gap: 20rpx;
+  transition: all 0.3s ease;
+  box-shadow: 0 2rpx 12rpx rgba(0, 0, 0, 0.04);
+}
+
+.achievement-item:active {
+  transform: scale(0.98);
+}
+
+.achievement-item.locked {
+  opacity: 0.6;
+}
+
+.achievement-icon {
+  width: 80rpx;
+  height: 80rpx;
+  background: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%);
+  border-radius: 16rpx;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 48rpx;
+  flex-shrink: 0;
+}
+
+.achievement-item.locked .achievement-icon {
+  background: #f1f5f9;
+  filter: grayscale(100%);
+}
+
+.achievement-info {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8rpx;
+}
+
+.achievement-name {
+  font-size: 32rpx;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.achievement-desc {
+  font-size: 26rpx;
+  color: #64748b;
+  line-height: 1.5;
+}
+
+.achievement-status {
+  flex-shrink: 0;
+}
+
+.status-unlocked {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48rpx;
+  height: 48rpx;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border-radius: 50%;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.status-locked {
+  font-size: 32rpx;
+  opacity: 0.5;
+}
+
+/* 分享按钮 */
+.share-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 20rpx;
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.98), transparent);
+}
+
+.share-btn {
+  width: 100%;
+  height: 88rpx;
+  background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+  color: #ffffff;
+  border-radius: 24rpx;
+  font-size: 32rpx;
+  font-weight: 600;
+  border: none;
+  box-shadow: 0 8rpx 24rpx rgba(16, 185, 129, 0.3);
+}
+
+.share-btn::after {
+  border: none;
+}

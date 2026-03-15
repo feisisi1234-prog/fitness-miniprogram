@@ -13,7 +13,9 @@
     "pages/training-records/training-records",
     "pages/settings/settings",
     "pages/training-session/training-session",
-    "pages/timer/timer"
+    "pages/timer/timer",
+    "pages/achievements/achievements",
+    "pages/body-tracking/body-tracking"
   ],
   "window": {
     "navigationBarTextStyle": "black",

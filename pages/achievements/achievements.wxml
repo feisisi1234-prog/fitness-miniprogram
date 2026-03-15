@@ -1,0 +1,79 @@
+<!--pages/achievements/achievements.wxml-->
+<view class="page-container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">成就中心</text>
+    <text class="page-subtitle">记录你的每一次突破</text>
+  </view>
+
+  <!-- 成就进度卡片 -->
+  <view class="progress-card">
+    <view class="progress-header">
+      <view class="progress-info">
+        <text class="progress-title">成就进度</text>
+        <text class="progress-count">{{progress.unlocked}}/{{progress.total}}</text>
+      </view>
+      <view class="progress-percentage">{{progress.percentage}}%</view>
+    </view>
+    <view class="progress-bar">
+      <view class="progress-fill" style="width: {{progress.percentage}}%"></view>
+    </view>
+  </view>
+
+  <!-- 分类标签 -->
+  <view class="category-tabs">
+    <view class="tab-item {{currentTab === 'all' ? 'active' : ''}}" bindtap="switchTab" data-tab="all">
+      <text>全部</text>
+    </view>
+    <view class="tab-item {{currentTab === 'training' ? 'active' : ''}}" bindtap="switchTab" data-tab="training">
+      <text>训练</text>
+    </view>
+    <view class="tab-item {{currentTab === 'streak' ? 'active' : ''}}" bindtap="switchTab" data-tab="streak">
+      <text>连续</text>
+    </view>
+    <view class="tab-item {{currentTab === 'calories' ? 'active' : ''}}" bindtap="switchTab" data-tab="calories">
+      <text>卡路里</text>
+    </view>
+    <view class="tab-item {{currentTab === 'special' ? 'active' : ''}}" bindtap="switchTab" data-tab="special">
+      <text>特殊</text>
+    </view>
+  </view>
+
+  <!-- 成就列表 -->
+  <view class="achievements-container">
+    <block wx:for="{{Object.keys(categories)}}" wx:key="*this" wx:for-item="categoryKey">
+      <view class="category-section" wx:if="{{currentTab === 'all' || currentTab === categoryKey}}">
+        <view class="category-title">{{categories[categoryKey].name}}</view>
+        <view class="achievements-grid">
+          <view 
+            class="achievement-item {{item.unlocked ? 'unlocked' : 'locked'}}"
+            wx:for="{{categories[categoryKey].achievements}}"
+            wx:key="id"
+            bindtap="showAchievementDetail"
+            data-id="{{item.id}}"
+            data-name="{{item.name}}"
+            data-description="{{item.description}}"
+            data-unlocked="{{item.unlocked}}"
+          >
+            <view class="achievement-icon">{{item.icon}}</view>
+            <view class="achievement-info">
+              <text class="achievement-name">{{item.name}}</text>
+              <text class="achievement-desc">{{item.description}}</text>
+            </view>
+            <view class="achievement-status">
+              <text wx:if="{{item.unlocked}}" class="status-unlocked">✓</text>
+              <text wx:else class="status-locked">🔒</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+
+  <!-- 分享按钮 -->
+  <view class="share-section">
+    <button class="share-btn" bindtap="shareAchievements">
+      <text>分享我的成就</text>
+    </button>
+  </view>
+</view>

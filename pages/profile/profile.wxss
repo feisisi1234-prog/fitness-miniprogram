@@ -581,6 +581,14 @@
   background: #fef3f2;
 }
 
+.menu-icon-wrapper.achievements {
+  background: #fef9c3;
+}
+
+.menu-icon-wrapper.body {
+  background: #fce7f3;
+}
+
 .menu-icon-img {
   width: 28rpx;
   height: 28rpx;

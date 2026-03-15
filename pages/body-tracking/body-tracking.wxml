@@ -1,0 +1,215 @@
+<!--pages/body-tracking/body-tracking.wxml-->
+<view class="page-container">
+  <!-- 页面标题 -->
+  <view class="page-header">
+    <text class="page-title">身体数据</text>
+    <button class="add-btn" bindtap="showAddRecord">+ 添加记录</button>
+  </view>
+
+  <!-- 数据类型切换 -->
+  <scroll-view class="tabs-scroll" scroll-x>
+    <view class="data-tabs">
+      <view class="tab-item {{currentTab === 'weight' ? 'active' : ''}}" bindtap="switchTab" data-tab="weight">
+        <text>体重</text>
+      </view>
+      <view class="tab-item {{currentTab === 'bodyFat' ? 'active' : ''}}" bindtap="switchTab" data-tab="bodyFat">
+        <text>体脂率</text>
+      </view>
+      <view class="tab-item {{currentTab === 'chest' ? 'active' : ''}}" bindtap="switchTab" data-tab="chest">
+        <text>胸围</text>
+      </view>
+      <view class="tab-item {{currentTab === 'waist' ? 'active' : ''}}" bindtap="switchTab" data-tab="waist">
+        <text>腰围</text>
+      </view>
+      <view class="tab-item {{currentTab === 'hips' ? 'active' : ''}}" bindtap="switchTab" data-tab="hips">
+        <text>臀围</text>
+      </view>
+      <view class="tab-item {{currentTab === 'arm' ? 'active' : ''}}" bindtap="switchTab" data-tab="arm">
+        <text>臂围</text>
+      </view>
+      <view class="tab-item {{currentTab === 'thigh' ? 'active' : ''}}" bindtap="switchTab" data-tab="thigh">
+        <text>腿围</text>
+      </view>
+    </view>
+  </scroll-view>
+
+  <!-- 统计卡片 -->
+  <view class="stats-card">
+    <view class="stat-item">
+      <text class="stat-label">当前</text>
+      <text class="stat-value">{{stats.current}}</text>
+      <text class="stat-unit" wx:if="{{currentTab === 'weight'}}">kg</text>
+      <text class="stat-unit" wx:elif="{{currentTab === 'bodyFat'}}">%</text>
+      <text class="stat-unit" wx:else>cm</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">变化</text>
+      <text class="stat-value {{stats.change > 0 ? 'increase' : stats.change < 0 ? 'decrease' : ''}}">
+        {{stats.change > 0 ? '+' : ''}}{{stats.change}}
+      </text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">最高</text>
+      <text class="stat-value">{{stats.highest}}</text>
+    </view>
+    <view class="stat-item">
+      <text class="stat-label">最低</text>
+      <text class="stat-value">{{stats.lowest}}</text>
+    </view>
+  </view>
+
+  <!-- 简易图表展示 -->
+  <view class="chart-card" wx:if="{{chartData.chartBars && chartData.chartBars.length > 0}}">
+    <view class="chart-title">趋势图</view>
+    <view class="simple-chart">
+      <view class="chart-bars">
+        <view 
+          class="chart-bar" 
+          wx:for="{{chartData.chartBars}}" 
+          wx:key="index"
+          style="height: {{item.height}}%"
+        >
+          <view class="bar-fill"></view>
+        </view>
+      </view>
+      <view class="chart-labels">
+        <text class="chart-label" wx:for="{{chartData.labels}}" wx:key="index">{{item}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 历史记录 -->
+  <view class="records-section">
+    <view class="section-title">历史记录</view>
+    <view class="records-list" wx:if="{{records.length > 0}}">
+      <view class="record-item" wx:for="{{records}}" wx:key="index">
+        <view class="record-date">{{item.date}}</view>
+        <view class="record-data">
+          <text wx:if="{{item.weight}}">体重: {{item.weight}}kg</text>
+          <text wx:if="{{item.bodyFat}}">体脂: {{item.bodyFat}}%</text>
+          <text wx:if="{{item.chest}}">胸围: {{item.chest}}cm</text>
+          <text wx:if="{{item.waist}}">腰围: {{item.waist}}cm</text>
+          <text wx:if="{{item.hips}}">臀围: {{item.hips}}cm</text>
+          <text wx:if="{{item.arm}}">臂围: {{item.arm}}cm</text>
+          <text wx:if="{{item.thigh}}">腿围: {{item.thigh}}cm</text>
+        </view>
+        <view class="record-actions">
+          <text class="delete-btn" bindtap="deleteRecord" data-index="{{index}}">删除</text>
+        </view>
+      </view>
+    </view>
+    <view class="empty-state" wx:else>
+      <text class="empty-icon">📊</text>
+      <text class="empty-text">暂无记录</text>
+      <text class="empty-hint">点击右上角添加第一条记录</text>
+    </view>
+  </view>
+
+  <!-- 添加记录弹窗 -->
+  <view class="modal-mask" wx:if="{{showAddModal}}" bindtap="hideAddModal">
+    <view class="modal-content" catchtap="">
+      <view class="modal-header">
+        <text class="modal-title">添加身体数据</text>
+        <text class="modal-close" bindtap="hideAddModal">×</text>
+      </view>
+      
+      <view class="modal-body">
+        <view class="form-item">
+          <text class="form-label">日期</text>
+          <picker mode="date" value="{{formData.date}}" bindchange="onDateChange">
+            <view class="picker-value">{{formData.date}}</view>
+          </picker>
+        </view>
+        
+        <view class="form-item">
+          <text class="form-label">体重 (kg)</text>
+          <input 
+            class="form-input" 
+            type="digit" 
+            placeholder="请输入体重"
+            value="{{formData.weight}}"
+            data-field="weight"
+            bindinput="onInputChange"
+          />
+        </view>
+        
+        <view class="form-item">
+          <text class="form-label">体脂率 (%)</text>
+          <input 
+            class="form-input" 
+            type="digit" 
+            placeholder="请输入体脂率"
+            value="{{formData.bodyFat}}"
+            data-field="bodyFat"
+            bindinput="onInputChange"
+          />
+        </view>
+        
+        <view class="form-item">
+          <text class="form-label">胸围 (cm)</text>
+          <input 
+            class="form-input" 
+            type="digit" 
+            placeholder="请输入胸围"
+            value="{{formData.chest}}"
+            data-field="chest"
+            bindinput="onInputChange"
+          />
+        </view>
+        
+        <view class="form-item">
+          <text class="form-label">腰围 (cm)</text>
+          <input 
+            class="form-input" 
+            type="digit" 
+            placeholder="请输入腰围"
+            value="{{formData.waist}}"
+            data-field="waist"
+            bindinput="onInputChange"
+          />
+        </view>
+        
+        <view class="form-item">
+          <text class="form-label">臀围 (cm)</text>
+          <input 
+            class="form-input" 
+            type="digit" 
+            placeholder="请输入臀围"
+            value="{{formData.hips}}"
+            data-field="hips"
+            bindinput="onInputChange"
+          />
+        </view>
+        
+        <view class="form-item">
+          <text class="form-label">臂围 (cm)</text>
+          <input 
+            class="form-input" 
+            type="digit" 
+            placeholder="请输入臂围"
+            value="{{formData.arm}}"
+            data-field="arm"
+            bindinput="onInputChange"
+          />
+        </view>
+        
+        <view class="form-item">
+          <text class="form-label">腿围 (cm)</text>
+          <input 
+            class="form-input" 
+            type="digit" 
+            placeholder="请输入腿围"
+            value="{{formData.thigh}}"
+            data-field="thigh"
+            bindinput="onInputChange"
+          />
+        </view>
+      </view>
+      
+      <view class="modal-footer">
+        <button class="cancel-btn" bindtap="hideAddModal">取消</button>
+        <button class="confirm-btn" bindtap="saveRecord">保存</button>
+      </view>
+    </view>
+  </view>
+</view>

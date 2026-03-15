@@ -1,5 +1,8 @@
 // pages/training-session/training-session.js
-const app = getApp()
+const app = getApp();
+const StorageManager = require('../../utils/storage.js');
+const AchievementManager = require('../../utils/achievement.js');
+const StatsCalculator = require('../../utils/stats.js');
 
 Page({
   data: {
@@ -735,10 +738,6 @@ Page({
     console.log('训练时长(秒):', this.data.totalTimeElapsed);
     console.log('消耗卡路里:', this.data.totalCalories);
     
-    // 获取已有训练记录
-    let trainingRecords = wx.getStorageSync('trainingRecords') || [];
-    console.log('保存前的记录数:', trainingRecords.length);
-    
     // 添加新记录
     const newRecord = {
       id: Date.now(),
@@ -756,19 +755,14 @@ Page({
     
     console.log('新记录完整信息:', JSON.stringify(newRecord, null, 2));
     
-    trainingRecords.push(newRecord);
-    
-    // 只保留最近30天的记录
-    const thirtyDaysAgo = now.getTime() - 30 * 24 * 60 * 60 * 1000;
-    trainingRecords = trainingRecords.filter(record => record.timestamp > thirtyDaysAgo);
-    
-    console.log('保存后的记录数:', trainingRecords.length);
-    console.log('所有记录:', JSON.stringify(trainingRecords, null, 2));
-    
-    // 保存到本地存储
-    wx.setStorageSync('trainingRecords', trainingRecords);
+    // 使用统一的存储管理器保存
+    StorageManager.saveTrainingRecord(newRecord);
     
     console.log('训练记录已保存到本地存储');
+    
+    // 检查并解锁成就
+    this.checkAchievements();
+    
     console.log('=== 保存训练记录完成 ===');
     
     // 不显示Toast，避免阻塞页面跳转
@@ -975,5 +969,23 @@ Page({
         }
       }
     });
+  }
+})
+
+  },
+
+  // 检查并解锁成就
+  checkAchievements() {
+    const stats = StatsCalculator.calculateUserStats();
+    const newlyUnlocked = AchievementManager.checkAndUnlock(stats);
+    
+    // 如果有新解锁的成就，显示提示
+    if (newlyUnlocked.length > 0) {
+      newlyUnlocked.forEach(achievement => {
+        setTimeout(() => {
+          AchievementManager.showUnlockNotification(achievement);
+        }, 500);
+      });
+    }
   }
 })
