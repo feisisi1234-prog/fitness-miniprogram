@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 背景圆 -->
+  <circle cx="100" cy="100" r="95" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+  
+  <!-- 人形图标 -->
+  <!-- 头部 -->
+  <circle cx="100" cy="60" r="15" fill="#10b981"/>
+  
+  <!-- 身体 -->
+  <rect x="92" y="75" width="16" height="50" rx="8" fill="#10b981"/>
+  
+  <!-- 左臂 -->
+  <rect x="70" y="80" width="25" height="12" rx="6" fill="#059669" transform="rotate(-30 82.5 86)"/>
+  
+  <!-- 右臂 -->
+  <rect x="105" y="80" width="25" height="12" rx="6" fill="#059669" transform="rotate(30 117.5 86)"/>
+  
+  <!-- 左腿 -->
+  <rect x="85" y="120" width="12" height="35" rx="6" fill="#059669" transform="rotate(-10 91 137.5)"/>
+  
+  <!-- 右腿 -->
+  <rect x="103" y="120" width="12" height="35" rx="6" fill="#059669" transform="rotate(10 109 137.5)"/>
+  
+  <!-- 哑铃装饰 -->
+  <g transform="translate(60, 75)">
+    <rect x="0" y="8" width="8" height="4" rx="2" fill="#10b981"/>
+    <rect x="2" y="6" width="4" height="8" rx="1" fill="#10b981"/>
+  </g>
+  
+  <g transform="translate(132, 75)">
+    <rect x="0" y="8" width="8" height="4" rx="2" fill="#10b981"/>
+    <rect x="2" y="6" width="4" height="8" rx="1" fill="#10b981"/>
+  </g>
+</svg>

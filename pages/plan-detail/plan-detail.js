@@ -41,7 +41,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/actions/shendun.jpg',
+            image: '/images/actions/action-placeholder.svg',
             description: '双脚与肩同宽，脚尖微朝外，下蹲时膝盖不要超过脚尖，保持背部挺直'
           },
           {
@@ -50,7 +50,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/actions/fuwoc.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '双手与肩同宽，身体保持一条直线，下降时胸部接近地面，推起时手臂伸直'
           },
           {
@@ -59,7 +59,7 @@ Page({
             sets: 3,
             reps: 30,
             rest: 45,
-            image: '/images/actions/pingbanzhic.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '前臂和脚尖支撑身体，保持身体呈一条直线，收紧核心肌群'
           },
           {
@@ -68,7 +68,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/actions/gongbu.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '一脚向前迈出，下蹲至两膝成90度，前膝不超过脚尖，后膝接近地面'
           }
         ],
@@ -101,7 +101,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/actions/kaihet.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '双脚跳开同时双臂举过头顶，然后跳回起始位置，保持节奏稳定'
           },
           {
@@ -110,7 +110,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/actions/gaotait.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '原地跑步，膝盖尽量抬高至髋部高度，手臂配合摆动'
           },
           {
@@ -119,7 +119,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 45,
-            image: '/images/actions/bobit.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '下蹲-后踢腿成平板支撑-俯卧撑-收腿-跳跃，动作连贯流畅'
           },
           {
@@ -128,7 +128,7 @@ Page({
             sets: 4,
             reps: 30,
             rest: 30,
-            image: '/images/actions/dengshanp.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '平板支撑姿势，交替将膝盖拉向胸部，保持核心稳定'
           }
         ],
@@ -161,7 +161,7 @@ Page({
             sets: 1,
             reps: 10,
             rest: 30,
-            image: '/images/actions/maonius.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '四肢着地，吸气时背部下沉抬头，呼气时背部拱起低头，缓慢交替'
           },
           {
@@ -170,7 +170,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 30,
-            image: '/images/actions/xiaquans.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '手脚着地，臀部向上抬起，形成倒V形，手臂和背部伸直'
           },
           {
@@ -179,7 +179,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/actions/zhanshiers.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '一脚向前迈出，前腿弯曲，后腿伸直，双臂平举，目视前方'
           },
           {
@@ -188,7 +188,7 @@ Page({
             sets: 2,
             reps: 30,
             rest: 30,
-            image: '/images/actions/shus.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '单腿站立，另一脚放在支撑腿内侧，双手合十举过头顶'
           }
         ],
@@ -230,7 +230,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/actions/eluosizhuanti.webp',
+            image: '/images/actions/action-placeholder.svg',
             description: '坐姿，双腿离地，上身略后倾，双手合十左右转动身体'
           },
           {
@@ -239,7 +239,7 @@ Page({
             sets: 3,
             reps: 15,
             rest: 30,
-            image: '/images/actions/pingbanzhichengtaitui.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '平板支撑姿势，交替抬起腿部，保持核心稳定，避免臀部下沉'
           },
           {
@@ -248,7 +248,7 @@ Page({
             sets: 3,
             reps: 20,
             rest: 30,
-            image: '/images/actions/juanfu.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '仰卧，双手放于胸前或耳侧，利用腹肌力量将上身抬起，下背部不离地'
           }
         ],
@@ -341,7 +341,7 @@ Page({
             sets: 1,
             reps: 100,
             rest: 30,
-            image: '/images/actions/baicihuxi.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '仰卧，双腿抬起，上身微抬，双臂上下摆动，配合呼吸'
           },
           {
@@ -401,7 +401,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/actions/yalingshendun.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '双手持哑铃于身体两侧，进行深蹲动作，增加负重强度'
           },
           {
@@ -410,7 +410,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/actions/yalingwotui.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '仰卧，双手持哑铃推举，感受胸肌发力'
           },
           {
@@ -419,7 +419,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/actions/yalinghuachuan.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '俯身，单手持哑铃向上拉，锻炼背部肌肉'
           },
           {
@@ -428,7 +428,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/actions/yalingjiantui.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '站姿或坐姿，双手持哑铃向上推举，锻炼肩部'
           }
         ],
@@ -461,7 +461,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 0,
-            image: '/images/actions/yingershi.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '跪坐，上身前倾，额头触地，双臂前伸，放松全身'
           },
           {
@@ -470,7 +470,7 @@ Page({
             sets: 1,
             reps: 10,
             rest: 0,
-            image: '/images/actions/maonius.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '四肢着地，吸气时背部下沉抬头，呼气时背部拱起低头'
           },
           {
@@ -479,7 +479,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 0,
-            image: '/images/actions/xiaquans.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '手脚着地，臀部向上抬起，形成倒V形，伸展全身'
           },
           {
@@ -488,7 +488,7 @@ Page({
             sets: 1,
             reps: 60,
             rest: 0,
-            image: '/images/actions/shanshi.png',
+            image: '/images/actions/action-placeholder.svg',
             description: '站立，双脚并拢，身体挺直，双手合十于胸前，深呼吸'
           }
         ],
