@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 开合跳动作 -->
+  <circle cx="100" cy="100" r="95" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+  
+  <!-- 人物 - 跳跃姿势 -->
+  <circle cx="100" cy="60" r="12" fill="#10b981"/>
+  
+  <!-- 身体 -->
+  <path d="M 100 72 L 100 110" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- 左臂 - 向上 -->
+  <path d="M 100 80 L 70 50" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 右臂 - 向上 -->
+  <path d="M 100 80 L 130 50" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 左腿 - 张开 -->
+  <path d="M 100 110 L 75 145" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- 右腿 - 张开 -->
+  <path d="M 100 110 L 125 145" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- 运动轨迹线 -->
+  <path d="M 70 50 Q 60 40 50 45" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+  <path d="M 130 50 Q 140 40 150 45" stroke="#fbbf24" stroke-width="2" stroke-dasharray="3,3" fill="none"/>
+</svg>

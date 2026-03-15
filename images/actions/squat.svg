@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 深蹲动作 -->
+  <circle cx="100" cy="100" r="95" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+  
+  <!-- 人物 - 深蹲姿势 -->
+  <circle cx="100" cy="50" r="12" fill="#10b981"/>
+  
+  <!-- 身体 -->
+  <path d="M 100 62 L 100 95" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- 左臂 -->
+  <path d="M 100 70 L 75 85" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 右臂 -->
+  <path d="M 100 70 L 125 85" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 左腿 - 弯曲 -->
+  <path d="M 95 95 Q 85 110 85 130" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 85 130 L 75 145" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 右腿 - 弯曲 -->
+  <path d="M 105 95 Q 115 110 115 130" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 115 130 L 125 145" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 强调线 - 膝盖弯曲 -->
+  <circle cx="85" cy="115" r="3" fill="#ef4444"/>
+  <circle cx="115" cy="115" r="3" fill="#ef4444"/>
+</svg>

@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 俯卧撑动作 -->
+  <circle cx="100" cy="100" r="95" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+  
+  <!-- 人物 - 俯卧撑姿势 -->
+  <circle cx="80" cy="85" r="10" fill="#10b981"/>
+  
+  <!-- 身体 - 水平 -->
+  <path d="M 90 85 L 140 85" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- 左臂 - 支撑 -->
+  <path d="M 95 85 L 75 110" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 75 110 L 70 120" stroke="#059669" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- 右臂 - 支撑 -->
+  <path d="M 125 85 L 145 110" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 145 110 L 150 120" stroke="#059669" stroke-width="6" stroke-linecap="round"/>
+  
+  <!-- 腿部 -->
+  <path d="M 140 85 L 160 85" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 地面线 -->
+  <line x1="60" y1="125" x2="160" y2="125" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5"/>
+</svg>

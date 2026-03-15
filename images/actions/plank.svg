@@ -1,0 +1,28 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 平板支撑动作 -->
+  <circle cx="100" cy="100" r="95" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+  
+  <!-- 人物 - 平板支撑姿势 -->
+  <circle cx="75" cy="80" r="10" fill="#10b981"/>
+  
+  <!-- 身体 - 水平直线 -->
+  <path d="M 85 80 L 145 80" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- 前臂支撑 -->
+  <path d="M 90 80 L 80 95" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 80 95 L 75 105" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <path d="M 110 80 L 100 95" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  <path d="M 100 95 L 95 105" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 腿部 -->
+  <path d="M 145 80 L 165 80" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 核心强调 -->
+  <circle cx="115" cy="80" r="4" fill="#ef4444"/>
+  <circle cx="125" cy="80" r="4" fill="#ef4444"/>
+  <circle cx="135" cy="80" r="4" fill="#ef4444"/>
+  
+  <!-- 地面线 -->
+  <line x1="60" y1="110" x2="170" y2="110" stroke="#cbd5e1" stroke-width="2" stroke-dasharray="5,5"/>
+</svg>

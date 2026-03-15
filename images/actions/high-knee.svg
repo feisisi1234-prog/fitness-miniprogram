@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" fill="none">
+  <!-- 高抬腿动作 -->
+  <circle cx="100" cy="100" r="95" fill="#f0fdf4" stroke="#10b981" stroke-width="2"/>
+  
+  <!-- 人物 - 高抬腿姿势 -->
+  <circle cx="100" cy="55" r="12" fill="#10b981"/>
+  
+  <!-- 身体 -->
+  <path d="M 100 67 L 100 95" stroke="#10b981" stroke-width="10" stroke-linecap="round"/>
+  
+  <!-- 左臂 - 摆动 -->
+  <path d="M 100 75 L 85 95" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 右臂 - 摆动 -->
+  <path d="M 100 75 L 115 60" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 左腿 - 抬高 -->
+  <path d="M 100 95 Q 95 105 95 120" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+  <circle cx="95" cy="105" r="4" fill="#ef4444"/>
+  
+  <!-- 右腿 - 支撑 -->
+  <path d="M 100 95 L 105 140" stroke="#059669" stroke-width="10" stroke-linecap="round"/>
+  <path d="M 105 140 L 110 155" stroke="#059669" stroke-width="8" stroke-linecap="round"/>
+  
+  <!-- 运动箭头 -->
+  <path d="M 95 125 L 95 115" stroke="#fbbf24" stroke-width="3" marker-end="url(#arrowhead)"/>
+  <defs>
+    <marker id="arrowhead" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <polygon points="0 0, 10 5, 0 10" fill="#fbbf24"/>
+    </marker>
+  </defs>
+</svg>

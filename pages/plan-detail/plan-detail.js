@@ -41,7 +41,7 @@ Page({
             sets: 3,
             reps: 12,
             rest: 60,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/squat.svg',
             description: '双脚与肩同宽，脚尖微朝外，下蹲时膝盖不要超过脚尖，保持背部挺直'
           },
           {
@@ -50,7 +50,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/pushup.svg',
             description: '双手与肩同宽，身体保持一条直线，下降时胸部接近地面，推起时手臂伸直'
           },
           {
@@ -59,7 +59,7 @@ Page({
             sets: 3,
             reps: 30,
             rest: 45,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/plank.svg',
             description: '前臂和脚尖支撑身体，保持身体呈一条直线，收紧核心肌群'
           },
           {
@@ -68,7 +68,7 @@ Page({
             sets: 3,
             reps: 10,
             rest: 60,
-            image: '/images/actions/action-placeholder.svg',
+            image: '/images/actions/lunge.svg',
             description: '一脚向前迈出，下蹲至两膝成90度，前膝不超过脚尖，后膝接近地面'
           }
         ],
