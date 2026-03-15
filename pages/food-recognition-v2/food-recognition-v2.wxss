@@ -1,4 +1,4 @@
-/* pages/food-recognition/food-recognition.wxss - 清新活力风格 */
+/* pages/food-recognition-v2/food-recognition-v2.wxss - 清新活力风格 */
 page {
   background: linear-gradient(180deg, #f0f9ff 0%, #fef3f2 100%);
   min-height: 100vh;

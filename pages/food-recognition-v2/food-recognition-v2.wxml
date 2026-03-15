@@ -1,5 +1,5 @@
-<!--pages/food-recognition/food-recognition.wxml-->
-<navigation-bar title="食物识别" back="{{true}}" color="black" background="#FFF"></navigation-bar>
+<!--pages/food-recognition-v2/food-recognition-v2.wxml-->
+<navigation-bar title="食物识别 V2" back="{{true}}" color="black" background="#FFF"></navigation-bar>
 
 <view class="container">
   <!-- 背景装饰 -->
